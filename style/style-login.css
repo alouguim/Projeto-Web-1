@@ -1,0 +1,39 @@
+body{
+    background-image: url(Wallpaper\ star\ rail.webp);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.container {
+    padding: 10px;
+    border: solid black;
+    border-width: 5px;
+    background-color: rgb(24, 19, 28);
+    color: white;
+    position: fixed;
+    bottom: 20%;
+    right: 36%;
+    margin: 10px;
+    min-width: 350px;
+    min-height: 350px;
+    font-size: 18px;
+    text-align: center;
+    align-content: center;
+    background-image: url(starry\ night.jpg);
+    border-radius: 40px;
+}
+.nome {
+    position: relative;
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+input {
+    margin-bottom: 10px;
+}
+a{
+    text-decoration: none;
+    color: rgb(161, 95, 216);
+    font-size: 12px;
+}
