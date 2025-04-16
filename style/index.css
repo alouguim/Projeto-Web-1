@@ -1,0 +1,35 @@
+body{
+    background-color: RGB(19, 18, 17);
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: RGB(134, 46, 156);
+    padding: 20px;
+    a{
+        color: white;
+        text-decoration: none;
+    }
+}
+
+#titulo1{
+    font-size: 50px;
+    color: white;
+}
+
+#titulo2{
+    color: RGB(255, 206, 16);
+}
+
+#subtitulo1{
+    color: RGB(194, 123, 160);
+}
+
+#subtitulo2{
+    color: RGB(230, 227, 223);
+}
+
