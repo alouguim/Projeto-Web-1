@@ -1,7 +1,10 @@
 body{
-    background-image: url(Wallpaper\ star\ rail.webp);
+    background-image: url(/Imagens/Wallpaper\ star\ rail.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .container {
     padding: 10px;
     border: solid black;
@@ -20,6 +23,7 @@ body{
     background-image: url(starry\ night.jpg);
     border-radius: 40px;
 }
+
 .nome {
     position: relative;
     padding: 10px;
