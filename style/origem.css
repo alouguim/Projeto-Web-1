@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: rgb(0,0,0);
+    --cor-secundaria: rgb(19,18,17);
+    --cor-do-texto: white;
+    --tamanho-da-side-bar: 27vh;
+    --tamanho-do-header: 6.6vh;
+}
+
+body {
+    background-color: RGB(19, 18, 17);
+    min-height: 100vh;
+}
+  
+.sidebar {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: var(--tamanho-da-side-bar);
+    height: 100vh;
+    background-color: rgba(67, 67, 67, 1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: aliceblue;
+    gap: 5rem;
+    a img{
+    width: 40%;
+    height: auto;
+    }
+}
+.sidebar strong{
+    font-size:xx-large;
+    gap: 5rem;
+}
+
+.header {
+    margin-left: var(--tamanho-da-side-bar);
+    height: var(--tamanho-do-header);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    background: rgba(0,0,0,0.2);
+    z-index: 1001;
+}
+  
+
+.header .esquerda a {
+    margin-right: 1rem;
+    color: white;
+    text-decoration: none;
+    font-size: x-large;
+}
+  
+
+.header .direita {
+    margin-left: auto;
+}
+  
+.header .direita a {
+    color: white;
+    text-decoration: none;
+    font-size: x-large;
+    margin-left: 1rem;
+}
+  
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+.container {
+    display: flex;
+    gap: 3vh;
+    background-color: var(--cor-secundaria);
+    padding: 15%;
+    padding-top: 3%;
+}
+
+.guia {
+    margin-left: var(--tamanho-da-side-bar); 
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    color: white;
+}
+
+.guia .item a{
+    color: white;
+    font-size: xx-large;
+    text-decoration: none;
+}
+
+.guia .item#selecionado a{
+    color: purple;
+    text-decoration: none;
+}
+
+.conteudo {
+    margin-left: var(--tamanho-da-side-bar);
+    padding: 20px;
+    color: white;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column; 
+    gap: 30px;
+}
