@@ -1,12 +1,12 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 :root {
-    --cor-principal: rgb(0,0,0);
-    --cor-secundaria: rgb(19,18,17);
+    --cor-principal: rgb(0, 0, 0);
+    --cor-secundaria: rgb(19, 18, 17);
     --cor-do-texto: white;
     --tamanho-da-side-bar: 27vh;
     --tamanho-do-header: 6.6vh;
@@ -16,10 +16,10 @@ body {
     background-color: RGB(19, 18, 17);
     min-height: 100vh;
 }
-  
+
 .sidebar {
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
     width: var(--tamanho-da-side-bar);
     height: 100vh;
@@ -30,13 +30,15 @@ body {
     text-align: center;
     color: aliceblue;
     gap: 5rem;
-    a img{
-    width: 40%;
-    height: auto;
+
+    a img {
+        width: 40%;
+        height: auto;
     }
 }
-.sidebar strong{
-    font-size:xx-large;
+
+.sidebar strong {
+    font-size: xx-large;
     gap: 5rem;
 }
 
@@ -46,10 +48,10 @@ body {
     display: flex;
     align-items: center;
     padding: 0 1rem;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
     z-index: 1001;
 }
-  
+
 
 .header .esquerda a {
     margin-right: 1rem;
@@ -57,19 +59,19 @@ body {
     text-decoration: none;
     font-size: x-large;
 }
-  
+
 
 .header .direita {
     margin-left: auto;
 }
-  
+
 .header .direita a {
     color: white;
     text-decoration: none;
     font-size: x-large;
     margin-left: 1rem;
 }
-  
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 
@@ -82,7 +84,7 @@ body {
 }
 
 .guia {
-    margin-left: var(--tamanho-da-side-bar); 
+    margin-left: var(--tamanho-da-side-bar);
     height: 100px;
     display: flex;
     justify-content: center;
@@ -92,13 +94,13 @@ body {
     color: white;
 }
 
-.guia .item a{
+.guia .item a {
     color: white;
     font-size: xx-large;
     text-decoration: none;
 }
 
-.guia .item#selecionado a{
+.guia .item#selecionado a {
     color: purple;
     text-decoration: none;
 }
@@ -109,6 +111,96 @@ body {
     color: white;
     font-size: x-large;
     display: flex;
-    flex-direction: column; 
-    gap: 30px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.classes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-inline: auto;
+}
+
+.classes label {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    font-weight: bold;
+}
+
+.classes label:hover {
+    background-color: #666;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.img_classes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    gap: 1.5rem;
+}
+
+.img_classes img {
+    width: 70%;                
+    height: auto;             
+    aspect-ratio: 16 / 9;     
+    object-fit: cover;        
+    border: 5px solid purple;  
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;        
+}
+
+/* Esconde todas as imagens por padrão */
+.img_classes {
+    display: none;
+}
+
+#guerreiro:checked~.info_classes .img_guerreiro,
+#tank:checked~.info_classes .img_tank,
+#assassino:checked~.info_classes .img_assassino,
+#mago:checked~.info_classes .img_mago,
+#atirador:checked~.info_classes .img_atirador,
+#curandeiro:checked~.info_classes .img_curandeiro,
+#suporte:checked~.info_classes .img_suporte {
+    display: block;
+}
+
+#guerreiro:checked~.classes label[for="guerreiro"],
+#tank:checked~.classes label[for="tank"],
+#assassino:checked~.classes label[for="assassino"],
+#mago:checked~.classes label[for="mago"],
+#atirador:checked~.classes label[for="atirador"],
+#curandeiro:checked~.classes label[for="curandeiro"],
+#suporte:checked~.classes label[for="suporte"] {
+    color: purple;
+}
+
+.botao-escolher {
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: purple;
+    border: 2px solid purple;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+.botao-escolher:hover {
+    background-color: white;
+    color: purple;
+    border: 2px solid purple;
+    transform: scale(1.05);
 }

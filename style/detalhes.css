@@ -1,12 +1,12 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 :root {
-    --cor-principal: rgb(0,0,0);
-    --cor-secundaria: rgb(19,18,17);
+    --cor-principal: rgb(0, 0, 0);
+    --cor-secundaria: rgb(19, 18, 17);
     --cor-do-texto: white;
     --tamanho-da-side-bar: 27vh;
     --tamanho-do-header: 6.6vh;
@@ -16,10 +16,10 @@ body {
     background-color: RGB(19, 18, 17);
     min-height: 100vh;
 }
-  
+
 .sidebar {
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
     width: var(--tamanho-da-side-bar);
     height: 100vh;
@@ -30,13 +30,15 @@ body {
     text-align: center;
     color: aliceblue;
     gap: 5rem;
-    a img{
-    width: 40%;
-    height: auto;
+
+    a img {
+        width: 40%;
+        height: auto;
     }
 }
-.sidebar strong{
-    font-size:xx-large;
+
+.sidebar strong {
+    font-size: xx-large;
     gap: 5rem;
 }
 
@@ -46,10 +48,10 @@ body {
     display: flex;
     align-items: center;
     padding: 0 1rem;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
     z-index: 1001;
 }
-  
+
 
 .header .esquerda a {
     margin-right: 1rem;
@@ -57,19 +59,19 @@ body {
     text-decoration: none;
     font-size: x-large;
 }
-  
+
 
 .header .direita {
     margin-left: auto;
 }
-  
+
 .header .direita a {
     color: white;
     text-decoration: none;
     font-size: x-large;
     margin-left: 1rem;
 }
-  
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 
@@ -82,7 +84,7 @@ body {
 }
 
 .guia {
-    margin-left: var(--tamanho-da-side-bar); 
+    margin-left: var(--tamanho-da-side-bar);
     height: 100px;
     display: flex;
     justify-content: center;
@@ -92,13 +94,13 @@ body {
     color: white;
 }
 
-.guia .item a{
+.guia .item a {
     color: white;
     font-size: xx-large;
     text-decoration: none;
 }
 
-.guia .item#selecionado a{
+.guia .item#selecionado a {
     color: purple;
     text-decoration: none;
 }
@@ -109,6 +111,67 @@ body {
     color: white;
     font-size: x-large;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     gap: 30px;
 }
+
+form {
+    max-width: 50%;
+}
+
+.linha{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.campo label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.campo input {
+    padding: 8px 12px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #222;
+    color: white;
+}
+
+.campo textarea{
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #222;
+    color: white;
+}
+
+.botao-escolher {
+    padding: 12px 30px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: purple;
+    border: 2px solid purple;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.campo select{
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #222;
+    color: #aaa;
+    height: 40px;
+}
+
+.campo select:valid{
+    color: white; 
+}
+
