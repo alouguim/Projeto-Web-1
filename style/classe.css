@@ -19,7 +19,7 @@ body {
 
 .sidebar {
     position: fixed;
-    top: 0;
+    top: 0; 
     left: 0;
     width: var(--tamanho-da-side-bar);
     height: 100vh;
@@ -29,11 +29,15 @@ body {
     flex-direction: column;
     text-align: center;
     color: aliceblue;
+    font-family: 'Anton', sans-serif;
+    font-style: italic;
     gap: 5rem;
-
-    a img {
-        width: 40%;
-        height: auto;
+    a img{
+    width: 40%;
+    height: auto;
+    }
+    p{
+        font-size: x-large;
     }
 }
 
@@ -73,6 +77,8 @@ body {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 
 
 .container {
@@ -92,6 +98,7 @@ body {
     gap: 10px;
     z-index: 1000;
     color: white;
+    font-family: 'Anton', sans-serif;
 }
 
 .guia .item a {
@@ -113,6 +120,20 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.conteudo h2{
+    font-family: 'Anton', sans-serif;
+    color: purple;
+    font-style: italic;
+}
+
+.conteudo p{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.conteudo label{
+    font-family: 'Anton', sans-serif;
 }
 
 .classes {
@@ -151,7 +172,7 @@ input[type="radio"] {
 }
 
 .img_classes img {
-    width: 70%;                
+    width: 50%;                
     height: auto;             
     aspect-ratio: 16 / 9;     
     object-fit: cover;        
@@ -161,7 +182,6 @@ input[type="radio"] {
     margin: 0 auto;        
 }
 
-/* Esconde todas as imagens por padrão */
 .img_classes {
     display: none;
 }

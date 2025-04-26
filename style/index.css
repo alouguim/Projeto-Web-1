@@ -35,11 +35,30 @@ body {
     text-align: center;
     color: aliceblue;
     gap: 5rem;
+    font-family: 'Anton', sans-serif;
+    font-style: italic;
     a img{
     width: 40%;
     height: auto;
     }
 }
+
+.sidebar #link{
+    font-family: 'Anton', sans-serif;
+    text-decoration: none;
+    color:white;
+    font-style: bold;
+    font-size: x-large;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+
+}
+
+.sidebar #link:hover {
+    background-color: purple;
+}
+
 .sidebar strong{
     font-size:xx-large;
     gap: 5rem;
@@ -152,4 +171,8 @@ body {
     font-size: 2.1vh;
     line-height: 1.6;
     margin-bottom: 2vh;
+}
+
+.texto h2{
+    color: purple;
 }

@@ -29,10 +29,15 @@ body {
     flex-direction: column;
     text-align: center;
     color: aliceblue;
+    font-family: 'Anton', sans-serif;
+    font-style: italic;
     gap: 5rem;
     a img{
     width: 40%;
     height: auto;
+    }
+    p{
+        font-size: x-large;
     }
 }
 .sidebar strong{
@@ -71,6 +76,7 @@ body {
 }
   
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 
 .container {
@@ -82,7 +88,7 @@ body {
 }
 
 .guia {
-    margin-left: var(--tamanho-da-side-bar); 
+    margin-left: var(--tamanho-da-side-bar);
     height: 100px;
     display: flex;
     justify-content: center;
@@ -90,6 +96,7 @@ body {
     gap: 10px;
     z-index: 1000;
     color: white;
+    font-family: 'Anton', sans-serif;
 }
 
 .guia .item a{
@@ -113,6 +120,58 @@ body {
     gap: 30px;
 }
 
+.conteudo h2{
+    font-family: 'Anton', sans-serif;
+    color: purple;
+    font-style: italic;
+}
+
+.conteudo p{
+    font-family: 'Open Sans', sans-serif;
+}
+.conteudo h6{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.conteudo form{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.conteudo ul{
+    padding-left: 20px; 
+}
+.conteudo li{
+    margin-bottom: 10px; 
+}
+
+.label{
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.label input{
+    display: none;
+}
+
+.label .radio-button{
+    background-color: purple;
+    color: white;
+    border: 2px  solid;
+    border-color: purple;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.label input:checked ~ .radio-button{
+    background-color: white;
+    color: black;
+}
+.label:hover .radio-button {
+    background-color: white;
+    color: black;
+}
 .botao-escolher{
     padding: 12px 30px;
     font-size: 18px;

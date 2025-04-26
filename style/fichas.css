@@ -29,10 +29,15 @@ body {
     flex-direction: column;
     text-align: center;
     color: aliceblue;
+    font-family: 'Anton', sans-serif;
+    font-style: italic;
     gap: 5rem;
     a img{
     width: 40%;
     height: auto;
+    }
+    p{
+        font-size: x-large;
     }
 }
 .sidebar strong{

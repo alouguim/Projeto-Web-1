@@ -14,10 +14,10 @@
 <body>
   <div class="sidebar">
     <a href="index.html"><img src="../Imagens/Clara_Sticker_01.png" alt="clara :)"></a>
-
-    <strong>Gênesis RPG</strong>
-
-    <p>Criação de Valquíria</p>
+        
+    <strong><u>Genesis RPG</u></strong>
+    
+    <p>Criar Valquíria</p>
   </div>
   <header>
     <div class="header">
@@ -42,15 +42,14 @@
   </div>
 
   <div class="conteudo">
-    <p>Escolha as origens de seu personagem, o que ele fazia antes da história começar, sua pré disposição
-      divina, classe social e ranking.
+    <p>Escolha as origens de seu personagem, definindo habilidades e bônus de atributo que vai receber na criação da ficha.
     </p>
-    <h5>Bônus de atributos, habilidades treinadas e perícias concedidas serão adicionadas automaticamente.
+    <h6>Bônus de atributos, habilidades treinadas e perícias concedidas serão adicionadas automaticamente.
       Você pode editar elas em sua ficha após sua criação.
-    </h5>
+    </h6>
     <form action="classe.html" method="GET">
       <div class="item">
-        <h1>Origens</h1>
+        <h2>Origens</h2>
         <p>O que você fazia antes de se tornar uma Valquiria. Todo
           personagem pertence a um arquétipo que define o rumo inicial que sua vida
           tomou e que habilidades desenvolveu com o tempo.
@@ -71,7 +70,10 @@
               <li><b>Capacidades Totais</b>: Uma vez que descobrir totalmente o próprio passado,
                 recebe um talento oculto decidido em segredo pelo mestre.</li>
             </ul>
-            <input type="radio" name="origem" value="amnesico" required>
+            <label class="label">
+              <input type="radio" name="origem" value="amnesico" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -96,7 +98,10 @@
                 de arte que você criou). No sucesso, você recebe um bônus igual ao seu Nível de Personagem
                 em todos os testes contra aquela pessoa.</li>
             </ul>
-            <input type="radio" name="origem" value="artista" required>
+            <label class="label">
+              <input type="radio" name="origem" value="artista" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -117,7 +122,10 @@
                 Iniciativa, caso receba Vantagem nesse teste por alguma outra fonte, passa a receber
                 Vantagem em testes envolvendo Habilidades de Corpo</li>
             </ul>
-            <input type="radio" name="origem" value="atleta" required>
+            <label class="label">
+              <input type="radio" name="origem" value="atleta" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -138,7 +146,10 @@
                 conseguirá uma pessoa que conhece outra pessoa que conhece outra pessoa e assim,
                 conseguirá a informação que deseja.</li>
             </ul>
-            <input type="radio" name="origem" value="capeta" required>
+            <label class="label">
+              <input type="radio" name="origem" value="capeta" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -158,7 +169,10 @@
                 Quando estão em combate juntos, você controla esse NPC como se fosse uma extensão de
                 você. Esses NPCs são considerados Leais.</li>
             </ul>
-            <input type="radio" name="origem" value="conselho" required>
+            <label class="label">
+              <input type="radio" name="origem" value="conselho" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -180,7 +194,10 @@
                 você controla sua gangue como se fossem uma extensão de você e pode destribuir seus
                 bônus em atributos de combate entre a gangue.</li>
             </ul>
-            <input type="radio" name="origem" value="delinquente" required>
+            <label class="label">
+              <input type="radio" name="origem" value="delinquente" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -199,7 +216,11 @@
               <li><b>Urbano</b>: Você aprendeu a sobreviver em locais hostis, recebendo Vantagem em testes de Furtar,
                 Rastrear e Sobrevivência.</li>
             </ul>
-            <input type="radio" name="origem" value="eremita" required>
+            <label class="label">
+              <input type="radio" name="origem" value="eremita" required>
+              <span class="radio-button">Escolher</span>
+            </label>
+            
           </details>
         </div>
         <div class="origem">
@@ -217,7 +238,11 @@
                 Inteligência para prever a próxima ação de seu alvo,
                 recebendo um bônus de +3 em seu próximo teste contra ele.</li>
             </ul>
-            <input type="radio" name="origem" value="estudioso" required>
+            <label class="label">
+              <input type="radio" name="origem" value="estudioso" required>
+              <span class="radio-button">Escolher</span>
+            </label>
+            
           </details>
         </div>
         <div class="origem">
@@ -233,7 +258,10 @@
               <li>Genérica<b></b>: Eu não sei como te falar isso, mas... Você realmente não tem talento algum. Boa
                 sorte!</li>
             </ul>
-            <input type="radio" name="origem" value="generica" required>
+            <label class="label">
+              <input type="radio" name="origem" value="generica" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -253,7 +281,10 @@
                 seja mercadorias, informações ou serviços. Cada Contato deve estar atrelado a uma cidade e seu número de
                 Contatos aumenta a cada base da habilidade Sabedoria das Ruas (8, 12, 16, 18)</li>
             </ul>
-            <input type="radio" name="origem" value="herdeiro" required>
+            <label class="label">
+              <input type="radio" name="origem" value="herdeiro" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -271,7 +302,10 @@
                 tentativa em um teste. Alternativamente, você pode usar o Acerto Crítico para dar um segundo ataque
                 no mesmo turno.</li>
             </ul>
-            <input type="radio" name="origem" value="obstinado" required>
+            <label class="label">
+              <input type="radio" name="origem" value="obstinado" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -288,7 +322,10 @@
                 sempre que for manejar ela.</li>
               <li><b>Corpo Calejado</b>: Recebe 5 de vida adicional a cada Nível de Personagem.</li>
             </ul>
-            <input type="radio" name="origem" value="operario" required>
+            <label class="label">
+              <input type="radio" name="origem" value="operario" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -308,7 +345,10 @@
                 você o ataque três vezes. Já no sucesso, ele vai se tornar ofendido pela sua existência e tentar te
                 matar primeiro a todo custo. Você recebe -3 nesse teste ao despertar seu Talento Oculto.</li>
             </ul>
-            <input type="radio" name="origem" value="peso_morto" required>
+            <label class="label">
+              <input type="radio" name="origem" value="peso_morto" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -331,7 +371,10 @@
                 2 Níveis de Personagem.
               </li>
             </ul>
-            <input type="radio" name="origem" value="popular" required>
+            <label class="label">
+              <input type="radio" name="origem" value="popular" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -351,7 +394,10 @@
                 Caso esteja em combate, pode escolher ficar em último na iniciativa para mudar a sua habilidade
                 treinada.</li>
             </ul>
-            <input type="radio" name="origem" value="potencia" required>
+            <label class="label">
+              <input type="radio" name="origem" value="potencia" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -370,7 +416,10 @@
                 um grupo de até quatro pessoas. Você e todos do mesmo Caminho que você recebem um bônus adicional de +2
                 em todos seus testes.</li>
             </ul>
-            <input type="radio" name="origem" value="religioso" required>
+            <label class="label">
+              <input type="radio" name="origem" value="religioso" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -390,7 +439,10 @@
                 Concentração dela. No sucesso, ela vai ficar desmotivada para te contrariar, obedecendo suas ordens,
                 ou caso não faça isso, receberá um debuff de -3 em todos seus testes contra você.</li>
             </ul>
-            <input type="radio" name="origem" value="solitario" required>
+            <label class="label">
+              <input type="radio" name="origem" value="solitario" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -409,7 +461,10 @@
                 conseguirá uma segunda rolagem enquanto menores fazem com que você falhe.</li>
               <li><b>Sorte Aumentada</b>: Ganha um ponto extra na Perícia <b>Sorte</b> a cada Nível de Personagem.</li>
             </ul>
-            <input type="radio" name="origem" value="sortudo" required>
+            <label class="label">
+              <input type="radio" name="origem" value="sortudo" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="origem">
@@ -428,7 +483,10 @@
                 você pode fazer um teste de Concentração com VD decidido pelo mestre. Ao bater o VD, você não perde
                 Humanidade alguma, porém, se a diferença for 5 ou mais, você recupera Humanidade.</li>
             </ul>
-            <input type="radio" name="origem" value="vilao" required>
+            <label class="label">
+              <input type="radio" name="origem" value="vilao" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
       </div>
@@ -448,7 +506,10 @@
               <li>1 tier em Bônus de Cura ou Recarga.</li>
               <li>Ao usar uma habilidade de cura, aumenta a cura realizada em mais 1 dado de mesmo tipo.</li>
             </ul>
-            <input type="radio" name="caminho" value="abundancia" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="abundancia" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="caminho">
@@ -462,7 +523,10 @@
               <li>Adiciona 1 Tier em Destreza ou Proficiência.</li>
               <li>Recebe +3 em ataques contra 1 alvo.</li>
             </ul>
-            <input type="radio" name="caminho" value="caça" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="caça" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="caminho">
@@ -478,7 +542,10 @@
               <li>Todos os seus ataques e técnicas podem causar +1 de dano, mesmo que originalmente não causassem
                 dano algum.</li>
             </ul>
-            <input type="radio" name="caminho" value="destruicao" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="destruicao" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="caminho">
@@ -493,7 +560,10 @@
               <li>Ao usar alguma técnica de buff em uma criatura ou você mesmo, adiciona +2 na modificação concedida.
               </li>
             </ul>
-            <input type="radio" name="caminho" value="harmonia" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="harmonia" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="caminho">
@@ -507,7 +577,10 @@
               <li>Recebe 1 tier em Recarga ou Proficiência.</li>
               <li>Ao usar alguma técnica de Debuff em uma criatura ou você mesmo, aumenta o debuff em -2.</li>
             </ul>
-            <input type="radio" name="caminho" value="inexistencia" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="inexistencia" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="caminho">
@@ -522,7 +595,10 @@
               <li>Ao receber um buff, também compartilhe metade dele com o aliado que lhe concedeu. Ao dar um buff,
                 também receba metade dele para você. </li>
             </ul>
-            <input type="radio" name="caminho" value="permanencia" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="permanencia" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="caminho">
@@ -535,7 +611,10 @@
               <li>1 tier em Resistência ou Recarga.</li>
               <li>Ao usar um escudo ou barreira, aumenta seu Poder de Proteção em mais 1 dado de mesmo tipo.</li>
             </ul>
-            <input type="radio" name="caminho" value="preservacao" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="preservacao" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="caminho">
@@ -550,6 +629,10 @@
               <li>Ao acertar um golpe em um inimigo e exista um inimigo adjacente, role 1d4 de dano para ele também.
                 Esse dano aumenta em 1 passo a cada 2 Níveis de Personagem até um máximo de 2d6.</li>
             </ul>
+            <label class="label">
+              <input type="radio" name="caminho" value="propagacao" required>
+              <span class="radio-button">Escolher</span>
+            </label>
             <input type="radio" name="caminho" value="propagacao" required>
           </details>
         </div>
@@ -564,7 +647,10 @@
               <li>Adiciona 1 Tier em Maestria Honkai, Proficiência, ou Recarga.</li>
               <li>Ao realizar um ataque, caso ele atinja 2 ou mais inimigos, causa +3 de dano para cada alvo.</li>
             </ul>
-            <input type="radio" name="caminho" value="conhecimento" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="conhecimento" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="caminho">
@@ -581,7 +667,10 @@
                 teste para resistir a essa habilidade.
               </li>
             </ul>
-            <input type="radio" name="caminho" value="controle" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="controle" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
         <div class="caminho">
@@ -597,10 +686,13 @@
                 ganhe +3 no seu próximo teste de Evasão.
               </li>
             </ul>
-            <input type="radio" name="caminho" value="equilibrio" required>
+            <label class="label">
+              <input type="radio" name="caminho" value="equilibrio" required>
+              <span class="radio-button">Escolher</span>
+            </label>
           </details>
         </div>
-        <button class="botao-escolher" type="submit">Escolher</button>
+        <button class="botao-escolher" type="submit">Próximo</button>
     </form>
   </div>
   </div>
