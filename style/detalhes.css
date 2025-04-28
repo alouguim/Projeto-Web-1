@@ -23,7 +23,7 @@ body {
     left: 0;
     width: var(--tamanho-da-side-bar);
     height: 100vh;
-    background-color: rgba(67, 67, 67, 1);
+    background-image:linear-gradient(rgb(62, 19, 180), rgb(47, 82, 241), white);
     z-index: 1000;
     display: flex;
     flex-direction: column;
