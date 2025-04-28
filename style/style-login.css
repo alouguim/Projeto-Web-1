@@ -1,6 +1,5 @@
 body{
     background-image: url(../Imagens/Wallpaper\ star\ rail.webp);
-    background-repeat: no-repeat;
     background-size: auto;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;    
 }
@@ -21,7 +20,7 @@ body{
     font-size: 18px;
     text-align: center;
     align-content: center;
-    background-image: url(/Imagens/starry\ night.jpg);
+    background-image: url(/Imagens/starrynight.jpg);
     background-size: 400px;
     background-repeat: no-repeat;
     border-radius: 40px;
