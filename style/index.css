@@ -1,18 +1,3 @@
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --cor-principal: rgb(0,0,0);
-    --cor-secundaria: rgb(19,18,17);
-    --cor-do-texto: white;
-    --tamanho-da-side-bar: 0vh;
-    --tamanho-do-header: 6.6vh;
-}
-
 body {
     background-image: url("../Imagens/Capa-Star_Rail.webp");
     background-size: cover; 
@@ -20,42 +5,6 @@ body {
     background-attachment: fixed;
     min-height: 100vh;
 }
-
-
-.header {
-    position: fixed;
-    top: 0;
-    left: var(--tamanho-da-side-bar);
-    right: 0;
-    height: var(--tamanho-do-header);
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    background: rgba(0,0,0,0.2);
-    z-index: 1001;
-}
-  
-
-.header .esquerda a {
-    margin-right: 1rem;
-    color: white;
-    text-decoration: none;
-    font-size: x-large;
-}
-  
-
-.header .direita {
-    margin-left: auto;
-}
-  
-.header .direita a {
-    color: white;
-    text-decoration: none;
-    font-size: x-large;
-    margin-left: 1rem;
-}
-
-
 
 .main-content {
     margin-left: var(--tamanho-da-side-bar);
@@ -66,7 +15,6 @@ body {
     justify-content: flex-start;
   }
   
-  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 .titulo {
   margin-top: 13vh;
