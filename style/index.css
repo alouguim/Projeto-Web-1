@@ -9,7 +9,7 @@
     --cor-principal: rgb(0,0,0);
     --cor-secundaria: rgb(19,18,17);
     --cor-do-texto: white;
-    --tamanho-da-side-bar: 27vh;
+    --tamanho-da-side-bar: 0vh;
     --tamanho-do-header: 6.6vh;
 }
 
@@ -20,50 +20,6 @@ body {
     background-attachment: fixed;
     min-height: 100vh;
 }
-  
-
-.sidebar {
-    position: fixed;
-    top: 0; 
-    left: 0;
-    width: var(--tamanho-da-side-bar);
-    height: 100vh;
-    background-image:linear-gradient(rgb(62, 19, 180), rgb(47, 82, 241), white);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    color: aliceblue;
-    gap: 5rem;
-    font-family: 'Anton', sans-serif;
-    font-style: italic;
-    a img{
-    width: 40%;
-    height: auto;
-    }
-}
-
-.sidebar #link{
-    font-family: 'Anton', sans-serif;
-    text-decoration: none;
-    color:white;
-    font-style: bold;
-    font-size: x-large;
-    padding: 20px;
-    border-radius: 5px;
-    display: inline-block;
-
-}
-
-.sidebar #link:hover {
-    background-color: purple;
-}
-
-.sidebar strong{
-    font-size:xx-large;
-    gap: 5rem;
-}
-
 
 
 .header {

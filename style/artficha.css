@@ -8,41 +8,13 @@
     --cor-principal: rgb(0,0,0);
     --cor-secundaria: rgb(19,18,17);
     --cor-do-texto: white;
-    --tamanho-da-side-bar: 27vh;
+    --tamanho-da-side-bar: 0vh;
     --tamanho-do-header: 6.6vh;
 }
 
 body {
     background-color: RGB(19, 18, 17);
     min-height: 100vh;
-}
-  
-.sidebar {
-    position: fixed;
-    top: 0; 
-    left: 0;
-    width: var(--tamanho-da-side-bar);
-    height: 100vh;
-    background-image:linear-gradient(rgb(62, 19, 180), rgb(47, 82, 241), white);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    color: aliceblue;
-    font-family: 'Anton', sans-serif;
-    font-style: italic;
-    gap: 5rem;
-    a img{
-    width: 40%;
-    height: auto;
-    }
-    p{
-        font-size: x-large;
-    }
-}
-.sidebar strong{
-    font-size:xx-large;
-    gap: 5rem;
 }
 
 .header {
