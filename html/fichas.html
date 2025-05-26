@@ -5,60 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Valquíria</title>
     <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
-
-    <link rel="stylesheet" href="../style/root.css"> 
     <link rel="stylesheet" href="../style/fichas.css">
+    <link rel="stylesheet" href="../style/root.css"> 
+    <link rel="stylesheet" href="../style/atributos.css">
+
 
 
 </head>
 <body>
-
   <script src="../javaScripts/cabecario.js" defer></script>
 
-  <div class="fichario">
-    <div class="ficha">
-      <a href="artficha.html" class="artbut">
-        <img src="../Imagens/artemis.jpg" alt="art" class="art">
-        <div class="lista">
-          <ul class="listainfo">
-            <li>4RT3-M15</li>
-            <li>Obstinada</li>
-            <li>Caça</li>
-            <li>Tank</li>
-            <li>Piradinha</li>
-          </ul>
-        </div>
-      </a>
+  <div class="fichario" id="lista-fichas">
+    <div class="row" id="fichas-row">
     </div>
-    <div class="ficha">
-      <a href="pinguinficha.html" class="artbut">
-        <img src="../Imagens/pinguin.jpg" alt="pin" class="art">
-        <div class="lista">
-          <ul class="listainfo">
-            <li>Pinguin</li>
-            <li>#POTÊNCIA</li>
-            <li>Destruição</li>
-            <li>Assasino</li>
-            <li>Pinguin</li>
-          </ul>
-        </div>
-      </a>
-    </div>
-    <div class="ficha">
-      <a href="donkficha.html" class="artbut">
-        <img src="../Imagens/donk.jpg" alt="don" class="art">
-        <div class="lista">
-          <ul class="listainfo">
-            <li>Donklii</li>
-            <li>Eremita</li>
-            <li>Conhecimento</li>
-            <li>Mago</li>
-            <li>Sem medo</li>
-          </ul>
-        </div>
-      </a>
-    </div>
+    <p id = "mensagem-vazia" class="text-center">Não há nenhuma ficha.</p>
   </div>
+
+<script src="../javaScripts/loadFichas.js"></script>
 
 </body>
 </html>
