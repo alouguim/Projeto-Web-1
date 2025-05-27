@@ -51,3 +51,17 @@ a{
     font-size: 20px; 
     text-indent: 30px;
 }
+
+.img_classes {
+    display: none;
+}
+
+#guerreiro:checked~.info_classes .img_guerreiro,
+#tank:checked~.info_classes .img_tank,
+#assassino:checked~.info_classes .img_assassino,
+#mago:checked~.info_classes .img_mago,
+#atirador:checked~.info_classes .img_atirador,
+#curandeiro:checked~.info_classes .img_curandeiro,
+#suporte:checked~.info_classes .img_suporte {
+    display: block;
+}
