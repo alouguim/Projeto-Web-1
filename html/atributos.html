@@ -1,67 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Valquíria</title>
-    <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criar Valquíria</title>
+  <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png" />
 
-    <link rel="stylesheet" href="../style/root.css"> 
-    <link rel="stylesheet" href="../style/atributos.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Fontes personalizadas -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
 
+  <!-- Seu estilo personalizado -->
+  <link rel="stylesheet" href="../style/root.css">
+  <link rel="stylesheet" href="../style/atributos.css">
 </head>
-<body>
-      <script src="../javaScripts/cabecalho.js" defer></script>
 
-      
-      <div class="guia">
-        <div class="item" id="selecionado"><a href="atributos.html">Atributos</a></div>
-        <div class="item">━━━</div>
-        <div class="item"><a href="origem.html">Origem</a></div>
-        <div class="item">━━━</div>
-        <div class="item"><a href="classe.html">Classe</a></div>
-        <div class="item">━━━</div>
-        <div class="item"><a href="detalhes.html">Detalhes</a></div>
-      </div>
-      <div class="conteudo">
-        <div class="item">
-          <p>
-            Em Genesis, existem 7 atributos de combate e 5 atributos sociais. Você recebe 1
+<body style="background-color: var(--cor-secundaria);">
+
+  <script src="../javaScripts/cabecalho.js" defer></script>
+
+  <!-- Navegação -->
+  <div class="guia container-fluid py-3">
+    <div class="item" id="selecionado"><a href="atributos.html">Atributos</a></div>
+    <div class="item">━━━</div>
+    <div class="item"><a href="origem.html">Origem</a></div>
+    <div class="item">━━━</div>
+    <div class="item"><a href="classe.html">Classe</a></div>
+    <div class="item">━━━</div>
+    <div class="item"><a href="detalhes.html">Detalhes</a></div>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="conteudo container mt-4">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          Em Genesis, existem 7 atributos de combate e 5 atributos sociais. Você recebe 1
           ponto para alocar em um atributo de combate e 2 pontos para distribuir em atributos sociais.
           Sua classe escolhida lhe concederá pontos adicionais em determinados atributos.
-          </p>
+        </p>
+      </div>
+    </div>
+
+    <form action="origem.html" class="row g-3">
+      <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="atributoCombate" id="for" value="forca">
+          <label class="form-check-label" for="for">
+            Força
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoForca" aria-expanded="false" aria-controls="descricaoForca"></i>
+          </label>
         </div>
-        <div class="formulario">
-          <form action="origem.html">
-            <h2>Atributos de Combate</h2>
-            <input type="radio" name="atributoCombate" id="for" value="forca">
-            <label for="for">Força</label> <br>
-            <input type="radio" name="atributoCombate" id="res" value="resistencia">
-            <label for="res">Resistência</label> <br>
-            <input type="radio" name="atributoCombate" id="dex" value="destreza">
-            <label for="dex">Destreza</label> <br>
-            <input type="radio" name="atributoCombate" id="mh" value="MH">
-            <label for="mh">Maestria Honkai</label> <br>
-            <input type="radio" name="atributoCombate" id="bc" value="bonus">
-            <label for="bc">Bônus de Cura</label> <br>
-            <input type="radio" name="atributoCombate" id="rec" value="recarga">
-            <label for="rec">Recarga</label> <br>
-            <h2>Atributos Sociais</h2>
-            <input type="checkbox" name="atributoSocial" id="int" value="inteligencia">
-            <label for="int">Inteligência</label> <br>
-            <input type="checkbox" name="atributoSocial" id="char" value="carisma">
-            <label for="char">Carisma</label> <br>
-            <input type="checkbox" name="atributoSocial" id="cor" value="coragem">
-            <label for="cor">Coragem</label> <br>
-            <input type="checkbox" name="atributoSocial" id="emp" value="empatia">
-            <label for="emp">Empatia</label> <br>
-            <input type="checkbox" name="atributoSocial" id="will" value="vontade">
-            <label for="will">Vontade</label> <br>
-            <button class="botao-escolher" type="submit">Escolher</button>
-          </form>
+        <div class="collapse mt-2" id="descricaoForca">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius: 0.25rem; padding: 1rem;">
+            <strong>Força:</strong> Afeta o dano físico e ações como arrombar, empurrar ou levantar peso.<br>
+            <strong>Habilidades relacionadas:</strong> Golpe poderoso, Quebra de defesa, Empurrão estratégico.
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="atributoCombate" id="res" value="resistencia">
+          <label class="form-check-label" for="res">
+            Resistência
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoResistencia" aria-expanded="false" aria-controls="descricaoResistencia"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoResistencia">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Resistência</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="atributoCombate" id="dex" value="destreza">
+          <label class="form-check-label" for="dex">
+            Destreza
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoDestreza" aria-expanded="false" aria-controls="descricaoDestreza"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoDestreza">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Destreza</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="atributoCombate" id="prof" value="proficiencia">
+          <label class="form-check-label" for="prof">
+            Proficiência
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoProficiencia" aria-expanded="false" aria-controls="descricaoProficiencia"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoProficiencia">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Proficiência</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="atributoCombate" id="mh" value="MH">
+          <label class="form-check-label" for="mh">
+            Maestria Honkai
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoMH" aria-expanded="false" aria-controls="descricaoMH"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoMH">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Maestria Honkai</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="atributoCombate" id="bc" value="bonus">
+          <label class="form-check-label" for="bc">
+            Bônus de Cura
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoBonusdecura" aria-expanded="false" aria-controls="descricaoBonusdecura"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoBonusdecura">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Bônus de Cura</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="atributoCombate" id="rec" value="recarga">
+          <label class="form-check-label" for="rec">
+            Recarga
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoRecarga" aria-expanded="false" aria-controls="descricaoRecarga"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoRecarga">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Proficiência</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
         </div>
       </div>
-    <script src="../javaScripts/criarFicha.js" defer></script>
+
+      <div class="col-12 mt-4">
+        <h2>Atributos Sociais</h2>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="atributoSocial" id="int" value="inteligencia">
+          <label class="form-check-label" for="int">
+            Inteligência
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoInteligencia" aria-expanded="false" aria-controls="descricaoInteligencia"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoInteligencia">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Inteligência</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="atributoSocial" id="char" value="carisma">
+          <label class="form-check-label" for="char">
+            Carisma
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoCarisma" aria-expanded="false" aria-controls="descricaoCarisma"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoCarisma">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Carisma</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="atributoSocial" id="cor" value="coragem">
+          <label class="form-check-label" for="cor">
+            Coragem
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoCoragem" aria-expanded="false" aria-controls="descricaoCoragem"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoCoragem">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Coragem</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="atributoSocial" id="emp" value="empatia">
+          <label class="form-check-label" for="emp">
+            Empatia
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoEmpatia" aria-expanded="false" aria-controls="descricaoEmpatia"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoEmpatia">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Empatia</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="atributoSocial" id="will" value="vontade">
+          <label class="form-check-label" for="will">
+            Vontade
+            <i class="bi bi-question-circle text-warning ms-2" role="button" data-bs-toggle="collapse"
+              data-bs-target="#descricaoVontade" aria-expanded="false" aria-controls="descricaoVontade"></i>
+          </label>
+        </div>
+        <div class="collapse mt-2" id="descricaoVontade">
+          <div
+            style="background-color: rgb(19,18,17); color: #ddd; border: 1px solid #ffcc00; border-radius:0.25rem; padding: 1rem;">
+            <strong>Vontade</strong><br>
+            <strong>Habilidades relacionadas:</strong><br>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 mt-4">
+        <button class="botao-escolher" type="submit">Escolher</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../javaScripts/criarFicha.js" defer></script>
 </body>
+
 </html>

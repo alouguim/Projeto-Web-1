@@ -79,3 +79,14 @@
     border: 2px solid purple;
     transform: scale(1.05);
 }
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #ffc107; /* Amarelo */
+}
+/* Destacar o label quando estiver selecionado */
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+  color: #ffc107;
+  font-weight: bold;
+}
