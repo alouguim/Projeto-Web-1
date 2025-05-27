@@ -3,10 +3,38 @@
 
 .container {
     display: flex;
-    gap: 3vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 0; /* Remove o espaçamento entre os cards */
     background-color: var(--cor-secundaria);
-    padding: 0%;
+    padding: 0;
     padding-top: 3%;
+}
+.card {
+    margin-bottom: 0 !important; /* remove margem do Bootstrap */
+}
+
+button.btn-link span:first-child {
+  font-size: 1.25rem; /* igual a um h5 */
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.seta-baixo {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 1.2em;
+  color: white;
+  user-select: none;
+}
+
+button[aria-expanded="true"] .seta-baixo {
+  transform: rotate(180deg);
+  color: purple;
+}
+
+button.btn-link {
+  gap: 0.5rem; /* espaço entre texto e seta */
 }
 
 .guia {
