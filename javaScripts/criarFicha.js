@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         forca: 1,
         resistencia: 1,
         destreza: 1,
+        proficiencia: 1,
         maestriaHonkai: 1,
         bonusCura: 1,
         recarga: 1,
@@ -15,8 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
         carisma: 1,
         coragem: 1,
         empatia: 1,
-        vontade: 1
+        vontade: 1,
+        bonusIniciativa: 0
       }, data.atributos || {});
+      Object.defineProperty(this.atributos, 'iniciativa', {
+        get: () => this.atributos.destreza + this.atributos.bonusIniciativa,
+        enumerable: true
+      });
       this.detalhesSociais = data.detalhesSociais || {};
       this.detalhesCombate = data.detalhesCombate || {};
     }
@@ -29,24 +35,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    setOrigem(origem, bonusPorOrigem) {
+    setOrigem(origem) {
       this.origem = origem;
-      if (bonusPorOrigem[origem]) {
-        for (const [attr, val] of Object.entries(bonusPorOrigem[origem])) {
-          this.aumentarAtributo(attr, val);
-        }
-      }
     }
 
-    setClasse(classe, bonusPorClasse, atributoExtra) {
+    setClasse(classe, bonusPorClasse) {
       this.classe = classe;
       if (bonusPorClasse[classe]) {
         for (const [attr, val] of Object.entries(bonusPorClasse[classe])) {
           this.aumentarAtributo(attr, val);
         }
       }
-      if (atributoExtra) {
-        this.aumentarAtributo(atributoExtra, 1);
+    }
+
+    setCaminho(caminho, bonusPorCaminho) {
+      this.caminho = caminho;
+      if (bonusPorCaminho[caminho]) {
+        for (const [attr, val] of Object.entries(bonusPorCaminho[caminho])) {
+          this.aumentarAtributo(attr, val);
+        }
       }
     }
 
@@ -59,10 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     toJSON() {
+      const atributosCopiados = Object.assign({}, this.atributos);
+      atributosCopiados.iniciativa = this.atributos.destreza + this.atributos.bonusIniciativa;
+
       return {
         origem: this.origem,
         classe: this.classe,
-        atributos: this.atributos,
+        caminho: this.caminho,
+        atributos: atributosCopiados,
         detalhesSociais: this.detalhesSociais,
         detalhesCombate: this.detalhesCombate
       };
@@ -119,20 +130,32 @@ document.addEventListener("DOMContentLoaded", () => {
   } else if (page === "origem.html") {
     const form = document.querySelector("form");
 
+    const bonusPorCaminho = {
+      abundancia: { bonusCura: 1, recarga: 1 },
+      caca: { destreza: 1, proficiencia: 1 },
+      destruicao: { forca: 1, resistencia: 1 },
+      harmonia: { proficiencia: 1, recarga: 1 },
+      inexistencia: { recarga: 1, coragem: 1 },
+      permanencia: { resistencia: 1, destreza: 1 },
+      preservacao: { resistencia: 1, recarga: 1 },
+      propagacao: { vontade: 1, carisma: 1 },
+      conhecimento: { maestriaHonkai: 1, inteligencia: 1 },
+      controle: { carisma: 1, inteligencia: 1 },
+      equilibrio: { inteligencia: 1, vontade: 1 }
+    };
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
       const formData = new FormData(form);
       const origemSelecionada = formData.get("origem");
-      if (!origemSelecionada) return;
+      const caminhoSelecionado = formData.get("caminho");
 
-      const bonusPorOrigem = {
-        amnesico: { forca: 1, inteligencia: 1 },
-        artista: { carisma: 2, vontade: 1 }
-      };
+      if (!origemSelecionada || !caminhoSelecionado) return;
 
       const ficha = carregarFicha();
-      ficha.setOrigem(origemSelecionada, bonusPorOrigem);
+      ficha.setOrigem(origemSelecionada); // Nenhum bônus
+      ficha.setCaminho(caminhoSelecionado, bonusPorCaminho);
 
       salvarFicha(ficha);
       window.location.href = form.action;
@@ -144,11 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const bonusPorClasse = {
       guerreiro: { forca: 1, resistencia: 1 },
       tank: { resistencia: 2 },
-      assassino: { destreza: 1, forca: 1 },
-      mago: { maestriaHonkai: 3, inteligencia: 1 },
-      atirador: { destreza: 2, maestriaHonkai: 1 },
-      curandeiro: { bonusCura: 3, empatia: 1 },
-      suporte: { carisma: 2, vontade: 1 }
+      assassino: { destreza: 1, proficiencia: 1 },
+      mago: { maestriaHonkai: 1, recarga: 1 },
+      lutador: { destreza: 1, resistencia: 1 },
+      atirador: { proficiencia: 1, recarga: 1 },
+      curandeiro: { bonusCura: 2 },
+      suporte: { recarga: 1, resistencia: 1 }
     };
 
     form.addEventListener("submit", (e) => {
@@ -158,19 +182,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const classeSelecionada = formData.get("classe");
       if (!classeSelecionada) return;
 
-      const selects = document.querySelectorAll(".atributoExtra");
-      let atributoExtra = "";
-      selects.forEach(select => {
-        if (select.dataset.classe === classeSelecionada) {
-          atributoExtra = select.value;
-        }
-      });
-
-      const precisaEscolher = ["guerreiro", "assassino", "mago", "lutador", "atirador", "curandeiro", "suporte"];
-      if (precisaEscolher.includes(classeSelecionada) && !atributoExtra) return;
-
       const ficha = carregarFicha();
-      ficha.setClasse(classeSelecionada, bonusPorClasse, atributoExtra);
+      ficha.setClasse(classeSelecionada, bonusPorClasse);
 
       salvarFicha(ficha);
       window.location.href = form.action;
