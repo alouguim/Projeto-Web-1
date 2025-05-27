@@ -5,7 +5,7 @@
     display: flex;
     gap: 3vh;
     background-color: var(--cor-secundaria);
-    padding: 15%;
+    padding: 0%;
     padding-top: 3%;
 }
 
@@ -21,13 +21,13 @@
     font-family: 'Anton', sans-serif;
 }
 
-.guia .item a{
+.guia .item a {
     color: white;
     font-size: xx-large;
     text-decoration: none;
 }
 
-.guia .item#selecionado a{
+.guia .item#selecionado a {
     color: purple;
     text-decoration: none;
 }
@@ -38,63 +38,57 @@
     color: white;
     font-size: x-large;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     gap: 30px;
 }
 
-.conteudo h2{
+.conteudo h2 {
     font-family: 'Anton', sans-serif;
     color: purple;
     font-style: italic;
 }
 
-.conteudo p{
-    font-family: 'Open Sans', sans-serif;
-}
-.conteudo h6{
+.conteudo p {
     font-family: 'Open Sans', sans-serif;
 }
 
-.conteudo form{
+.conteudo h6 {
     font-family: 'Open Sans', sans-serif;
 }
 
-.conteudo ul{
-    padding-left: 20px; 
-}
-.conteudo li{
-    margin-bottom: 10px; 
-}
 
-.label{
+
+.label {
     display: inline-block;
     position: relative;
     cursor: pointer;
     user-select: none;
 }
 
-.label input{
+.label input {
     display: none;
 }
 
-.label .radio-button{
+.label .radio-button {
     background-color: purple;
     color: white;
-    border: 2px  solid;
+    border: 2px solid;
     border-color: purple;
     text-align: center;
     transition: background-color 0.3s, transform 0.2s ease;
 }
 
-.label input:checked ~ .radio-button{
+.label input:checked~.radio-button {
     background-color: white;
     color: black;
 }
+
 .label:hover .radio-button {
     background-color: white;
     color: black;
 }
-.botao-escolher{
+
+.botao-escolher {
     padding: 12px 30px;
     font-size: 18px;
     font-weight: bold;
@@ -106,9 +100,22 @@
     transition: all 0.3s ease;
     text-transform: uppercase;
 }
-.botao-escolher:hover{
+
+.botao-escolher:hover {
     background-color: white;
     color: purple;
     border: 2px solid purple;
     transform: scale(1.05);
+}
+
+.btn-purple {
+    background-color: purple;
+    color: white;
+    border: 1px solid purple;
+}
+
+.btn-check:checked+.btn-purple {
+    background-color: white;
+    color: purple;
+    border: 1px solid purple;
 }

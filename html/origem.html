@@ -7,7 +7,11 @@
   <title>Criar Valquíria</title>
   <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
 
-  <link rel="stylesheet" href="../style/root.css"> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <link rel="stylesheet" href="../style/root.css">
   <link rel="stylesheet" href="../style/origem.css">
 
 
@@ -15,7 +19,7 @@
 
 <body>
   <script src="../javaScripts/cabecalho.js" defer></script>
-  
+
   <div class="guia">
     <div class="item"><a href="atributos.html">Atributos</a></div>
     <div class="item">━━━</div>
@@ -27,7 +31,8 @@
   </div>
 
   <div class="conteudo">
-    <p>Escolha as origens de seu personagem, definindo habilidades e bônus de atributo que vai receber na criação da ficha.
+    <p>Escolha as origens de seu personagem, definindo habilidades e bônus de atributo que vai receber na criação da
+      ficha.
     </p>
     <h6>Bônus de atributos, habilidades treinadas e perícias concedidas serão adicionadas automaticamente.
       Você pode editar elas em sua ficha após sua criação.
@@ -39,197 +44,315 @@
           personagem pertence a um arquétipo que define o rumo inicial que sua vida
           tomou e que habilidades desenvolveu com o tempo.
         </p>
-        <div class="origem">
-          <details>
-            <summary>Amnésico</summary>
-            <p>
-              Você é alguém que não se lembra de nada sobre sua vida, talvez não faça ideia nem
-              mesmo do seu nome ou seus poderes. Toda sua vida é um mistério e você não sabe como
-              foi parar em sua situação atual.
-            </p>
-            <ul>
-              <li><b>Habilidades treinadas</b>: Três a escolha do Mestre</li>
-              <li><b>Vislumbres do passado</b>: Uma vez por sessão, você pode tentar passar por um teste
-                de Dedução para tentar se lembrar algo ou alguém do seu passado. No sucesso, ganha 1d4
-                pontos de IP adicionais ao fim da sessão.</li>
-              <li><b>Capacidades Totais</b>: Uma vez que descobrir totalmente o próprio passado,
-                recebe um talento oculto decidido em segredo pelo mestre.</li>
-            </ul>
-            <label class="label">
-              <input type="radio" name="origem" value="amnesico" required>
-              <span class="radio-button">Escolher</span>
-            </label>
-          </details>
+        <div class="container d-flex justify-content-center">
+          <div class="card mb-2" style="max-width: 600px; width: 100%;">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+              <button type="button" class="btn btn-link text-white text-decoration-none p-0" data-bs-toggle="collapse"
+                data-bs-target="#collapseAmnesico" aria-expanded="false" aria-controls="collapseAmnesico">
+                <h5 class="mb-0">Amnésico</h5>
+              </button>
+              <div>
+                <input type="radio" class="btn-check" name="origem" id="origemAmnesico" value="amnesico" required>
+                <label class="btn btn-sm btn-purple" for="origemAmnesico">Escolher</label>
+              </div>
+            </div>
+
+            <div id="collapseAmnesico" class="collapse">
+              <div class="card-body bg-secondary text-white py-3 px-3">
+                <p>Você é alguém que não se lembra de nada sobre sua vida, talvez não faça ideia nem
+                  mesmo do seu nome ou seus poderes. Toda sua vida é um mistério e você não sabe como
+                  foi parar em sua situação atual.</p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item bg-dark text-white small">
+                    <b>Habilidades treinadas</b>: Três a escolha do Mestre
+                  </li>
+                  <li class="list-group-item bg-dark text-white small">
+                    <b>Vislumbres do passado</b>: Uma vez por sessão, você pode tentar passar por um teste
+                    de Dedução para tentar se lembrar algo ou alguém do seu passado. No sucesso, ganha 1d4
+                    pontos de IP adicionais ao fim da sessão.
+                  </li>
+                  <li class="list-group-item bg-dark text-white small">
+                    <b>Capacidades Totais</b>: Uma vez que descobrir totalmente o próprio passado,
+                    recebe um talento oculto decidido em segredo pelo mestre.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="origem">
-          <details>
-            <summary>Artista</summary>
-            <p>
-              Você dedicou sua vida ao desenvolvimento de artes para expressar suas emoções,
-              se tornando uma paixão que ressoa com sua própria alma.
-            </p>
-            <ul>
-              <li><b>Habilidades treinadas</b>: Escolha duas entre Dança, Contorcionismo,
-                Composição musical, Tocar instrumento, Desenhar/esculpir e Fotografia/filme.
-                Ou uma para receber o bônus de proficiência nela duas vezes. </li>
-              <li><b>Famoso</b>: Recebe um nível de Fama que começa em 1 e aumenta a cada Nível de
-                Personagem. Uma vez por cena, pode fazer um teste de 1d20 + Fama com VD 17para fazer
-                com que um personagem te reconheça ou se torne um novo fã. No sucesso, receberá um bônus
-                igual ao seu nível de Fama em testes contra essa pessoa.
-              </li>
-              <li><b>Artelepatia</b>: Você pode usar sua arte para causar efeitos específicos nas
-                pessoas que interagem com ela, as pessoas afetadas devem passar em um teste de
-                Concentração de VD igual ao nível de sua habilidade específica (variável com o tipo
-                de arte que você criou). No sucesso, você recebe um bônus igual ao seu Nível de Personagem
-                em todos os testes contra aquela pessoa.</li>
-            </ul>
-            <label class="label">
-              <input type="radio" name="origem" value="artista" required>
-              <span class="radio-button">Escolher</span>
-            </label>
-          </details>
+        <div class="container d-flex justify-content-center">
+          <div class="card mb-2" style="max-width: 600px; width: 100%;">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+              <button type="button" class="btn btn-link text-white text-decoration-none p-0" data-bs-toggle="collapse"
+                data-bs-target="#collapseArtista" aria-expanded="false" aria-controls="collapseArtista">
+                <h5 class="mb-0">Artista</h5>
+              </button>
+              <div>
+                <input type="radio" class="btn-check" name="origem" id="origemArtista" value="artista" required>
+                <label class="btn btn-sm btn-purple" for="origemArtista">Escolher</label>
+              </div>
+            </div>
+
+            <div id="collapseArtista" class="collapse">
+              <div class="card-body bg-secondary text-white py-3 px-3">
+                <p>Você dedicou sua vida ao desenvolvimento de artes para expressar suas emoções,
+                  se tornando uma paixão que ressoa com sua própria alma.</p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item bg-dark text-white small">
+                    <b>Habilidades treinadas</b>: Escolha duas entre Dança, Contorcionismo,
+                    Composição musical, Tocar instrumento, Desenhar/esculpir e Fotografia/filme.
+                    Ou uma para receber o bônus de proficiência nela duas vezes.
+                  </li>
+                  <li class="list-group-item bg-dark text-white small">
+                    <b>Famoso</b>: Recebe um nível de Fama que começa em 1 e aumenta a cada Nível de
+                    Personagem. Uma vez por cena, pode fazer um teste de 1d20 + Fama com VD 17 para fazer
+                    com que um personagem te reconheça ou se torne um novo fã. No sucesso, receberá um bônus
+                    igual ao seu nível de Fama em testes contra essa pessoa.
+                  </li>
+                  <li class="list-group-item bg-dark text-white small">
+                    <b>Artelepatia</b>: Você pode usar sua arte para causar efeitos específicos nas
+                    pessoas que interagem com ela, as pessoas afetadas devem passar em um teste de
+                    Concentração de VD igual ao nível de sua habilidade específica (variável com o tipo
+                    de arte que você criou). No sucesso, você recebe um bônus igual ao seu Nível de Personagem
+                    em todos os testes contra aquela pessoa.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="origem">
-          <details>
-            <summary>Atleta</summary>
-            <p>
-              Você focou seus esforços para melhorar seu corpo na prática de algum esporte,
-              seja ele futebol, vôlei ou alguma arte marcial.
-            </p>
-            <ul>
-              <li><b>Habilidades treinadas</b>: Escolha duas entre Atletismo, Artes Marciais
-                (escolha a arte marcial),Contorcionismo, Armas Corpo a Corpo, Arquearia,
-                Armas Pesadíssimas. </li>
-              <li>Corpo Aperfeiçoado<b></b>: Você recebe +3 para qualquer teste de Força ou Destreza,
-                devendo ser escolhido na criação da ficha.</li>
-              <li><b>Pulmões Treinados</b>: Você consegue dar um impulso de velocidade de forma que
-                se move mais rápido do que humanos sem treino. Recebe Vantagem em seus testes de
-                Iniciativa, caso receba Vantagem nesse teste por alguma outra fonte, passa a receber
-                Vantagem em testes envolvendo Habilidades de Corpo</li>
-            </ul>
-            <label class="label">
-              <input type="radio" name="origem" value="atleta" required>
-              <span class="radio-button">Escolher</span>
-            </label>
-          </details>
+        <div class="container d-flex justify-content-center">
+          <div class="card mb-2" style="max-width: 600px; width: 100%;">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+              <button type="button" class="btn btn-link text-white text-decoration-none p-0" data-bs-toggle="collapse"
+                data-bs-target="#collapseAtleta" aria-expanded="false" aria-controls="collapseAtleta">
+                <h5 class="mb-0">Atleta</h5>
+              </button>
+              <div>
+                <input type="radio" class="btn-check" name="origem" id="origemAtleta" value="atleta" required>
+                <label class="btn btn-sm btn-purple" for="origemAtleta">Escolher</label>
+              </div>
+            </div>
+
+            <div id="collapseAtleta" class="collapse">
+              <div class="card-body bg-secondary text-white py-3 px-3">
+                <p class="mb-2">Você focou seus esforços para melhorar seu corpo na prática de algum esporte...</p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item bg-dark text-white small">
+                    <b>Habilidades treinadas</b>: Escolha duas entre Atletismo, Artes Marciais (escolha a arte marcial),
+                    Contorcionismo, Armas Corpo a Corpo, Arquearia, Armas Pesadíssimas.
+                  </li>
+                  <li class="list-group-item bg-dark text-white small">
+                    <b>Corpo Aperfeiçoado</b>: Você recebe +3 para qualquer teste de Força ou Destreza, devendo ser
+                    escolhido na criação da ficha.
+                  </li>
+                  <li class="list-group-item bg-dark text-white small">
+                    <b>Pulmões Treinados</b>: Você consegue dar um impulso de velocidade... (vantagem em testes de
+                    iniciativa, etc).
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="origem">
-          <details>
-            <summary>Capeta</summary>
-            <p>
-              Você é uma criatura do caos e desordem que apenas quer ver o circo pegar
-              fogo. Você vive por si mesma e não segue regras e não há limites, você não
-              é leal a nenhuma bandeira, país ou qualquer código moral, apenas seu prazer
-              e desprazer existem. Você troca sangue por dinheiro e mesmo assim... Todos
-              ainda te amam, por algum motivo.
-            </p>
-            <ul>
-              <li><b>Habilidades treinadas</b>: Duas sociais a sua escolha.</li>
-              <li><b>Charme dos Canalhas</b>: Você recebe um bônus de +3 em testes envolvendo Carisma.</li>
-              <li><b>Rede de Fofoca</b>: Você consegue informações como ninguém. Uma vez por cena,
-                você pode rolar um teste de Sabedoria das Ruas com VD 17. No sucesso, você
-                conseguirá uma pessoa que conhece outra pessoa que conhece outra pessoa e assim,
-                conseguirá a informação que deseja.</li>
-            </ul>
-            <label class="label">
-              <input type="radio" name="origem" value="capeta" required>
-              <span class="radio-button">Escolher</span>
-            </label>
-          </details>
-        </div>
-        <div class="origem">
-          <details>
-            <summary>Conselho Estudantil</summary>
-            <p>
-              Você foi parte do conselho estudantil em sua antiga escola ou foi a principal oposição
-              a um. Você tem presença política, lábia para impor suas vontades a partir
-              das massas e carisma para fazer com que as pessoas gostem de você.
-            </p>
-            <ul>
-              <li><b>Habilidades treinadas</b>: Escolha duas entre as habilidades sociais.</li>
-              <li>Liderança Nata<b></b>: Recebe um bônus de +3 em todos os testes que envolvam habilidades sociais.</li>
-              <li><b>Servidores Públicos</b>: Uma vez por cena, pode convidar um NPC para ser parte do
-                seu grupo ao realizar um teste de Conversa ou Negociação contra ela. No sucesso,
-                aquela pessoa vai passar a te seguir e recebe todos seus bônus em habilidades de Carisma.
-                Quando estão em combate juntos, você controla esse NPC como se fosse uma extensão de
-                você. Esses NPCs são considerados Leais.</li>
-            </ul>
-            <label class="label">
-              <input type="radio" name="origem" value="conselho" required>
-              <span class="radio-button">Escolher</span>
-            </label>
-          </details>
-        </div>
-        <div class="origem">
-          <details>
-            <summary>Delinquente</summary>
-            <p>
-              Você é alguém que passou a maior parte de sua vida se envolvendo com as pessoas erradas,
-              seja por fazer parte do grupo de delinquentes ou por ser aquele que os enfrentava.
-              Lutas eram parte comum do seu dia a dia e você se tornou uma figura conhecida nos
-              espaços que frequentava nesse submundo escolar.
-            </p>
-            <ul>
-              <li><b>Habilidades treinadas</b>: Escolha duas habilidades de combate.</li>
-              <li>Bom de Briga<b></b>: Sempre que fizer um ataque desarmado ou com armas corpo a corpo
-                recebe +3 no dado de acerto.</li>
-              <li><b>Líder da Gangue</b>: Sempre que você derrota alguém pode realizar um teste de Se impor
-                ou Conversa com o NPC derrotado com VD 15. No sucesso, aquele NPC se tornará um
-                seguidor seu e estará disposto a seguir suas ordens. Quando estão em combate juntos,
-                você controla sua gangue como se fossem uma extensão de você e pode destribuir seus
-                bônus em atributos de combate entre a gangue.</li>
-            </ul>
-            <label class="label">
-              <input type="radio" name="origem" value="delinquente" required>
-              <span class="radio-button">Escolher</span>
-            </label>
-          </details>
-        </div>
-        <div class="origem">
-          <details>
-            <summary>Eremita</summary>
-            <p>
-              Você é alguém que viveu a vida do próprio jeito até o presente momento,
-              precisando se virar em ambientes hostis sem ter moradia ou alimentação garantidas
-              por boa parte de sua vida. Acima de tudo, você é um sobrevivente e um mestre do improviso.
-            </p>
-            <ul>
-              <li><b>Habilidades treinadas</b>:Escolha duas entre as habilidades de combate, sociais ou técnicas. </li>
-              <li>Sobrevivência do Mais Forte<b></b>: Receba 1 tier em algum atributo de combate ou social a sua
-                escolha.
-                Pode trocar esse bônus pelo treinamento em mais duas habilidades a sua escolha.</li>
-              <li><b>Urbano</b>: Você aprendeu a sobreviver em locais hostis, recebendo Vantagem em testes de Furtar,
-                Rastrear e Sobrevivência.</li>
-            </ul>
-            <label class="label">
-              <input type="radio" name="origem" value="eremita" required>
-              <span class="radio-button">Escolher</span>
-            </label>
-            
-          </details>
-        </div>
-        <div class="origem">
-          <details>
-            <summary>Estudioso</summary>
-            <p>
-              Você passou seu tempo escolar anterior focando em seus estudos para
-              atingir seus objetivos ou simplesmente é um gênio natural. Enquanto outros
-              lutam com seus corpos, sua maior arma é sua mente.
-            </p>
-            <ul>
-              <li><b>Habilidades treinadas</b>: Escolha duas habilidades educacionais.</li>
-              <li>Saber é Poder<b></b>: Você recebe +3 para todos os testes que envolvem Inteligência.</li>
-              <li><b>Previsibilidade Estatística</b>: Uma vez por cena, pode fazer um teste de Percepção Humana usando
-                Inteligência para prever a próxima ação de seu alvo,
-                recebendo um bônus de +3 em seu próximo teste contra ele.</li>
-            </ul>
-            <label class="label">
-              <input type="radio" name="origem" value="estudioso" required>
-              <span class="radio-button">Escolher</span>
-            </label>
-            
-          </details>
-        </div>
+
+        <div class="container d-flex justify-content-center">
+  <div class="card mb-2" style="max-width: 600px; width: 100%;">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      <button type="button" class="btn btn-link text-white text-decoration-none p-0" data-bs-toggle="collapse"
+        data-bs-target="#collapseCapeta" aria-expanded="false" aria-controls="collapseCapeta">
+        <h5 class="mb-0">Capeta</h5>
+      </button>
+      <div>
+        <input type="radio" class="btn-check" name="origem" id="origemCapeta" value="capeta" required>
+        <label class="btn btn-sm btn-purple" for="origemCapeta">Escolher</label>
+      </div>
+    </div>
+
+    <div id="collapseCapeta" class="collapse">
+      <div class="card-body bg-secondary text-white py-3 px-3">
+        <p>
+          Você é uma criatura do caos e desordem que apenas quer ver o circo pegar
+          fogo. Você vive por si mesma e não segue regras e não há limites, você não
+          é leal a nenhuma bandeira, país ou qualquer código moral, apenas seu prazer
+          e desprazer existem. Você troca sangue por dinheiro e mesmo assim... Todos
+          ainda te amam, por algum motivo.
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-dark text-white small">
+            <b>Habilidades treinadas</b>: Duas sociais a sua escolha.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Charme dos Canalhas</b>: Você recebe um bônus de +3 em testes envolvendo Carisma.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Rede de Fofoca</b>: Você consegue informações como ninguém. Uma vez por cena,
+            você pode rolar um teste de Sabedoria das Ruas com VD 17. No sucesso, você
+            conseguirá uma pessoa que conhece outra pessoa que conhece outra pessoa e assim,
+            conseguirá a informação que deseja.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <div class="container d-flex justify-content-center">
+  <div class="card mb-2" style="max-width: 600px; width: 100%;">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      <button type="button" class="btn btn-link text-white text-decoration-none p-0" data-bs-toggle="collapse"
+        data-bs-target="#collapseConselho" aria-expanded="false" aria-controls="collapseConselho">
+        <h5 class="mb-0">Conselho Estudantil</h5>
+      </button>
+      <div>
+        <input type="radio" class="btn-check" name="origem" id="origemConselho" value="conselho" required>
+        <label class="btn btn-sm btn-purple" for="origemConselho">Escolher</label>
+      </div>
+    </div>
+
+    <div id="collapseConselho" class="collapse">
+      <div class="card-body bg-secondary text-white py-3 px-3">
+        <p>
+          Você foi parte do conselho estudantil em sua antiga escola ou foi a principal oposição
+          a um. Você tem presença política, lábia para impor suas vontades a partir
+          das massas e carisma para fazer com que as pessoas gostem de você.
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-dark text-white small">
+            <b>Habilidades treinadas</b>: Escolha duas entre as habilidades sociais.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Liderança Nata</b>: Recebe um bônus de +3 em todos os testes que envolvam habilidades sociais.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Servidores Públicos</b>: Uma vez por cena, pode convidar um NPC para ser parte do
+            seu grupo ao realizar um teste de Conversa ou Negociação contra ela. No sucesso,
+            aquela pessoa vai passar a te seguir e recebe todos seus bônus em habilidades de Carisma.
+            Quando estão em combate juntos, você controla esse NPC como se fosse uma extensão de
+            você. Esses NPCs são considerados Leais.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container d-flex justify-content-center">
+  <div class="card mb-2" style="max-width: 600px; width: 100%;">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      <button type="button" class="btn btn-link text-white text-decoration-none p-0" data-bs-toggle="collapse"
+        data-bs-target="#collapseDelinquente" aria-expanded="false" aria-controls="collapseDelinquente">
+        <h5 class="mb-0">Delinquente</h5>
+      </button>
+      <div>
+        <input type="radio" class="btn-check" name="origem" id="origemDelinquente" value="delinquente" required>
+        <label class="btn btn-sm btn-purple" for="origemDelinquente">Escolher</label>
+      </div>
+    </div>
+
+    <div id="collapseDelinquente" class="collapse">
+      <div class="card-body bg-secondary text-white py-3 px-3">
+        <p>
+          Você é alguém que passou a maior parte de sua vida se envolvendo com as pessoas erradas,
+          seja por fazer parte do grupo de delinquentes ou por ser aquele que os enfrentava.
+          Lutas eram parte comum do seu dia a dia e você se tornou uma figura conhecida nos
+          espaços que frequentava nesse submundo escolar.
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-dark text-white small">
+            <b>Habilidades treinadas</b>: Escolha duas habilidades de combate.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Bom de Briga</b>: Sempre que fizer um ataque desarmado ou com armas corpo a corpo
+            recebe +3 no dado de acerto.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Líder da Gangue</b>: Sempre que você derrota alguém pode realizar um teste de Se impor
+            ou Conversa com o NPC derrotado com VD 15. No sucesso, aquele NPC se tornará um
+            seguidor seu e estará disposto a seguir suas ordens. Quando estão em combate juntos,
+            você controla sua gangue como se fossem uma extensão de você e pode distribuir seus
+            bônus em atributos de combate entre a gangue.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <div class="container d-flex justify-content-center">
+  <div class="card mb-2" style="max-width: 600px; width: 100%;">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      <button type="button" class="btn btn-link text-white text-decoration-none p-0" data-bs-toggle="collapse"
+        data-bs-target="#collapseEremita" aria-expanded="false" aria-controls="collapseEremita">
+        <h5 class="mb-0">Eremita</h5>
+      </button>
+      <div>
+        <input type="radio" class="btn-check" name="origem" id="origemEremita" value="eremita" required>
+        <label class="btn btn-sm btn-purple" for="origemEremita">Escolher</label>
+      </div>
+    </div>
+
+    <div id="collapseEremita" class="collapse">
+      <div class="card-body bg-secondary text-white py-3 px-3">
+        <p>
+          Você é alguém que viveu a vida do próprio jeito até o presente momento,
+          precisando se virar em ambientes hostis sem ter moradia ou alimentação garantidas
+          por boa parte de sua vida. Acima de tudo, você é um sobrevivente e um mestre do improviso.
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-dark text-white small">
+            <b>Habilidades treinadas</b>: Escolha duas entre as habilidades de combate, sociais ou técnicas.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Sobrevivência do Mais Forte</b>: Receba 1 tier em algum atributo de combate ou social a sua
+            escolha. Pode trocar esse bônus pelo treinamento em mais duas habilidades a sua escolha.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Urbano</b>: Você aprendeu a sobreviver em locais hostis, recebendo Vantagem em testes de Furtar,
+            Rastrear e Sobrevivência.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="container d-flex justify-content-center">
+  <div class="card mb-2" style="max-width: 600px; width: 100%;">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      <button type="button" class="btn btn-link text-white text-decoration-none p-0" data-bs-toggle="collapse"
+        data-bs-target="#collapseEstudioso" aria-expanded="false" aria-controls="collapseEstudioso">
+        <h5 class="mb-0">Estudioso</h5>
+      </button>
+      <div>
+        <input type="radio" class="btn-check" name="origem" id="origemEstudioso" value="estudioso" required>
+        <label class="btn btn-sm btn-purple" for="origemEstudioso">Escolher</label>
+      </div>
+    </div>
+
+    <div id="collapseEstudioso" class="collapse">
+      <div class="card-body bg-secondary text-white py-3 px-3">
+        <p>
+          Você passou seu tempo escolar anterior focando em seus estudos para
+          atingir seus objetivos ou simplesmente é um gênio natural. Enquanto outros
+          lutam com seus corpos, sua maior arma é sua mente.
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-dark text-white small">
+            <b>Habilidades treinadas</b>: Escolha duas habilidades educacionais.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Saber é Poder</b>: Você recebe +3 para todos os testes que envolvem Inteligência.
+          </li>
+          <li class="list-group-item bg-dark text-white small">
+            <b>Previsibilidade Estatística</b>: Uma vez por cena, pode fazer um teste de Percepção Humana usando
+            Inteligência para prever a próxima ação de seu alvo,
+            recebendo um bônus de +3 em seu próximo teste contra ele.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
         <div class="origem">
           <details>
             <summary>Genérica</summary>
@@ -244,7 +367,7 @@
                 sorte!</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="generica" required>
+              <input type="radio" name="origem" value="generica">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -267,7 +390,7 @@
                 Contatos aumenta a cada base da habilidade Sabedoria das Ruas (8, 12, 16, 18)</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="herdeiro" required>
+              <input type="radio" name="origem" value="herdeiro">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -288,7 +411,7 @@
                 no mesmo turno.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="obstinado" required>
+              <input type="radio" name="origem" value="obstinado">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -308,7 +431,7 @@
               <li><b>Corpo Calejado</b>: Recebe 5 de vida adicional a cada Nível de Personagem.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="operario" required>
+              <input type="radio" name="origem" value="operario">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -331,7 +454,7 @@
                 matar primeiro a todo custo. Você recebe -3 nesse teste ao despertar seu Talento Oculto.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="peso_morto" required>
+              <input type="radio" name="origem" value="peso_morto">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -357,7 +480,7 @@
               </li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="popular" required>
+              <input type="radio" name="origem" value="popular">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -380,7 +503,7 @@
                 treinada.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="potencia" required>
+              <input type="radio" name="origem" value="potencia">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -402,7 +525,7 @@
                 em todos seus testes.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="religioso" required>
+              <input type="radio" name="origem" value="religioso">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -425,7 +548,7 @@
                 ou caso não faça isso, receberá um debuff de -3 em todos seus testes contra você.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="solitario" required>
+              <input type="radio" name="origem" value="solitario">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -447,7 +570,7 @@
               <li><b>Sorte Aumentada</b>: Ganha um ponto extra na Perícia <b>Sorte</b> a cada Nível de Personagem.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="sortudo" required>
+              <input type="radio" name="origem" value="sortudo">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -469,7 +592,7 @@
                 Humanidade alguma, porém, se a diferença for 5 ou mais, você recupera Humanidade.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="origem" value="vilao" required>
+              <input type="radio" name="origem" value="vilao">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -492,7 +615,7 @@
               <li>Ao usar uma habilidade de cura, aumenta a cura realizada em mais 1 dado de mesmo tipo.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="abundancia" required>
+              <input type="radio" name="caminho" value="abundancia">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -509,7 +632,7 @@
               <li>Recebe +3 em ataques contra 1 alvo.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="caca" required>
+              <input type="radio" name="caminho" value="caca">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -528,7 +651,7 @@
                 dano algum.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="destruicao" required>
+              <input type="radio" name="caminho" value="destruicao">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -546,7 +669,7 @@
               </li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="harmonia" required>
+              <input type="radio" name="caminho" value="harmonia">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -563,7 +686,7 @@
               <li>Ao usar alguma técnica de Debuff em uma criatura ou você mesmo, aumenta o debuff em -2.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="inexistencia" required>
+              <input type="radio" name="caminho" value="inexistencia">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -581,7 +704,7 @@
                 também receba metade dele para você. </li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="permanencia" required>
+              <input type="radio" name="caminho" value="permanencia">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -597,7 +720,7 @@
               <li>Ao usar um escudo ou barreira, aumenta seu Poder de Proteção em mais 1 dado de mesmo tipo.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="preservacao" required>
+              <input type="radio" name="caminho" value="preservacao">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -615,10 +738,10 @@
                 Esse dano aumenta em 1 passo a cada 2 Níveis de Personagem até um máximo de 2d6.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="propagacao" required>
+              <input type="radio" name="caminho" value="propagacao">
               <span class="radio-button">Escolher</span>
             </label>
-            <input type="radio" name="caminho" value="propagacao" required>
+            <input type="radio" name="caminho" value="propagacao">
           </details>
         </div>
         <div class="caminho">
@@ -633,7 +756,7 @@
               <li>Ao realizar um ataque, caso ele atinja 2 ou mais inimigos, causa +3 de dano para cada alvo.</li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="conhecimento" required>
+              <input type="radio" name="caminho" value="conhecimento">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -653,7 +776,7 @@
               </li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="controle" required>
+              <input type="radio" name="caminho" value="controle">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
@@ -672,7 +795,7 @@
               </li>
             </ul>
             <label class="label">
-              <input type="radio" name="caminho" value="equilibrio" required>
+              <input type="radio" name="caminho" value="equilibrio">
               <span class="radio-button">Escolher</span>
             </label>
           </details>
