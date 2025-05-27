@@ -2,14 +2,16 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Criar Valquíria</title>
-  <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
+  <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png" />
 
-  <link rel="stylesheet" href="../style/root.css">
-  <link rel="stylesheet" href="../style/classe.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+  <link rel="stylesheet" href="../style/root.css" />
+  <link rel="stylesheet" href="../style/classe.css" />
 
 </head>
 
@@ -28,13 +30,13 @@
   </div>
   <form action="detalhes.html" method="GET">
     <div class="conteudo">
-      <input type="radio" name="classe" id="guerreiro" checked>
-      <input type="radio" name="classe" id="tank">
-      <input type="radio" name="classe" id="assassino">
-      <input type="radio" name="classe" id="mago">
-      <input type="radio" name="classe" id="atirador">
-      <input type="radio" name="classe" id="curandeiro">
-      <input type="radio" name="classe" id="suporte">
+      <input type="radio" name="classe" id="guerreiro" value="Guerreiro" checked>
+      <input type="radio" name="classe" id="tank" value="tank">
+      <input type="radio" name="classe" id="assassino" value="Assassino">
+      <input type="radio" name="classe" id="mago" value="mago">
+      <input type="radio" name="classe" id="atirador" value="Atirador">
+      <input type="radio" name="classe" id="curandeiro" value="Curandeiro">
+      <input type="radio" name="classe" id="suporte" value="Suporte">
 
       <div class="classes">
         <label for="guerreiro">Guerreiro</label>
@@ -49,7 +51,8 @@
       <div class="info_classes">
         <div class="img_classes img_guerreiro">
           <img src="../Imagens/Imagem-Guerreiro.png" alt="Guerreiro">
-          <p>O guerreiro é alguém que atua na linha de frente...</p>
+          <p>O guerreiro é alguém que atua na linha de frente, tendo a sua disposição uma ampla variedade de armas e estilos de luta e possuindo um arquétipo de líder 
+            inspirador. Em geral, o Guerreiro busca manter o equilíbrio entre seus atributos, não sendo excepcional em nenhum deles mas não pecando em nenhum também.</p>
           <button type="submit" class="botao-escolher">Escolher</button>
         </div>
         <div class="img_classes img_tank">

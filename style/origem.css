@@ -5,36 +5,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0; /* Remove o espaçamento entre os cards */
+    gap: 0;
+    /* Remove o espaçamento entre os cards */
     background-color: var(--cor-secundaria);
     padding: 0;
     padding-top: 3%;
 }
+
 .card {
-    margin-bottom: 0 !important; /* remove margem do Bootstrap */
+    margin-bottom: 0 !important;
+    /* remove margem do Bootstrap */
 }
 
 button.btn-link span:first-child {
-  font-size: 1.25rem; /* igual a um h5 */
-  font-weight: 500;
-  font-family: inherit;
+    font-size: 1.25rem;
+    /* igual a um h5 */
+    font-weight: 500;
+    font-family: inherit;
 }
 
 .seta-baixo {
-  display: inline-block;
-  transition: transform 0.3s ease;
-  font-size: 1.2em;
-  color: white;
-  user-select: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 1.2em;
+    color: white;
+    user-select: none;
 }
 
 button[aria-expanded="true"] .seta-baixo {
-  transform: rotate(180deg);
-  color: purple;
+    transform: rotate(180deg);
+    color: purple;
 }
 
 button.btn-link {
-  gap: 0.5rem; /* espaço entre texto e seta */
+    gap: 0.5rem;
+    /* espaço entre texto e seta */
 }
 
 .guia {
@@ -93,9 +98,6 @@ button.btn-link {
     user-select: none;
 }
 
-.label input {
-    display: none;
-}
 
 .label .radio-button {
     background-color: purple;
@@ -136,15 +138,25 @@ button.btn-link {
     transform: scale(1.05);
 }
 
+/* Cor roxa padrão */
 .btn-purple {
-  background-color: #6f42c1; /* Roxo */
-  color: white;
-  border: none;
+    background-color: #6f42c1;
+    color: white;
+    border: 1px solid #6f42c1;
 }
 
-.btn-purple:focus,
-.btn-purple:active,
-.btn-check:checked + .btn-purple {
-  background-color: #5936a2; /* Roxo mais escuro */
-  color: white;
+.btn-purple:hover {
+    background-color: #5a32a3;
+}
+
+/* Esconde o input */
+input[type="radio"] {
+    display: none;
+}
+
+/* Quando o input estiver checado, aplica estilo na label seguinte */
+input[type="radio"]:checked+label.btn-purple {
+    background-color: white;
+    color: #6f42c1;
+    border: 1px solid #6f42c1;
 }
