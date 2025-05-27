@@ -19,7 +19,7 @@ function carregarEstilosCSS(...caminhos) {
   });
 }
 
-function showFicha(arquivoHTMLDestino = "#", ficha) {
+function showFicha(ficha) {
     if (!ficha || !ficha.detalhesSociais) return document.createTextNode("Ficha inválida");
 
     carregarEstilosCSS("../style/root.css", "../style/fichas.css");
@@ -29,7 +29,7 @@ function showFicha(arquivoHTMLDestino = "#", ficha) {
 
     container.innerHTML = `
       <div class="main-ficha">
-        <a href="${arquivoHTMLDestino}" class="artbut">
+        <a href="destino.html?id=${ficha.id}" class="artbut">
           <img src="${ficha.imagem || '../Imagens/noimg.png'}" alt="${ficha.detalhesSociais.nomePersonagem}" class="art">
           <ul class="listainfo">
             <li>${ficha.detalhesSociais.nomePersonagem}</li>
@@ -38,7 +38,7 @@ function showFicha(arquivoHTMLDestino = "#", ficha) {
         </a>
         <div class="buttons">
           <a href="#" class="buta" data-id="${ficha.id}">
-          Editar
+          <p>Edição Rápida</p>
           </a>
           <button class="butb" data-id="${ficha.id}">
           Deletar
@@ -81,7 +81,7 @@ function loadFichas() {
   }
 
   fichas.forEach(ficha => {
-    const col = showFicha("destino.html", ficha);
+    const col = showFicha(ficha);
     fichasRow.appendChild(col);
   });
 }
