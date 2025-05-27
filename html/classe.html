@@ -7,16 +7,16 @@
   <title>Criar Valquíria</title>
   <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
 
-  <link rel="stylesheet" href="../style/root.css"> 
+  <link rel="stylesheet" href="../style/root.css">
   <link rel="stylesheet" href="../style/classe.css">
 
 
 </head>
 
 <body>
-  <script src="../javaScripts/cabecario.js" defer></script>
+  <script src="../javaScripts/cabecalho.js" defer></script>
 
-  
+
   <div class="guia">
     <div class="item"><a href="atributos.html">Atributos</a></div>
     <div class="item">━━━</div>
@@ -45,81 +45,88 @@
         <label for="curandeiro">Curandeiro</label>
         <label for="suporte">Suporte</label>
       </div>
-      <form action="detalhes.html" method="GET">
-        <div class="info_classes">
-          <div class="img_classes img_guerreiro">
-            <img src="../Imagens/Imagem-Guerreiro.png" alt="Guerreiro">
-            <p>O guerreiro é alguém que atua na linha de frente, tendo a sua disposição uma ampla variedade de armas e
-              estilos de luta. Em geral, o Guerreiro busca manter o equilíbrio entre seus atributos, não sendo
-              excepcional
-              em nenhum deles mas não pecando em nenhum também.
-            </p>
-            <button type="submit" class="botao-escolher">Escolher</button>
-          </div>
-          <div class="img_classes img_tank">
-            <img src="../Imagens/Imagem-tank.png" alt="Tank">
-            <p>O Tank é aquele que tem o objetivo de aguentar todo o dano para que seus aliados possam agir, sendo
-              assim,
-              eles geralmente se tornam uma muralha de músculos e sejam imóveis como uma montanha. Causar dano não é a
-              prioridade do Tank, mas eles são fortes o bastante para não deixar isso ser um problema, em compensação,
-              eles não são nem um pouco rápidos.</p>
-            <button type="submit" class="botao-escolher">Escolher</button>
-          </div>
-          <div class="img_classes img_assassino">
-            <img src="../Imagens/imagem-assassino.jpg" alt="Assassino">
-            <p>O Assassino é aquele que vai focar em agilidade e altas quantidades de dano em troca de sua defesa.
-              Assassinos geralmente usam armas curtas e silenciosas, possibilitando que ele tenha uma grande mobilidade
-              em
-              lutas, porém, existem assassinos de todos os tipos.
-            </p>
-            <button type="submit" class="botao-escolher">Escolher</button>
-          </div>
-          <div class="img_classes img_mago">
-            <img src="../Imagens/imagem-mago.png" alt="Mago">
-            <p>Enquanto as outras classes lutam com seus musculos, um mago luta com a sua mente. Magos são aqueles que
-              se
-              dedicam a masterizar a Energia Honkai e a utilizar da forma mais eficiente possível, seja por meio de
-              Visões
-              elementais ou apenas suas próprias técnicas Honkai.
-            </p>
-            <button type="submit" class="botao-escolher">Escolher</button>
-          </div>
 
-          <div class="img_classes img_lutador">
-            <img src="../Imagens/imagem-lutador.png" alt="Lutador">
-            <p>O lutador é aquele que busca ir no mano a mano com seus oponentes, utilizando seus conhecimentos em
-              combate
-              para dominar totalmente o adversário com ataques múltiplos e poderosos. Seja em combate desarmado ou com
-              armas, artes marciais ou o puro instinto da briga, os lutadores sempre sabem tirar o melhor de cada
-              situação
-              para vencer os combates.
-            </p>
-            <button type="submit" class="botao-escolher">Escolher</button>
-          </div>
-
-          <div class="img_classes img_atirador">
-            <img src="../Imagens/imagem-atirador.png" alt="Atirador">
-            <p>Atiradores são aqueles que se especializam em combate a distância com os mais variáveis tipos de armas,
-              eles possuem um reflexo rápido e uma excelente noção de posicionamento, se mantendo na vantagem por poder
-              atacar enquanto não é atacado.
-            </p>
-            <button type="submit" class="botao-escolher">Escolher</button>
-          </div>
-          <div class="img_classes img_curandeiro">
-            <img src="../Imagens/imagem-curandeiro.jpg" alt="Curandeiro">
-            <p>O Curandeiro se especializa na medicina e usa seus poderes não para ferir, mas para curar aqueles
-              que necessitam de seus talentos.
-            </p>
-            <button type="submit" class="botao-escolher">Escolher</button>
-          </div>
-          <div class="img_classes img_suporte">
-            <img src="../Imagens/imagem-suporte.jpg" alt="Suporte">
-            <p>O Suporte é aquele que concede todo o apoio necessário ao seu esquadrão, seja por confeccionar
-              equipamentos, aplicar fortalecimentos na equipe ou montar estratégias.
-            </p>
-            <button type="submit" class="botao-escolher">Escolher</button>
-          </div>
+      <div class="info_classes">
+        <div class="img_classes img_guerreiro">
+          <img src="../Imagens/Imagem-Guerreiro.png" alt="Guerreiro">
+          <p>O guerreiro é alguém que atua na linha de frente...</p>
+          <label for="atributoExtra_guerreiro">Escolha um atributo para aprimorar:</label>
+          <select name="atributoExtra_guerreiro" class="atributoExtra" data-classe="guerreiro">
+            <option value="">Selecione</option>
+            <option value="forca">Força</option>
+            <option value="resistencia">Resistência</option>
+            <option value="destreza">Destreza</option>
+            <option value="maestriaHonkai">Maestria Honkai</option>
+            <option value="bonusCura">Bônus de Cura</option>
+            <option value="recarga">Recarga</option>
+          </select>
+          <button type="submit" class="botao-escolher">Escolher</button>
         </div>
+        <div class="img_classes img_tank">
+          <img src="../Imagens/Imagem-tank.png" alt="Tank">
+          <p>O Tank é aquele que tem o objetivo de aguentar todo o dano para que seus aliados possam agir, sendo
+            assim,
+            eles geralmente se tornam uma muralha de músculos e sejam imóveis como uma montanha. Causar dano não é a
+            prioridade do Tank, mas eles são fortes o bastante para não deixar isso ser um problema, em compensação,
+            eles não são nem um pouco rápidos.</p>
+          <button type="submit" class="botao-escolher">Escolher</button>
+        </div>
+        <div class="img_classes img_assassino">
+          <img src="../Imagens/imagem-assassino.jpg" alt="Assassino">
+          <p>O Assassino é aquele que vai focar em agilidade e altas quantidades de dano em troca de sua defesa.
+            Assassinos geralmente usam armas curtas e silenciosas, possibilitando que ele tenha uma grande mobilidade
+            em
+            lutas, porém, existem assassinos de todos os tipos.
+          </p>
+          <button type="submit" class="botao-escolher">Escolher</button>
+        </div>
+        <div class="img_classes img_mago">
+          <img src="../Imagens/imagem-mago.png" alt="Mago">
+          <p>Enquanto as outras classes lutam com seus musculos, um mago luta com a sua mente. Magos são aqueles que
+            se
+            dedicam a masterizar a Energia Honkai e a utilizar da forma mais eficiente possível, seja por meio de
+            Visões
+            elementais ou apenas suas próprias técnicas Honkai.
+          </p>
+          <button type="submit" class="botao-escolher">Escolher</button>
+        </div>
+
+        <div class="img_classes img_lutador">
+          <img src="../Imagens/imagem-lutador.png" alt="Lutador">
+          <p>O lutador é aquele que busca ir no mano a mano com seus oponentes, utilizando seus conhecimentos em
+            combate
+            para dominar totalmente o adversário com ataques múltiplos e poderosos. Seja em combate desarmado ou com
+            armas, artes marciais ou o puro instinto da briga, os lutadores sempre sabem tirar o melhor de cada
+            situação
+            para vencer os combates.
+          </p>
+          <button type="submit" class="botao-escolher">Escolher</button>
+        </div>
+
+        <div class="img_classes img_atirador">
+          <img src="../Imagens/imagem-atirador.png" alt="Atirador">
+          <p>Atiradores são aqueles que se especializam em combate a distância com os mais variáveis tipos de armas,
+            eles possuem um reflexo rápido e uma excelente noção de posicionamento, se mantendo na vantagem por poder
+            atacar enquanto não é atacado.
+          </p>
+          <button type="submit" class="botao-escolher">Escolher</button>
+        </div>
+        <div class="img_classes img_curandeiro">
+          <img src="../Imagens/imagem-curandeiro.jpg" alt="Curandeiro">
+          <p>O Curandeiro se especializa na medicina e usa seus poderes não para ferir, mas para curar aqueles
+            que necessitam de seus talentos.
+          </p>
+          <button type="submit" class="botao-escolher">Escolher</button>
+        </div>
+        <div class="img_classes img_suporte">
+          <img src="../Imagens/imagem-suporte.jpg" alt="Suporte">
+          <p>O Suporte é aquele que concede todo o apoio necessário ao seu esquadrão, seja por confeccionar
+            equipamentos, aplicar fortalecimentos na equipe ou montar estratégias.
+          </p>
+          <button type="submit" class="botao-escolher">Escolher</button>
+        </div>
+      </div>
     </div>
   </form>
+  <script src="../javaScripts/criarFicha.js" defer></script>
 </body>

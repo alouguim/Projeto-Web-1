@@ -1,112 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Valquíria</title>
-    <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criar Valquíria</title>
+  <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png" />
 
-    <link rel="stylesheet" href="../style/root.css"> 
-    <link rel="stylesheet" href="../style/detalhes.css">
-
-
+  <link rel="stylesheet" href="../style/root.css" />
+  <link rel="stylesheet" href="../style/detalhes.css" />
 </head>
-<body>
-      <script src="../javaScripts/cabecario.js" defer></script>
 
-      
-      <div class="guia">
-        <div class="item"><a href="atributos.html">Atributos</a></div>
-        <div class="item">━━━</div>
-        <div class="item"><a href="origem.html">Origem</a></div>
-        <div class="item">━━━</div>
-        <div class="item"><a href="classe.html">Classe</a></div>
-        <div class="item">━━━</div>
-        <div class="item" id="selecionado"><a href="detalhes.html">Detalhes</a></div>
-      </div>
-      <div class="conteudo">
-        <div class="item">
-          <p>Com as características mecânicas de sua ficha selecionadas, agora é hora de definir os detalhes de sua ficha. Coisas como seu nome, personalidade, gênero, todas importam para a criação de uma Valquíria marcante no mundo de Genesis.</p>
+<body>
+  <script src="../javaScripts/cabecalho.js" defer></script>
+
+  <div class="guia">
+    <div class="item"><a href="atributos.html">Atributos</a></div>
+    <div class="item">━━━</div>
+    <div class="item"><a href="origem.html">Origem</a></div>
+    <div class="item">━━━</div>
+    <div class="item"><a href="classe.html">Classe</a></div>
+    <div class="item">━━━</div>
+    <div class="item" id="selecionado"><a href="detalhes.html">Detalhes</a></div>
+  </div>
+  <div class="conteudo">
+    <div class="item">
+      <p>
+        Com as características mecânicas de sua ficha selecionadas, agora é hora de definir os detalhes de sua ficha.
+        Coisas como seu nome, personalidade, gênero, todas importam para a criação de uma Valquíria marcante no mundo de
+        Genesis.
+      </p>
+    </div>
+    <form class="form" action="index.html" method="GET">
+      <h3>Informações sociais</h3>
+      <div class="linha">
+        <div class="campo">
+          <label for="nome-personagem">Nome:</label>
+          <input id="nome-personagem" name="nome-personagem" type="text" placeholder="Nome do Personagem" />
         </div>
-        <form class = "form" action="index.html" method="GET">
-          <h3>Informações sociais</h3>
-          <div class="linha">
-            <div class="campo">
-              <label for="nome-personagem">Nome:</label>
-              <input id="nome-personagem" type="text" placeholder="Nome do Personagem">
-            </div>
-            <div class="campo">
-              <label for="nome-jogador">Jogador:</label>
-              <input id="nome-jogador" type="text" placeholder="Nome do jogador">
-            </div>
-          </div>
-          <div class="campo">
-            <label for="aparencia">Aparência:</label>
-            <textarea rows="5" cols="50" placeholder="Descreva a aparência de seu personagem"></textarea>
-          </div>
-          <div class="campo">
-            <label for="personalidade">Personalidade:</label>
-            <textarea rows="5" cols="50" placeholder="Descreva a personalidade de seu personagem, suas qualidades e defeitos."></textarea>
-          </div><div class="campo">
-            <label for="objetivo">Objetivo:</label>
-            <textarea rows="5" cols="50" placeholder="Por que seu personagem luta? O que ele busca alcançar?"></textarea>
-          </div>
-          <div class="linha">
-            <div class="campo">
-              <label for="classe-social">Classe Social:</label>
-              <select id="classe-social" name="classe-social" required>
-                <option value="" disabled selected hidden>Irrelevante se Herdeiro</option>
-                <option value="miseravel">Miserável</option>
-                <option value="pobre">Pobre</option>
-                <option value="classe-media">Classe média</option>
-                <option value="rico">Rico</option>
-              </select>
-            </div>
-            <div class="campo">
-              <label for="ranking">Ranking:</label>
-              <select id="ranking" name="ranking" required>
-                <option value="" disabled selected hidden>Rank padrão é Sem Patente</option>
-                <option value="civil">Civil</option>
-                <option value="sem-patente">Sem patente</option>
-                <option value="e/d">Rank E/D</option>
-                <option value="c">Rank C</option>
-                <option value="b">Rank B</option>
-                <option value="a">Rank A</option>
-                <option value="s">Rank S</option>
-                <option value="ss">Rank SS</option>
-              </select>
-            </div>
-          </div>
-          <div class="campo">
-            <label for="historia">História:</label>
-            <textarea rows="5" cols="50" placeholder="Descreva a trajetória de seu personagem até aqui"></textarea>
-          </div>
-          <div class="campo">
-            <label for="familia">Família:</label>
-            <textarea rows="5" cols="50" placeholder="Liste os membros de sua família ou amigos"></textarea>
-          </div>
-          <h3>Informações de combate</h3>
-          <div class="campo">
-            <label for="visao">Visão:</label>
-            <select id="visao" name="visao" required>
-              <option value="" disabled selected hidden>Escolha o tipo da sua Visão</option>
-              <option value="pyro">Pyro</option>
-              <option value="hydro">Hydro</option>
-              <option value="anemo">Anemo</option>
-              <option value="electro">Electro</option>
-              <option value="dendro">Dendro</option>
-              <option value="cryo">Cryo</option>
-              <option value="geo">Geo</option>
-              <option value="psy">Psychic</option>
-              <option value="bio">Biologic</option>
-              <option value="bio">Mecha</option>
-            </select>
-          </div>
-          <div class="campo">
-            <label for="manifestacao">Manifestação:</label>
-            <textarea rows="5" cols="50" placeholder="Descreva a Manifestação de sua Visão, como ela se comporta e o que ela faz."></textarea>
-          </div>
-          <button class="botao-escolher" type="submit">Finalizar</button>
-        </form>
+        <div class="campo">
+          <label for="nome-jogador">Jogador:</label>
+          <input id="nome-jogador" name="nome-jogador" type="text" placeholder="Nome do jogador" />
+        </div>
       </div>
+      <div class="campo">
+        <label for="aparencia">Aparência:</label>
+        <textarea
+          id="aparencia"
+          name="aparencia"
+          rows="5"
+          cols="50"
+          placeholder="Descreva a aparência de seu personagem"
+        ></textarea>
+      </div>
+      <div class="campo">
+        <label for="personalidade">Personalidade:</label>
+        <textarea
+          id="personalidade"
+          name="personalidade"
+          rows="5"
+          cols="50"
+          placeholder="Descreva a personalidade de seu personagem, suas qualidades e defeitos."
+        ></textarea>
+      </div>
+      <div class="campo">
+        <label for="objetivo">Objetivo:</label>
+        <textarea
+          id="objetivo"
+          name="objetivo"
+          rows="5"
+          cols="50"
+          placeholder="Por que seu personagem luta? O que ele busca alcançar?"
+        ></textarea>
+      </div>
+      <div class="linha">
+        <div class="campo">
+          <label for="classe-social">Classe Social:</label>
+          <select id="classe-social" name="classe-social" required>
+            <option value="" disabled selected hidden>Irrelevante se Herdeiro</option>
+            <option value="miseravel">Miserável</option>
+            <option value="pobre">Pobre</option>
+            <option value="classe-media">Classe média</option>
+            <option value="rico">Rico</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="ranking">Ranking:</label>
+          <select id="ranking" name="ranking" required>
+            <option value="" disabled selected hidden>Rank padrão é Sem Patente</option>
+            <option value="civil">Civil</option>
+            <option value="sem-patente">Sem patente</option>
+            <option value="e/d">Rank E/D</option>
+            <option value="c">Rank C</option>
+            <option value="b">Rank B</option>
+            <option value="a">Rank A</option>
+            <option value="s">Rank S</option>
+            <option value="ss">Rank SS</option>
+          </select>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="historia">História:</label>
+        <textarea
+          id="historia"
+          name="historia"
+          rows="5"
+          cols="50"
+          placeholder="Descreva a trajetória de seu personagem até aqui"
+        ></textarea>
+      </div>
+      <div class="campo">
+        <label for="familia">Família:</label>
+        <textarea
+          id="familia"
+          name="familia"
+          rows="5"
+          cols="50"
+          placeholder="Liste os membros de sua família ou amigos"
+        ></textarea>
+      </div>
+      <h3>Informações de combate</h3>
+      <div class="campo">
+        <label for="visao">Visão:</label>
+        <select id="visao" name="visao" required>
+          <option value="" disabled selected hidden>Escolha o tipo da sua Visão</option>
+          <option value="pyro">Pyro</option>
+          <option value="hydro">Hydro</option>
+          <option value="anemo">Anemo</option>
+          <option value="electro">Electro</option>
+          <option value="dendro">Dendro</option>
+          <option value="cryo">Cryo</option>
+          <option value="geo">Geo</option>
+          <option value="psy">Psychic</option>
+          <option value="bio">Biologic</option>
+          <option value="mecha">Mecha</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="manifestacao">Manifestação:</label>
+        <textarea
+          id="manifestacao"
+          name="manifestacao"
+          rows="5"
+          cols="50"
+          placeholder="Descreva a Manifestação de sua Visão, como ela se comporta e o que ela faz."
+        ></textarea>
+      </div>
+      <button class="botao-escolher" type="submit">Finalizar</button>
+    </form>
+  </div>
+  <script src="../javaScripts/criarFicha.js" defer></script>
 </body>
+
+</html>
