@@ -137,13 +137,14 @@ button.btn-link {
 }
 
 .btn-purple {
-    background-color: purple;
-    color: white;
-    border: 1px solid purple;
+  background-color: #6f42c1; /* Roxo */
+  color: white;
+  border: none;
 }
 
-.btn-check:checked+.btn-purple {
-    background-color: white;
-    color: purple;
-    border: 1px solid purple;
+.btn-purple:focus,
+.btn-purple:active,
+.btn-check:checked + .btn-purple {
+  background-color: #5936a2; /* Roxo mais escuro */
+  color: white;
 }

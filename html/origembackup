@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Valquíria</title>
+    <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <link rel="stylesheet" href="../style/root.css">
+    <link rel="stylesheet" href="../style/origem.css">
+
+
+</head>
+
+<body>
+    <script src="../javaScripts/cabecalho.js" defer></script>
+
+    <div class="guia">
+        <div class="item"><a href="atributos.html">Atributos</a></div>
+        <div class="item">━━━</div>
+        <div class="item" id="selecionado"><a href="origem.html">Origem</a></div>
+        <div class="item">━━━</div>
+        <div class="item"><a href="classe.html">Classe</a></div>
+        <div class="item">━━━</div>
+        <div class="item"><a href="detalhes.html">Detalhes</a></div>
+    </div>
+
+    <div class="conteudo">
+        <p>Escolha as origens de seu personagem, definindo habilidades e bônus de atributo que vai receber na criação da
+            ficha.
+        </p>
+        <h6>Bônus de atributos, habilidades treinadas e perícias concedidas serão adicionadas automaticamente.
+            Você pode editar elas em sua ficha após sua criação.
+        </h6>
+        <form action="classe.html" method="GET">
+            <div class="item">
+                <h2>Origens</h2>
+                <p>O que você fazia antes de se tornar uma Valquiria. Todo
+                    personagem pertence a um arquétipo que define o rumo inicial que sua vida
+                    tomou e que habilidades desenvolveu com o tempo.
+                </p>
+                <div class="container d-flex justify-content-left">
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseAmnesico" aria-expanded="false"
+                                aria-controls="collapseAmnesico">
+                                <span>Amnésico</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemAmnesico" value="amnesico"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemAmnesico">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseAmnesico" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>Você é alguém que não se lembra de nada sobre sua vida, talvez não faça ideia nem
+                                    mesmo do seu nome ou seus poderes. Toda sua vida é um mistério e você não sabe como
+                                    foi parar em sua situação atual.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Três a escolha do Mestre
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Vislumbres do passado</b>: Uma vez por sessão, você pode tentar passar por um
+                                        teste
+                                        de Dedução para tentar se lembrar algo ou alguém do seu passado. No sucesso,
+                                        ganha 1d4
+                                        pontos de IP adicionais ao fim da sessão.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Capacidades Totais</b>: Uma vez que descobrir totalmente o próprio passado,
+                                        recebe um talento oculto decidido em segredo pelo mestre.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ARTISTA -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseArtista" aria-expanded="false"
+                                aria-controls="collapseArtista">
+                                <span class="mb-0">Artista</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemArtista" value="artista"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemArtista">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseArtista" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>Você dedicou sua vida ao desenvolvimento de artes para expressar suas emoções,
+                                    se tornando uma paixão que ressoa com sua própria alma.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha duas entre Dança, Contorcionismo,
+                                        Composição musical, Tocar instrumento, Desenhar/esculpir e Fotografia/filme.
+                                        Ou uma para receber o bônus de proficiência nela duas vezes.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Famoso</b>: Recebe um nível de Fama que começa em 1 e aumenta a cada Nível de
+                                        Personagem. Uma vez por cena, pode fazer um teste de 1d20 + Fama com VD 17 para
+                                        fazer
+                                        com que um personagem te reconheça ou se torne um novo fã. No sucesso, receberá
+                                        um bônus
+                                        igual ao seu nível de Fama em testes contra essa pessoa.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Artelepatia</b>: Você pode usar sua arte para causar efeitos específicos nas
+                                        pessoas que interagem com ela, as pessoas afetadas devem passar em um teste de
+                                        Concentração de VD igual ao nível de sua habilidade específica (variável com o
+                                        tipo
+                                        de arte que você criou). No sucesso, você recebe um bônus igual ao seu Nível de
+                                        Personagem
+                                        em todos os testes contra aquela pessoa.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ATLETA -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseAtleta" aria-expanded="false"
+                                aria-controls="collapseAtleta">
+                                <span class="mb-0">Atleta</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemAtleta" value="atleta"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemAtleta">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseAtleta" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p class="mb-2">Você focou seus esforços para melhorar seu corpo na prática de algum
+                                    esporte...</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha duas entre Atletismo, Artes Marciais
+                                        (escolha a arte marcial),
+                                        Contorcionismo, Armas Corpo a Corpo, Arquearia, Armas Pesadíssimas.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Corpo Aperfeiçoado</b>: Você recebe +3 para qualquer teste de Força ou
+                                        Destreza, devendo ser
+                                        escolhido na criação da ficha.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Pulmões Treinados</b>: Você consegue dar um impulso extra em situações que
+                                        exigem resistência
+                                        e velocidade, recebendo vantagem em testes de iniciativa e em testes de
+                                        resistência física
+                                        relacionados.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseCapeta" aria-expanded="false"
+                                aria-controls="collapseCapeta">
+                                <span class="mb-0">Capeta</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemCapeta" value="capeta"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemCapeta">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseCapeta" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você é uma criatura do caos e desordem que apenas quer ver o circo pegar
+                                    fogo. Você vive por si mesma e não segue regras e não há limites, você não
+                                    é leal a nenhuma bandeira, país ou qualquer código moral, apenas seu prazer
+                                    e desprazer existem. Você troca sangue por dinheiro e mesmo assim... Todos
+                                    ainda te amam, por algum motivo.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Duas sociais a sua escolha.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Charme dos Canalhas</b>: Você recebe um bônus de +3 em testes envolvendo
+                                        Carisma.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Rede de Fofoca</b>: Você consegue informações como ninguém. Uma vez por cena,
+                                        você pode rolar um teste de Sabedoria das Ruas com VD 17. No sucesso, você
+                                        conseguirá uma pessoa que conhece outra pessoa que conhece outra pessoa e assim,
+                                        conseguirá a informação que deseja.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CONSELHO ESTUDANTIL -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseConselho" aria-expanded="false"
+                                aria-controls="collapseConselho">
+                                <span class="mb-0">Conselho Estudantil</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemConselho" value="conselho"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemConselho">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseConselho" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você foi parte do conselho estudantil em sua antiga escola ou foi a principal
+                                    oposição
+                                    a um. Você tem presença política, lábia para impor suas vontades a partir
+                                    das massas e carisma para fazer com que as pessoas gostem de você.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha duas entre as habilidades sociais.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Liderança Nata</b>: Recebe um bônus de +3 em todos os testes que envolvam
+                                        habilidades sociais.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Servidores Públicos</b>: Uma vez por cena, pode convidar um NPC para ser
+                                        parte do
+                                        seu grupo ao realizar um teste de Conversa ou Negociação contra ela. No sucesso,
+                                        aquela pessoa vai passar a te seguir e recebe todos seus bônus em habilidades de
+                                        Carisma.
+                                        Quando estão em combate juntos, você controla esse NPC como se fosse uma
+                                        extensão de
+                                        você. Esses NPCs são considerados Leais.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- DELINQUENTE -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseDelinquente" aria-expanded="false"
+                                aria-controls="collapseDelinquente">
+                                <span class="mb-0">Delinquente</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemDelinquente"
+                                    value="delinquente" required>
+                                <label class="btn btn-sm btn-purple" for="origemDelinquente">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseDelinquente" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você é alguém que passou a maior parte de sua vida se envolvendo com as pessoas
+                                    erradas,
+                                    seja por fazer parte do grupo de delinquentes ou por ser aquele que os enfrentava.
+                                    Lutas eram parte comum do seu dia a dia e você se tornou uma figura conhecida nos
+                                    espaços que frequentava nesse submundo escolar.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha duas habilidades de combate.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Bom de Briga</b>: Sempre que fizer um ataque desarmado ou com armas corpo a
+                                        corpo
+                                        recebe +3 no dado de acerto.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Líder da Gangue</b>: Sempre que você derrota alguém pode realizar um teste de
+                                        Se impor
+                                        ou Conversa com o NPC derrotado com VD 15. No sucesso, aquele NPC se tornará um
+                                        seguidor seu e estará disposto a seguir suas ordens. Quando estão em combate
+                                        juntos,
+                                        você controla sua gangue como se fossem uma extensão de você e pode distribuir
+                                        seus
+                                        bônus em atributos de combate entre a gangue.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseEremita" aria-expanded="false"
+                                aria-controls="collapseEremita">
+                                <span class="mb-0">Eremita</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemEremita" value="eremita"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemEremita">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseEremita" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você é alguém que viveu a vida do próprio jeito até o presente momento,
+                                    precisando se virar em ambientes hostis sem ter moradia ou alimentação garantidas
+                                    por boa parte de sua vida. Acima de tudo, você é um sobrevivente e um mestre do
+                                    improviso.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha duas entre as habilidades de combate,
+                                        sociais ou técnicas.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Sobrevivência do Mais Forte</b>: Receba 1 tier em algum atributo de combate
+                                        ou social a sua
+                                        escolha. Pode trocar esse bônus pelo treinamento em mais duas habilidades a sua
+                                        escolha.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Urbano</b>: Você aprendeu a sobreviver em locais hostis, recebendo Vantagem
+                                        em testes de Furtar,
+                                        Rastrear e Sobrevivência.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseEstudioso" aria-expanded="false"
+                                aria-controls="collapseEstudioso">
+                                <span class="mb-0">Estudioso</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemEstudioso"
+                                    value="estudioso" required>
+                                <label class="btn btn-sm btn-purple" for="origemEstudioso">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseEstudioso" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você passou seu tempo escolar anterior focando em seus estudos para
+                                    atingir seus objetivos ou simplesmente é um gênio natural. Enquanto outros
+                                    lutam com seus corpos, sua maior arma é sua mente.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha duas habilidades educacionais.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Saber é Poder</b>: Você recebe +3 para todos os testes que envolvem
+                                        Inteligência.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Previsibilidade Estatística</b>: Uma vez por cena, pode fazer um teste de
+                                        Percepção Humana usando
+                                        Inteligência para prever a próxima ação de seu alvo,
+                                        recebendo um bônus de +3 em seu próximo teste contra ele.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseGenerica" aria-expanded="false"
+                                aria-controls="collapseGenerica">
+                                <span class="mb-0">Genérica</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemGenerica" value="generica"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemGenerica">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseGenerica" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você não tem características marcantes, não usa roupas legais, suas armas são
+                                    simples, as pessoas
+                                    não lembram do seu nome se já não te conhecerem há muito tempo. Você sente como se
+                                    fosse um NPC de
+                                    fundo na vida de outras pessoas... Mas isso não pode continuar assim! Você deve
+                                    provar que até um NPC
+                                    pode ser uma lenda!
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Genérica</b>: Eu não sei como te falar isso, mas... Você realmente não tem
+                                        talento algum. Boa
+                                        sorte!
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseHerdeiro" aria-expanded="false"
+                                aria-controls="collapseHerdeiro">
+                                <span class="mb-0">Herdeiro</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemHerdeiro" value="herdeiro"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemHerdeiro">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseHerdeiro" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você nasceu parte de uma família rica e vai herdar sua herança, ou simplesmente deu
+                                    um golpe e roubou
+                                    a
+                                    fortuna de alguém. De toda forma, agora você senta no topo deste mundo e pode
+                                    aproveitar seus
+                                    benefícios
+                                    ao máximo na beira da legalidade.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha duas entre Contabilidade,
+                                        Empreendedorismo, Suborno,
+                                        Negociação, Aparência pessoal e Estilo.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Falsa Meritocracia</b>: Sua Classe Social se torna Super Rico.
+                                        Suas relações com o mundo dos negócios podem aumentar sua renda mensal
+                                        indefinidamente.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Contatos</b>: Recebe 3 contatos que conseguem coisas pra você de graça ou com
+                                        um desconto
+                                        generoso, seja mercadorias, informações ou serviços. Cada Contato deve estar
+                                        atrelado a uma cidade e
+                                        seu
+                                        número de Contatos aumenta a cada base da habilidade Sabedoria das Ruas (8, 12,
+                                        16, 18)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OBSTINADO -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseObstinado" aria-expanded="false"
+                                aria-controls="collapseObstinado">
+                                <span class="mb-0">Obstinado</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemObstinado"
+                                    value="obstinado" required>
+                                <label class="btn btn-sm btn-purple" for="origemObstinado">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseObstinado" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você é uma pessoa que não se apega ao talento ou às vezes nem nasceu com ele,
+                                    mas não deixa que isso te impeça. Todos os dias você se levantou cedo e trabalhou
+                                    duro pelos seus
+                                    objetivos, compensando uma possível falta de poder com pura dedicação.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Uma de combate e outra de corpo à sua escolha.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Determinação Inabalável</b>: Você recebe um bônus de +3 em testes envolvendo
+                                        Vontade.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Me Recuso a Cair</b>: Uma vez por cena, você pode trocar uma Falha Crítica
+                                        por uma segunda
+                                        tentativa em um teste. Alternativamente, você pode usar o Acerto Crítico para
+                                        dar um segundo ataque
+                                        no mesmo turno.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OPERÁRIO -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseOperario" aria-expanded="false"
+                                aria-controls="collapseOperario">
+                                <span class="mb-0">Operário</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemOperario" value="operario"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemOperario">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseOperario" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você é alguém que cresceu fazendo o trabalho pesado, ajudando no negócio da sua
+                                    família ou
+                                    tendo que trabalhar descarregando sacos de farinha em um bairro distante.
+                                    Seu corpo se adaptou a esse trabalho, te tornando mais forte.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha duas entre as habilidades de controle ou
+                                        técnicas.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Ferramenta de Trabalho</b>: Escolha uma ferramenta ou arma para adicionar seu
+                                        bônus de
+                                        Proficiência sempre que for manejar ela.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Corpo Calejado</b>: Recebe 5 de vida adicional a cada Nível de Personagem.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- PESO MORTO -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapsePesoMorto" aria-expanded="false"
+                                aria-controls="collapsePesoMorto">
+                                <span class="mb-0">Peso Morto</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemPesoMorto"
+                                    value="peso_morto" required>
+                                <label class="btn btn-sm btn-purple" for="origemPesoMorto">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapsePesoMorto" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você nasceu sem talento algum. Talvez você até tenha uma Visão, mas ela só não é
+                                    mais
+                                    inútil que você. Provavelmente você deveria ter morrido no útero, mas até nesse
+                                    quesito
+                                    você teve azar.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Três a escolha do mestre.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Talento Oculto</b>: Você possui um talento oculto que será decidido pelo
+                                        mestre na criação
+                                        de sua ficha e não será revelado até a hora que ele achar adequado.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Fraco Demais</b>: Ao confrontar um inimigo, pode realizar um teste de Se
+                                        impor
+                                        contra ele. Na falha, ele vai te considerar insignificante o suficiente para não
+                                        te atacar, exceto
+                                        se você o atacar três vezes. No sucesso, ele vai se tornar ofendido pela sua
+                                        existência e tentar te
+                                        matar primeiro a todo custo. Você recebe -3 nesse teste ao despertar seu Talento
+                                        Oculto.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- POPULAR -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapsePopular" aria-expanded="false"
+                                aria-controls="collapsePopular">
+                                <span class="mb-0">Popular</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemPopular" value="popular"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemPopular">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapsePopular" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você é uma pessoa amada. Seja por ser bonita, legal, inteligente, forte, ou qualquer
+                                    outro
+                                    fator ou até mesmo a soma de todos eles. As pessoas simplesmente são submetidas a
+                                    quererem
+                                    ser suas amigas e te veneram como uma das, se não, a pessoa mais importante na vida
+                                    delas.
+                                    Isso é algo que não pode ser explicado, apenas cabe a você aproveitar sua legião de
+                                    seguidores
+                                    ao máximo.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha uma social e outra de sua escolha.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Rainha da Escola</b>: Sua palavra é lei. Recebe +5 em testes de carisma.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Fiéis Subordinados</b>: Recebe três NPCs como seguidores fiéis, eles podem
+                                        até tomar um tiro
+                                        por você,
+                                        se assim você desejar. A forma que trata seus seguidores pode dar um bônus de
+                                        até +5 nos testes
+                                        deles a
+                                        depender de seu nível de amizade. Esses NPCs são considerados Leais e você
+                                        recebe mais um deles a
+                                        cada
+                                        2 Níveis de Personagem.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- #POTÊNCIA -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapsePotencia" aria-expanded="false"
+                                aria-controls="collapsePotencia">
+                                <span class="mb-0">#POTÊNCIA</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemPotencia" value="potencia"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemPotencia">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapsePotencia" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você é simplesmente muito bom em tudo que faz, a definição de talento bruto.
+                                    Todos querem ser seus amigos ou simplesmente ser você, e não existe um limite para o
+                                    seu
+                                    potencial.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Duas a sua escolha. Você é bom a esse ponto.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Talento Puro</b>: Você pode pegar um dos tiers que recebe em atributos
+                                        sociais na criação da
+                                        ficha
+                                        e passar para atributos de combate.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>#POTÊNCIA</b>: Uma vez por cena, enquanto não estiver em combate,
+                                        você pode escolher uma habilidade específica para se tornar treinada durante a
+                                        duração daquela cena.
+                                        Caso esteja em combate, pode escolher ficar em último na iniciativa para mudar a
+                                        sua habilidade
+                                        treinada.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Religioso -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseReligioso" aria-expanded="false"
+                                aria-controls="collapseReligioso">
+                                <span class="mb-0">Religioso</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemReligioso"
+                                    value="religioso" required>
+                                <label class="btn btn-sm btn-purple" for="origemReligioso">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseReligioso" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você é uma pessoa que foi devota a fé em algum deus ou entidade desde criança, se
+                                    tornando
+                                    uma seguidora fiel daquela religião. Muitos podem não te entender, ou até zombar de
+                                    sua fé,
+                                    mas ela segue inabalável enquanto você viver.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Religião e Concentração ou alguma social a sua
+                                        escolha.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Batizado na Fé</b>: A entidade que você é fiel lhe concedeu um bônus de +3 em
+                                        todos os testes
+                                        de um atributo a sua escolha.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Oração Conjunta</b>: Uma vez por cena, você pode rezar e dividir seus bônus
+                                        em algum atributo
+                                        para um grupo de até quatro pessoas. Você e todos do mesmo Caminho que você
+                                        recebem um bônus
+                                        adicional de
+                                        +2 em todos seus testes.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Solitário -->
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-link text-white text-decoration-none p-0"
+                                data-bs-toggle="collapse" data-bs-target="#collapseSolitario" aria-expanded="false"
+                                aria-controls="collapseSolitario">
+                                <span class="mb-0">Solitário</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemSolitario"
+                                    value="solitario" required>
+                                <label class="btn btn-sm btn-purple" for="origemSolitario">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseSolitario" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você passou boa parte da sua vida sozinho por algum motivo, seja por não se sentir
+                                    pertencente ou por ter sido excluído pelos outros. A solidão, no entanto, teve suas
+                                    vantagens, uma vez que você pôde focar em melhorar aspectos de você mesmo que em
+                                    outras
+                                    condições não poderia.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha uma habilidade de corpo e uma educacional.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Frio e Calculista</b>: Você possui um bônus de +3 em testes de Percepção.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Imposição Forçada</b>: Você aumentou suas habilidades <i>edgys</i> ao máximo.
+                                        Uma vez por cena, pode forçar um teste de Se Impor com bônus de +3 em uma pessoa
+                                        contra um teste de
+                                        Concentração dela. No sucesso, ela vai ficar desmotivada para te contrariar,
+                                        obedecendo suas ordens,
+                                        ou caso não faça isso, receberá um debuff de -3 em todos seus testes contra
+                                        você.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseSortudo" aria-expanded="false"
+                                aria-controls="collapseSortudo">
+                                <span>Sortudo</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemSortudo" value="sortudo"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemSortudo">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseSortudo" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você não é exatamente uma pessoa boa no que faz, mas como você tem sorte!
+                                    Ela sempre está te acompanhando de alguma forma, fazendo com que de um jeito ou de
+                                    outro,
+                                    as coisas sempre deem certo para você.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Você não precisa se preocupar com isso
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Rerrolagem Sortuda</b>: Quando você tira um teste, mas antes de saber se foi
+                                        um sucesso,
+                                        pode escolher rolar de novo e manter o melhor resultado. Isso é grátis na
+                                        primeira vez na cena,
+                                        mas para cada vez que se repetir você deve rolar 1d20. Números maiores que 10
+                                        permitem a nova
+                                        rolagem; menores causam falha.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Sorte Aumentada</b>: Ganha um ponto extra na Perícia <b>Sorte</b> a cada
+                                        Nível de Personagem.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseVilao" aria-expanded="false"
+                                aria-controls="collapseVilao">
+                                <span>Vilão</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="origem" id="origemVilao" value="vilao"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="origemVilao">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseVilao" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Você era um dos caras maus, mas encontrou sua redenção e mudou de lado. No entanto,
+                                    você ainda mantém
+                                    sua conexão com seu pior lado, o usando como combustível para alimentar o seu
+                                    melhor.
+                                    Você constantemente está em uma área moralmente cinza, e isso até que é divertido
+                                    pra você.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Habilidades treinadas</b>: Escolha duas entre as habilidades de
+                                        Reconhecimento e Técnicas.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Natureza Vilanesca</b>: Sempre que você evolui um Nível de Classe, pode
+                                        escolher sua perícia
+                                        com base nas Perícias normais de sua classe ou uma das <b>Perícias de Vilão</b>.
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        <b>Pura Maldade</b>: Ao confrontar alguma situação em que você perderia
+                                        Humanidade,
+                                        você pode fazer um teste de Concentração com VD decidido pelo mestre. Ao bater o
+                                        VD, você não perde
+                                        Humanidade alguma, porém, se a diferença for 5 ou mais, você recupera
+                                        Humanidade.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <h1>Caminhos</h1>
+                <p> Um caminho é uma pré disposição divina concedida a um ser vivo em seu nascimento,
+                    guiando como sua personalidade vai se formar e que atributos terá aptidão desde
+                    o nascimento.
+                </p>
+                <div class="container d-flex justify-content-center">
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseAbundancia" aria-expanded="false"
+                                aria-controls="collapseAbundancia">
+                                <span>A Abundância</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoAbundancia"
+                                    value="abundancia" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoAbundancia">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseAbundancia" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>Aqueles que seguem a Abundância valorizam o altruísmo, a falta de egoísmo e
+                                    comportamentos curativos.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">1 tier em Bônus de Cura e
+                                        Recarga.</li>
+                                    <li class="list-group-item bg-dark text-white small">Ao usar uma habilidade de cura,
+                                        aumenta a cura
+                                        realizada em mais 1 dado de mesmo tipo.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseCaca" aria-expanded="false"
+                                aria-controls="collapseCaca">
+                                <span>A Caça</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoCaca" value="caca"
+                                    required>
+                                <label class="btn btn-sm btn-purple" for="caminhoCaca">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseCaca" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem o caminho da Caça valorizam a determinação, impiedade e
+                                    tenacidade acima de tudo.
+                                    Escolhe seus alvos cautelosamente e os ataca com tudo que tem.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">Adiciona 1 Tier em Destreza e
+                                        Proficiência.</li>
+                                    <li class="list-group-item bg-dark text-white small">Recebe +3 em ataques contra 1
+                                        alvo.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseDestruicao" aria-expanded="false"
+                                aria-controls="collapseDestruicao">
+                                <span>A Destruição</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoDestruicao"
+                                    value="destruicao" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoDestruicao">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseDestruicao" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem o caminho da Destruição valorizam a raiva e impulsividade e
+                                    comportamentos
+                                    destrutivos acima de tudo, confiando em seus instintos e emoções mais poderosas para
+                                    eliminarem seus inimigos.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">Adiciona 1 tier em Força e
+                                        Resistência.</li>
+                                    <li class="list-group-item bg-dark text-white small">Todos os seus ataques e
+                                        técnicas podem causar +1
+                                        de dano, mesmo que originalmente não causassem dano algum.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseHarmonia" aria-expanded="false"
+                                aria-controls="collapseHarmonia">
+                                <span>A Harmonia</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoHarmonia"
+                                    value="harmonia" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoHarmonia">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseHarmonia" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem a Harmonia valorizam a aceitação, suporte e pensamento
+                                    cooperativo.
+                                    Eles entendem que a chave da vitória se encontra nos outros, e não apenas em si
+                                    mesmos.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">Recebe 1 Tier em Proficiência e
+                                        Recarga.</li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        Ao usar alguma técnica de buff em uma criatura ou você mesmo, adiciona +2 na
+                                        modificação concedida.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseInexistencia" aria-expanded="false"
+                                aria-controls="collapseInexistencia">
+                                <span>A Inexistência</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoInexistencia"
+                                    value="inexistencia" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoInexistencia">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseInexistencia" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem a Inexistência valorizam a preguiça, a exaustão e comportamento
+                                    sem valor.
+                                    Nada importa para eles, então não existem consequências.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">Recebe 1 tier em Recarga e
+                                        Coragem.</li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        Ao usar alguma técnica de Debuff em uma criatura ou você mesmo, aumenta o debuff
+                                        em -2.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapsePermanencia" aria-expanded="false"
+                                aria-controls="collapsePermanencia">
+                                <span>A Permanência</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoPermanencia"
+                                    value="permanencia" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoPermanencia">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapsePermanencia" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem a Permanência valorizam a estabilidade e fidelidade, buscando
+                                    criar laços
+                                    com as pessoas ao seu redor.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">1 tier em um Resistência e
+                                        Destreza.</li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        Ao receber um buff, também compartilhe metade dele com o aliado que lhe
+                                        concedeu. Ao dar um buff,
+                                        também receba metade dele para você.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapsePreservacao" aria-expanded="false"
+                                aria-controls="collapsePreservacao">
+                                <span>A Preservação</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoPreservacao"
+                                    value="preservacao" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoPreservacao">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapsePreservacao" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem a Preservação valorizam a paciência, sacrifício e comportamento
+                                    defensivo.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">1 tier em Resistência e
+                                        Recarga.</li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        Ao usar um escudo ou barreira, aumenta seu Poder de Proteção em mais 1 dado de
+                                        mesmo tipo.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapsePropagacao" aria-expanded="false"
+                                aria-controls="collapsePropagacao">
+                                <span>A Propagação</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoPropagacao"
+                                    value="propagacao" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoPropagacao">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapsePropagacao" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem a Propagação valorizam a ganância, ambição e avareza, sempre
+                                    querendo ampliar sua
+                                    área de influência.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">1 tier em Inteligência e
+                                        Carisma.</li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        Ao acertar um golpe em um inimigo e existir um inimigo adjacente, role 1d4 de
+                                        dano para ele também.
+                                        Esse dano aumenta em 1 passo a cada 2 Níveis de Personagem até um máximo de 2d6.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseConhecimento" aria-expanded="false"
+                                aria-controls="collapseConhecimento">
+                                <span>O Conhecimento</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoConhecimento"
+                                    value="conhecimento" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoConhecimento">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseConhecimento" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem o Conhecimento valorizam o pensamento, lógica e comportamento
+                                    estratégico.
+                                    Sabe as formas mais eficientes de lidar com as adversidades.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">Adiciona 1 Tier em Maestria
+                                        Honkai e
+                                        Inteligência.</li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        Ao realizar um ataque, caso ele atinja 2 ou mais inimigos, causa +3 de dano para
+                                        cada alvo.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseControle" aria-expanded="false"
+                                aria-controls="collapseControle">
+                                <span>O Controle</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoControle"
+                                    value="controle" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoControle">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseControle" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem o Controle valorizam o domínio, a fiscalização e verificação de
+                                    todos os
+                                    fenômenos do universo, buscando fazer com que o mundo ao redor esteja de acordo com
+                                    sua
+                                    vontade.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">1 tier em um Carisma e
+                                        Inteligência.</li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        Ao usar uma habilidade que causa um status, adicione uma penalidade de -3 no
+                                        teste para resistir a essa habilidade.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2" style="max-width: 600px; width: 100%;">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <button type="button"
+                                class="btn btn-link text-white text-decoration-none p-0 d-flex align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#collapseEquilibrio" aria-expanded="false"
+                                aria-controls="collapseEquilibrio">
+                                <span>O Equilíbrio</span>
+                                <span class="seta-baixo ms-2">&#9662;</span>
+                            </button>
+                            <div>
+                                <input type="radio" class="btn-check" name="caminho" id="caminhoEquilibrio"
+                                    value="equilibrio" required>
+                                <label class="btn btn-sm btn-purple" for="caminhoEquilibrio">Escolher</label>
+                            </div>
+                        </div>
+
+                        <div id="collapseEquilibrio" class="collapse">
+                            <div class="card-body bg-dark text-white py-3 px-3">
+                                <p>
+                                    Aqueles que seguem o Equilíbrio valorizam a observação, a compreensão e buscam
+                                    formas de
+                                    atingir o equilíbrio em sua própria natureza.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-white small">1 tier em Inteligência e
+                                        Vontade.</li>
+                                    <li class="list-group-item bg-dark text-white small">
+                                        Ao receber um golpe, ganhe +3 no teste de seu próximo ataque. Ao errar um
+                                        ataque,
+                                        ganhe +3 no seu próximo teste de Evasão.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    <button class="botao-escolher" type="submit">Próximo</button>
+    </form>
+    </div>
+    </div>
+    </div>
+    <script src="../javaScripts/criarFicha.js" defer></script>
+</body>

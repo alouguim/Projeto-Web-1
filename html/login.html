@@ -21,7 +21,7 @@
         <div class="nomes">
             <h1>Gênesis</h1>
         </div>
-        <form action="index.html" target="_self" rel="_self" onsubmit="login_realizado()">
+        <form action="" target="_self" rel="_self" onsubmit="return logar(document.getElementById('nome').value, document.getElementById('senha').value)">
             <label for="nome"> Nome do Usuário ou Email: </label><br>
             <input type="text" id="nome" > <br/>
             <label for="senha">Senha: </label><br>
@@ -33,12 +33,7 @@
 
     </div>
 
-    <script>
-        function login_realizado() {
-            
-            alert("Login Realizado!");
-        }
-    </script>
+    <script src="/javaScripts/cadastro.js"></script>
     
 </body>
 </html>
