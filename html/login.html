@@ -21,15 +21,24 @@
         <div class="nomes">
             <h1>Gênesis</h1>
         </div>
-        <form action="index.html" target="_self" rel="_self">
-            <label for="nome" id="nome"> Nome do Usuário ou Email: </label><br>
+        <form action="index.html" target="_self" rel="_self" onsubmit="login_realizado()">
+            <label for="nome"> Nome do Usuário ou Email: </label><br>
             <input type="text" id="nome" > <br/>
-            <label for="senha" id="senha">Senha: </label><br>
+            <label for="senha">Senha: </label><br>
             <input type="password" id="senha"> <br/> <br/>
             <input type="submit">
         </form>
         <a href="index.html" target="_self" rel="_self">Esqueceu sua senha?</a>
+        <p>Não possui conta? <a href="cadastro.html" target="_self" rel="_self"  style="font-size: 20px;  color: black; text-decoration: underline;" >Cadastre-se!</a></p>
+
     </div>
+
+    <script>
+        function login_realizado() {
+            
+            alert("Login Realizado!");
+        }
+    </script>
     
 </body>
 </html>
