@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   class Ficha {
     constructor(data) {
       data = data || {};
+      this.id = data.id || "";
       this.origem = data.origem || "";
       this.classe = data.classe || "";
       this.caminho = data.caminho || "";
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       this.detalhesSociais = data.detalhesSociais || {};
       this.detalhesCombate = data.detalhesCombate || {};
+      this.imagem = data.imagem || null;
     }
 
     aumentarAtributo(attr, val = 1) {
@@ -38,6 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setOrigem(origem) {
       this.origem = origem;
+    }
+
+    setId() {
+      const dataJSON = localStorage.getItem("dadosFicha");
+      let ids = 0;
+
+      if (dataJSON !== null) {
+        const data = JSON.parse(dataJSON);
+        ids = data.length + 1;
+      } else {
+        ids = 1;
+      }
+
+      this.id = ids;
     }
 
     setClasse(classe, bonusPorClasse) {
@@ -71,17 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
       atributosCopiados.iniciativa = this.atributos.iniciativa;
 
       return {
+        id: this.id,
         origem: this.origem,
         classe: this.classe,
         caminho: this.caminho,
         atributos: atributosCopiados,
         detalhesSociais: this.detalhesSociais,
-        detalhesCombate: this.detalhesCombate
+        detalhesCombate: this.detalhesCombate,
+        imagem: this.imagem
       };
     }
   }
 
-  // UTILITÁRIOS DO LOCALSTORAGE
   function carregarTodasFichas() {
     const dataJSON = localStorage.getItem("dadosFicha");
     const fichas = dataJSON ? JSON.parse(dataJSON) : [];
@@ -103,7 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("fichaAtual", JSON.stringify(ficha.toJSON()));
   }
 
-  // LÓGICA POR PÁGINA
   const path = window.location.pathname;
   const page = path.substring(path.lastIndexOf("/") + 1);
 
@@ -169,6 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!origemSelecionada || !caminhoSelecionado) return;
 
       const ficha = carregarFichaAtual();
+      ficha.setId();
       ficha.setOrigem(origemSelecionada);
       ficha.setCaminho(caminhoSelecionado, bonusPorCaminho);
 
@@ -206,11 +223,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   } else if (page === "detalhes.html") {
     const form = document.querySelector("form");
+    const inputImagem = document.getElementById("imagem-personagem");
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
       const formData = new FormData(form);
+      const ficha = carregarFichaAtual();
+
       const detalhesSociais = {
         nomePersonagem: formData.get("nome-personagem"),
         nomeJogador: formData.get("nome-jogador"),
@@ -228,15 +248,32 @@ document.addEventListener("DOMContentLoaded", () => {
         manifestacao: formData.get("manifestacao")
       };
 
-      const ficha = carregarFichaAtual();
       ficha.setDetalhesSociais(detalhesSociais);
       ficha.setDetalhesCombate(detalhesCombate);
 
-      adicionarFicha(ficha); // salva no array
-      localStorage.removeItem("fichaAtual"); // limpa temporário
+      const file = inputImagem.files[0];
 
-      alert("Ficha criada com sucesso!");
-      window.location.href = form.action;
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          ficha.imagem = event.target.result;
+
+          adicionarFicha(ficha);
+          localStorage.removeItem("fichaAtual");
+
+          alert("Ficha criada com sucesso!");
+          window.location.href = form.action;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        ficha.imagem = null;
+        adicionarFicha(ficha);
+        localStorage.removeItem("fichaAtual");
+
+        alert("Ficha criada com sucesso!");
+        window.location.href = form.action;
+      }
     });
   }
+
 });

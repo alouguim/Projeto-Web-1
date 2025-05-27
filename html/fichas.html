@@ -1,27 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Valquíria</title>
-    <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
-    <link rel="stylesheet" href="../style/fichas.css">
-    <link rel="stylesheet" href="../style/root.css"> 
-    <link rel="stylesheet" href="../style/atributos.css">
-
-
-
-</head>
 <body>
   <script src="../javaScripts/cabecalho.js" defer></script>
 
   <div class="fichario" id="lista-fichas">
-    <div class="row" id="fichas-row">
-    </div>
-    <p id = "mensagem-vazia" class="text-center">Não há nenhuma ficha.</p>
+    <div class="row" id="fichas-row"></div>
+    <p id="mensagem-vazia" class="text-center">Não há nenhuma ficha.</p>
   </div>
 
-<script src="../javaScripts/loadFichas.js"></script>
+  <!-- Painel lateral de edição -->
+  <aside id="painel-edicao" style="display:none;">
+    <div class="painel-animado">
+    <h2>Editar Ficha</h2>
+    <form id="form-edicao">
+      <!-- Detalhes Sociais -->
+      <fieldset>
+        <legend>Detalhes Sociais</legend>
+        <label>Nome do Personagem
+          <input type="text" id="edit-nomePersonagem" name="nomePersonagem" />
+        </label>
+        <label>Origem
+          <input type="text" id="edit-origem" name="origem" />
+        </label>
+        <label>Caminho
+          <input type="text" id="edit-caminho" name="caminho" />
+        </label>
+        <label>Classe
+          <input type="text" id="edit-classe" name="classe" />
+        </label>
+        <label>Personalidade
+          <textarea id="edit-personalidade" name="personalidade" rows="3"></textarea>
+        </label>
+      </fieldset>
 
+      <!-- Detalhes Combate -->
+      <fieldset>
+        <legend>Detalhes de Combate</legend>
+        <label>Força
+          <input type="number" id="edit-forca" name="forca" />
+        </label>
+        <label>Destreza
+          <input type="number" id="edit-destreza" name="destreza" />
+        </label>
+        <label>Constituição
+          <input type="number" id="edit-constituicao" name="constituicao" />
+        </label>
+        <label>Inteligência
+          <input type="number" id="edit-inteligencia" name="inteligencia" />
+        </label>
+        <label>Sabedoria
+          <input type="number" id="edit-sabedoria" name="sabedoria" />
+        </label>
+        <label>Carisma
+          <input type="number" id="edit-carisma" name="carisma" />
+        </label>
+      </fieldset>
+
+      <div style="margin-top:1em;">
+        <button type="submit">Salvar</button>
+        <button type="button" id="btn-cancelar">Cancelar</button>
+      </div>
+    </form>
+    </div>
+
+  </aside>
+
+  <script src="../javaScripts/loadFichas.js"></script>
 </body>
-</html>
