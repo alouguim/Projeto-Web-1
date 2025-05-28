@@ -18,6 +18,7 @@ body {
     padding-top: var(--tamanho-do-header);
     background-color: RGB(19, 18, 17);
     min-height: 100vh;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 .header {
