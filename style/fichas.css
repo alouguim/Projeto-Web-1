@@ -1,3 +1,9 @@
+body {
+    background-image: url(../Imagens/backFicha.jpeg);
+    background-size: cover;
+    background-color: rgb(19,18,17);
+}
+
 .fichario {
     margin-left: var(--tamanho-da-side-bar);
     display: flex;
@@ -76,13 +82,12 @@
     font-size: x-large;
     flex-wrap: wrap;
     display: flex;
-    row-gap: 30px;
     column-gap: 300px;
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 20px;
     color: white;
     list-style-type: none;
-    font-family: 'Anton', sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     min-height: 130px;
     max-width: 525px;
 }
@@ -122,6 +127,14 @@
     margin-left: var(--tamanho-da-side-bar);
     display: flex;
     flex-wrap: wrap;
+}
+
+#mensagem-vazia {
+    color:white; 
+    font-size: xx-large; 
+    font-family: Arial, Helvetica, sans-serif; 
+    margin-top: 20px; 
+    margin-left: 820px;
 }
 
 #fichas-row {

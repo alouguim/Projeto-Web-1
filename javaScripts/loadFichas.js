@@ -32,8 +32,8 @@ function showFicha(ficha) {
         <a href="visualizar.html?id=${ficha.id}" class="artbut">
           <img src="${ficha.imagem || '../Imagens/noimg.png'}" class="art">
           <ul class="listainfo">
-            <li>${ficha.detalhesSociais.nomePersonagem}</li>
-            <li>${ficha.classe || ""}</li>
+            <li style="font-weight: bold;">${ficha.detalhesSociais.nomePersonagem}</li>
+            <li style="opacity: 75%; font-style: italic;">${ficha.classe || ""}</li>
           </ul>
         </a>
         <div class="buttons">
@@ -74,9 +74,11 @@ function loadFichas() {
 
   if (fichas.length === 0) {
     mensagemVazia.style.display = 'block';
+    document.body.style.cssText = "background-blend-mode: luminosity;"
     fecharPainelEdicao();
     return;
   } else {
+    document.body.style.cssText = "background-blend-mode: normal;"
     mensagemVazia.style.display = 'none';
   }
 
