@@ -1,10 +1,33 @@
 body{
-    background-image: url(../Imagens/Wallpaper\ star\ rail.webp);
+    background-image: url(../Imagens/Wallpaper_star_rail.webp);
     background-size: cover;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;    
 }
 
 .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+    border: solid black;
+    border-width: 5px;
+    background-color: rgb(24, 19, 28);
+    color: white;
+    margin: 10px;
+    min-width: 350px;
+    min-height: 350px;
+    font-size: 18px;
+    text-align: center;
+    align-content: center;
+    background-image: url(/Imagens/starrynight.jpg);
+    background-size: 400px;
+    background-repeat: no-repeat;
+    border-radius: 40px;
+}
+
+
+.login-container {
     position: absolute;
     top: 50%;
     left: 50%;

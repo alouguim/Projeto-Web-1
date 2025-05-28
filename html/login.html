@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
-    <link rel="stylesheet" href="../style/root.css"> 
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Ícone -->
+    <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
+
+    <!-- Seu estilo personalizado -->
+    <link rel="stylesheet" href="../style/root.css">
     <link rel="stylesheet" href="../style/style-login.css">
 
-    
-    <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">  
 </head>
+
 <body>
-    <br><br><br>
     <div class="titulo">
         <h1>BEM VINDO A BORDO!</h1>
     </div>
 
-    <div class="container">
-        <div class="nomes">
-            <h1>Gênesis</h1>
-        </div>
-        <form action="" name="dados_login" target="_self" rel="_self" id="dados_login">
-            <label for="nome"> Nome do Usuário ou Email: </label><br>
-            <input type="text"name="nome" id="nome" required> <br/>
-            <label for="senha">Senha: </label><br>
-            <input type="password" name="senha" id="senha" required> <br/> <br/>
-            <input type="submit">
-        </form>
-        <a href="index.html" target="_self" rel="_self">Esqueceu sua senha?</a>
-        <p>Não possui conta? <a href="cadastro.html" target="_self" rel="_self"  style="font-size: 20px;  color: black; text-decoration: underline;" >Cadastre-se!</a></p>
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="login-container">
+            <div class="nomes">
+                <h1>Gênesis</h1>
+            </div>
+            <form id="dados_login" name="dados_login" action="" target="_self" rel="_self">
+                <div class="mb-3 text-start">
+                    <label for="nome" class="form-label">Nome do Usuário ou Email:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" required>
+                </div>
+                <div class="mb-3 text-start">
+                    <label for="senha" class="form-label">Senha:</label>
+                    <input type="password" class="form-control" id="senha" name="senha" required>
+                </div>
+                <button type="submit" class="btn btn-light">Entrar</button>
+            </form>
 
+            <div class="mt-3">
+                <a href="index.html" class="link">Esqueceu sua senha?</a>
+                <p class="mt-2">Não possui conta?
+                    <a href="cadastro.html" class="cadastro-link">CADASTRE-SE!</a>
+                </p>
+            </div>
+        </div>
     </div>
+
+    <!-- JavaScript -->
     <script>
         document.getElementById("dados_login").addEventListener("submit", function (event) {
-        event.preventDefault();
-        logar();
+            event.preventDefault();
+            logar();
         });
-        </script>
-
+    </script>
     <script src="/javaScripts/cadastro.js"></script>
-    
 </body>
+
 </html>

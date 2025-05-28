@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="../style/root.css"> 
+    <link rel="stylesheet" href="../style/root.css">
     <link rel="stylesheet" href="../style/style-login.css">
     <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
 </head>
+
 <body>
 
     <br><br><br>
     <div class="titulo">
         <h1>TELA DE CADASTRO</h1>
     </div>
-    
+
     <div class="container" style="background-size:900px; background-image: url(/Imagens/starry-night-cadastro.jpg)">
         <div class="nomes">
             <h1>Gênesis</h1>
         </div>
         <form action="login.html" target="_self" rel="_self" onsubmit="pegar_dados()" onsubmit="login_realizado()">
-            <label for="nome"> Nome do Usuário: </label><br>    
-            <input type="text" id="nome" > <br/>
+            <label for="nome"> Nome do Usuário: </label><br>
+            <input type="text" id="nome"> <br />
             <label for="email"> Email: </label><br>
-            <input type="text" id="email" > <br/>
+            <input type="text" id="email"> <br />
             <label for="senha">Senha: </label><br>
-            <input type="password" id="senha"> <br/> <br/>
+            <input type="password" id="senha"> <br /> <br />
             <div class="form-group">
                 <label for="icon_user">Ícone de Usuário</label><br>
                 <input type="radio" id="guerreiro" name="classe" value="guerreiro" checked>
@@ -51,25 +53,25 @@
 
                 <div class="info_classes">
                     <div class="img_classes img_guerreiro">
-                    <img src="/Imagens/Token-guerreiro.png" alt="Guerreiro" width="25%">
+                        <img src="/Imagens/Token-guerreiro.png" alt="Guerreiro" width="25%">
                     </div>
                     <div class="img_classes img_tank">
-                    <img src="/Imagens/Token-tank.png" alt="Tank" width="25%">
+                        <img src="/Imagens/Token-tank.png" alt="Tank" width="25%">
                     </div>
                     <div class="img_classes img_assassino">
-                    <img src="/Imagens/token-assassino.png" alt="Assassino" width="25%">
+                        <img src="/Imagens/token-assassino.png" alt="Assassino" width="25%">
                     </div>
                     <div class="img_classes img_mago">
-                    <img src="/Imagens/token-mago.png" alt="Mago" width="25%">
+                        <img src="/Imagens/token-mago.png" alt="Mago" width="25%">
                     </div>
                     <div class="img_classes img_atirador">
-                    <img src="/Imagens/token-atirador.png" alt="Atirador" width="25%">
+                        <img src="/Imagens/token-atirador.png" alt="Atirador" width="25%">
                     </div>
                     <div class="img_classes img_curandeiro">
-                    <img src="/Imagens/Token-curandeiro.png" alt="Curandeiro" width="25%">
+                        <img src="/Imagens/Token-curandeiro.png" alt="Curandeiro" width="25%">
                     </div>
                     <div class="img_classes img_suporte">
-                    <img src="/Imagens/token-suporte.png" alt="Suporte" width="25%">
+                        <img src="/Imagens/token-suporte.png" alt="Suporte" width="25%">
                     </div>
                 </div>
             </div><br>
@@ -77,16 +79,17 @@
             <br>
             <input type="submit">
         </form>
-       
+
     </div>
 
     <script>
         function login_realizado() {
             alert("Cadastro Realizado!");
-            
+
         }
-        
+
     </script>
     <script src="/javaScripts/cadastro.js"></script>
 </body>
+
 </html>
