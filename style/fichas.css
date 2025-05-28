@@ -134,10 +134,10 @@
 
 #painel-edicao {
     position: fixed;
-    top: 12vh;
+    top: 9vh;
     right: 0;
     width: 600px;
-    height: 81vh;
+    height: 100vh;
     background-color: #222;
     color: white;
     padding: 15px;
@@ -145,7 +145,7 @@
     overflow-y: auto;
     box-shadow: -3px 0 10px rgba(0,0,0,0.8);
     z-index: 1000;
-    display: none; /* começa oculto */
+    display: none;
 }
 
 #painel-edicao h2 {

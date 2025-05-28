@@ -29,8 +29,8 @@ function showFicha(ficha) {
 
     container.innerHTML = `
       <div class="main-ficha">
-        <a href="destino.html?id=${ficha.id}" class="artbut">
-          <img src="${ficha.imagem || '../Imagens/noimg.png'}" alt="${ficha.detalhesSociais.nomePersonagem}" class="art">
+        <a href="visualizar.html?id=${ficha.id}" class="artbut">
+          <img src="${ficha.imagem || '../Imagens/noimg.png'}" class="art">
           <ul class="listainfo">
             <li>${ficha.detalhesSociais.nomePersonagem}</li>
             <li>${ficha.classe || ""}</li>
@@ -95,13 +95,14 @@ function editarFicha(ficha) {
   document.getElementById('edit-classe').value = ficha.classe || '';
   document.getElementById('edit-personalidade').value = ficha.personalidade || '';
 
-  const detalhes = ficha.detalhesCombate || {};
-  document.getElementById('edit-forca').value = detalhes.forca || 0;
-  document.getElementById('edit-destreza').value = detalhes.destreza || 0;
-  document.getElementById('edit-constituicao').value = detalhes.constituicao || 0;
-  document.getElementById('edit-inteligencia').value = detalhes.inteligencia || 0;
-  document.getElementById('edit-sabedoria').value = detalhes.sabedoria || 0;
-  document.getElementById('edit-carisma').value = detalhes.carisma || 0;
+  const atributos = ficha.atributos || {};
+  document.getElementById('edit-forca').value = atributos.forca || 0;
+  document.getElementById('edit-destreza').value = atributos.destreza || 0;
+  document.getElementById('edit-resistencia').value = atributos.resistencia || 0;
+  document.getElementById('edit-maestria').value = atributos.maestriaHonkai || 0;
+  document.getElementById('edit-proficiencia').value = atributos.proficiencia || 0;
+  document.getElementById('edit-bonus').value = atributos.bonusCura || 0;
+  document.getElementById('edit-recarga').value = atributos.recarga || 0;
 
   painelEdicao.style.display = 'block';
 }
@@ -117,14 +118,15 @@ formEdicao.addEventListener('submit', e => {
   fichaAtual.classe = document.getElementById('edit-classe').value;
   fichaAtual.personalidade = document.getElementById('edit-personalidade').value;
 
-  if (!fichaAtual.detalhesCombate) fichaAtual.detalhesCombate = {};
+  if (!fichaAtual.atributos) fichaAtual.atributos = {};
 
-  fichaAtual.detalhesCombate.forca = Number(document.getElementById('edit-forca').value);
-  fichaAtual.detalhesCombate.destreza = Number(document.getElementById('edit-destreza').value);
-  fichaAtual.detalhesCombate.constituicao = Number(document.getElementById('edit-constituicao').value);
-  fichaAtual.detalhesCombate.inteligencia = Number(document.getElementById('edit-inteligencia').value);
-  fichaAtual.detalhesCombate.sabedoria = Number(document.getElementById('edit-sabedoria').value);
-  fichaAtual.detalhesCombate.carisma = Number(document.getElementById('edit-carisma').value);
+  fichaAtual.atributos.forca = Number(document.getElementById('edit-forca').value);
+  fichaAtual.atributos.destreza = Number(document.getElementById('edit-destreza').value);
+  fichaAtual.atributos.resistencia = Number(document.getElementById('edit-resistencia').value);
+  fichaAtual.atributos.maestriaHonkai = Number(document.getElementById('edit-maestria').value);
+  fichaAtual.atributos.proficiencia = Number(document.getElementById('edit-proficiencia').value);
+  fichaAtual.atributos.bonusCura = Number(document.getElementById('edit-bonus').value);
+  fichaAtual.atributos.recarga = Number(document.getElementById('edit-recarga').value);
 
 
   const index = fichas.findIndex(f => f.id === fichaAtual.id);
