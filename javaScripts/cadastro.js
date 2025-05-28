@@ -33,7 +33,7 @@ function logar() {
 
     if ((user == dados_cadastro_atual['nome'] || user == dados_cadastro_atual['email']) && (senha == dados_cadastro_atual['senha']) ) {
         alert("Logado com Sucesso!")
-
+        localStorage.setItem("logado", "true") 
         window.location.href= "/html/index.html"
     } else {
         alert("Usuário ou senha incorretos.")
