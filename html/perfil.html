@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href="../style/root.css"> 
+    <link rel="stylesheet" href="../style/root.css">
     <link rel="stylesheet" href="../style/perfil.css">
     <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
 </head>
+
 <body>
     <br><br><br>
-    
+
     <div class="container" id="perfil_usuario">
         <div class="nomes">
             <h1 id="titulo">PERFIL</h1>
         </div>
         <form action="perfil.html" target="_self" id='dados_login'>
             <div class="form-group">
-                
-                <img src="/Imagens/token-mascote.png" alt="mascote" name="foto_perfil" id="icon" height="25%" width="25%">
+
+                <img src="/Imagens/token-mascote.png" alt="mascote" name="foto_perfil" id="icon" height="25%"
+                    width="25%">
                 <br>
-                <label for="nome"> Nome do Usuário: </label><br>    
-                <input type="text" id="nome" placeholder="Usuario" style="text-align: center;"><br/>
+                <label for="nome"> Nome do Usuário: </label><br>
+                <input type="text" id="nome" placeholder="Usuario" style="text-align: center;"><br />
                 <label for="email"> Email: </label><br>
-                <input type="text" id="email" placeholder="Email" style="text-align: center;"><br/>
+                <input type="text" id="email" placeholder="Email" style="text-align: center;"><br />
 
                 <div id="dados">
                     <label for="guerreiro">Ícone de Usuário</label><br>
@@ -42,29 +45,29 @@
                     <input type="radio" id="suporte" name="classe" value="suporte">
                     <label for="suporte">Suporte</label>
                 </div>
-                
+
                 <br><br>
                 <label for="cor_perfil">Cor de fundo</label>
-                <input type="color" id="cor_perfil">              
-            <br><br>
-            <input type="submit" value="Salvar Configurações">
+                <input type="color" id="cor_perfil">
+                <br><br>
+                <input type="submit" value="Salvar Configurações">
         </form>
-       
+        <button onclick="logout()">Sair</button>
     </div>
     <script>
         document.getElementById("dados_login").addEventListener("submit", function (event) {
-        event.preventDefault();
-        atualizar_dados();
+            event.preventDefault();
+            atualizar_dados();
         });
-        </script>
+    </script>
     <script>
-        document.getElementById("cor_perfil").addEventListener("input", function() {
-        const cor = this.value
-        document.getElementById("perfil_usuario").style.backgroundColor = cor
+        document.getElementById("cor_perfil").addEventListener("input", function () {
+            const cor = this.value
+            document.getElementById("perfil_usuario").style.backgroundColor = cor
         }); 
     </script>
     <script>
-            document.getElementById("dados").addEventListener("change", function() {
+        document.getElementById("dados").addEventListener("change", function () {
             const id_check = document.querySelector('input[name="classe"]:checked').value
             if (id_check == "guerreiro") {
                 document.getElementById("icon").src = "/Imagens/Token-guerreiro.png"
@@ -97,8 +100,16 @@
             }
         }); 
     </script>
+    <script>
+        function logout() {
+            localStorage.removeItem("logado")
+            window.location.href = "/html/login.html"
+        }
+    </script>
+    </script>
     <script src="/javaScripts/perfil.js"></script>
     <script>preencher_perfil()</script>
 
 </body>
+
 </html>
