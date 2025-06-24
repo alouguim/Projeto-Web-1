@@ -151,11 +151,6 @@ form {
         padding: 0.3rem 0.6rem;
     }
 
-    /* Remove a borda separadora nos mobile para não poluir */
-    .guia .item:not(:last-child)::after {
-        display: none;
-    }
-
     /* Permite rolagem horizontal se necessário */
     .guia {
         overflow-x: auto;
