@@ -1,10 +1,8 @@
 import { Ficha } from './ficha.js';
-// Importa as funções necessárias do SDK do Firebase e Firestore
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
 import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
 
-// Sua configuração do Firebase (copiada do seu arquivo anterior)
 const firebaseConfig = {
     apiKey: "AIzaSyCTRckw_dyNjk1IN6wIn9KJy77UqphVnCI",
     authDomain: "genesisrpg-dd66f.firebaseapp.com",
@@ -15,31 +13,23 @@ const firebaseConfig = {
     measurementId: "G-Y25HNE4R8L"
 };
 
-// Inicializa o Firebase e Firestore
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app); // Opcional, para Analytics
-const db = getFirestore(app); // Instância do Firestore
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
 
-
-// Referência à coleção 'fichas' no Firestore
 const FICHAS_COLLECTION_NAME = 'fichas';
 const fichasCol = collection(db, FICHAS_COLLECTION_NAME);
 
-// Variáveis de elementos HTML
-const lista = document.getElementById('lista-fichas'); // Elemento onde as fichas serão listadas
-const fichasRow = document.getElementById('fichas-row'); // Contêiner para os cards das fichas
+const lista = document.getElementById('lista-fichas');
+const fichasRow = document.getElementById('fichas-row');
 const mensagemVazia = document.getElementById('mensagem-vazia');
 
 const painelEdicao = document.getElementById('painel-edicao');
 const formEdicao = document.getElementById('form-edicao');
 const btnCancelar = document.getElementById('btn-cancelar');
 
-let fichaAtual = null; // Ficha sendo editada no painel rápido
+let fichaAtual = null;
 
-/**
- * Carrega estilos CSS dinamicamente.
- * @param {string[]} caminhos - Array de caminhos para os arquivos CSS.
- */
 function carregarEstilosCSS(...caminhos) {
     caminhos.forEach(caminho => {
         const link = document.createElement("link");
@@ -49,15 +39,8 @@ function carregarEstilosCSS(...caminhos) {
     });
 }
 
-/**
- * Cria e retorna o elemento HTML para exibir uma ficha.
- * @param {Ficha} ficha - A instância da ficha a ser exibida.
- * @returns {HTMLElement} O elemento div contendo a ficha.
- */
 function showFicha(ficha) {
-    // Garante que detalhesSociais exista antes de tentar acessar suas propriedades para exibição
     if (!ficha || !ficha.detalhesSociais || !ficha.detalhesSociais.nomePersonagem) {
-        // Retorna um elemento que indica ficha inválida, ou um placeholder
         const invalidFicha = document.createElement("div");
         invalidFicha.textContent = "Ficha inválida ou incompleta.";
         invalidFicha.className = "text-danger";
@@ -89,7 +72,6 @@ function showFicha(ficha) {
         </div>
     `;
 
-    // Adiciona event listeners aos botões
     const botaoDeletar = container.querySelector(".butb");
     botaoDeletar.addEventListener("click", async () => {
         if (confirm("Tem certeza que deseja deletar esta ficha?")) {
@@ -107,9 +89,6 @@ function showFicha(ficha) {
     return container;
 }
 
-/**
- * Carrega todas as fichas do Firestore e as exibe.
- */
 async function loadFichas() {
     fichasRow.innerHTML = '';
 
@@ -140,10 +119,6 @@ async function loadFichas() {
     }
 }
 
-/**
- * Preenche o painel de edição rápida com os dados da ficha selecionada.
- * @param {Ficha} ficha - A ficha a ser editada.
- */
 function editarFicha(ficha) {
     console.log("-----------------------------------------");
     console.log("Chamando editarFicha.");
@@ -153,8 +128,7 @@ function editarFicha(ficha) {
     console.log("ID da fichaAtual no editarFicha:", fichaAtual ? fichaAtual.id : 'fichaAtual é nula');
     console.log("-----------------------------------------");
 
-    // Garante que detalhesSociais exista para preencher os campos
-    const detalhesSociais = ficha.detalhesSociais || {}; // Usa um objeto vazio se for null/undefined
+    const detalhesSociais = ficha.detalhesSociais || {};
 
     document.getElementById('edit-nomePersonagem').value = detalhesSociais.nomePersonagem || '';
     document.getElementById('edit-origem').value = ficha.origem || '';
@@ -174,9 +148,6 @@ function editarFicha(ficha) {
     painelEdicao.style.display = 'block';
 }
 
-/**
- * Envia as alterações da ficha editada para o Firestore.
- */
 formEdicao.addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -192,7 +163,6 @@ formEdicao.addEventListener('submit', async e => {
         return;
     }
 
-    // Garante que detalhesSociais exista e seja um objeto antes de tentar atribuir
     if (!fichaAtual.detalhesSociais) {
         fichaAtual.detalhesSociais = {};
     }
@@ -203,7 +173,6 @@ formEdicao.addEventListener('submit', async e => {
         fichaAtual.atributos = {};
     }
 
-    // Atualiza os dados da fichaAtual com os valores do formulário
     fichaAtual.detalhesSociais.nomePersonagem = document.getElementById('edit-nomePersonagem').value;
     fichaAtual.origem = document.getElementById('edit-origem').value;
     fichaAtual.caminho = document.getElementById('edit-caminho').value;
@@ -232,11 +201,6 @@ formEdicao.addEventListener('submit', async e => {
     }
 });
 
-
-/**
- * Deleta uma ficha do Firestore.
- * @param {string} id - O ID da ficha a ser deletada.
- */
 async function deletarFicha(id) {
     try {
         await deleteDoc(doc(db, FICHAS_COLLECTION_NAME, id));
@@ -248,9 +212,6 @@ async function deletarFicha(id) {
     }
 }
 
-/**
- * Fecha o painel de edição rápida e reseta a ficha atual.
- */
 btnCancelar.addEventListener('click', () => {
     fecharPainelEdicao();
 });
@@ -260,5 +221,4 @@ function fecharPainelEdicao() {
     fichaAtual = null;
 }
 
-// Carrega as fichas quando a página é carregada
 loadFichas();

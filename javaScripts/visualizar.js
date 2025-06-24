@@ -1,10 +1,7 @@
-// Importa as funções necessárias do SDK do Firebase e Firestore
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
 import { getFirestore, doc, getDoc, collection } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
-// Importa a classe Ficha, assumindo que ela está em './ficha.js' no mesmo nível
 import { Ficha } from './ficha.js';
 
-// Sua configuração do Firebase (copiada dos seus outros arquivos)
 const firebaseConfig = {
     apiKey: "AIzaSyCTRckw_dyNjk1IN6wIn9KJy77UqphVnCI",
     authDomain: "genesisrpg-dd66f.firebaseapp.com",
@@ -15,32 +12,19 @@ const firebaseConfig = {
     measurementId: "G-Y25HNE4R8L"
 };
 
-// Inicializa o Firebase e Firestore
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Referência à coleção 'fichas' no Firestore (mesmo nome usado nos outros scripts)
 const FICHAS_COLLECTION_NAME = 'fichas';
 const fichasCol = collection(db, FICHAS_COLLECTION_NAME);
 
-// Elemento container onde a ficha será renderizada
 const container = document.getElementById("ficha-container");
 
-/**
- * Obtém o ID da ficha da URL.
- * @returns {string | null} O ID da ficha como string, ou null se não encontrado.
- */
 function getFichaIdFromURL() {
     const params = new URLSearchParams(window.location.search);
-    return params.get("id"); // O ID do Firestore é uma string, não um número
+    return params.get("id");
 }
 
-/**
- * Cria um elemento div para exibir um campo de informação.
- * @param {string} label - O rótulo do campo.
- * @param {string} valor - O valor do campo.
- * @returns {HTMLElement} O elemento div do campo.
- */
 function criarCampo(label, valor) {
     const div = document.createElement("div");
     div.className = "mb-2";
@@ -48,11 +32,6 @@ function criarCampo(label, valor) {
     return div;
 }
 
-/**
- * Cria um elemento h4 para títulos de seção.
- * @param {string} titulo - O texto do título.
- * @returns {HTMLElement} O elemento h4 do título.
- */
 function criarTitulo(titulo) {
     const h4 = document.createElement("h4");
     h4.className = "mt-4 border-bottom pb-2";
@@ -60,17 +39,11 @@ function criarTitulo(titulo) {
     return h4;
 }
 
-/**
- * Exibe os detalhes da ficha no DOM.
- * @param {Ficha} ficha - A instância da Ficha a ser exibida.
- */
 function mostrarFicha(ficha) {
-    // Garante que sub-objetos existem para evitar TypeError
     const sociais = ficha.detalhesSociais || {};
     const atributos = ficha.atributos || {};
     const combate = ficha.detalhesCombate || {};
 
-    // --- Informações Gerais ---
     container.appendChild(criarTitulo("Informações Gerais"));
 
     const rowInfoGerais = document.createElement("div");
@@ -81,9 +54,15 @@ function mostrarFicha(ficha) {
     if (ficha.imagem) {
         const img = document.createElement("img");
         img.src = ficha.imagem;
-        img.alt = "Imagem do Personagem";
+        img.alt = `Imagem de ${sociais.nomePersonagem || 'Personagem'}`;
         img.className = "img-fluid rounded mb-4 w-100";
         colImg.appendChild(img);
+    } else {
+        const imgPlaceholder = document.createElement("img");
+        imgPlaceholder.src = '../Imagens/noimg.png';
+        imgPlaceholder.alt = "Nenhuma imagem disponível";
+        imgPlaceholder.className = "img-fluid rounded mb-4 w-100";
+        colImg.appendChild(imgPlaceholder);
     }
     rowInfoGerais.appendChild(colImg);
 
@@ -114,7 +93,6 @@ function mostrarFicha(ficha) {
     rowInfoGerais.appendChild(colDados);
     container.appendChild(rowInfoGerais);
 
-    // --- Detalhes Sociais ---
     container.appendChild(criarTitulo("Detalhes Sociais"));
     const rowSociais = document.createElement("div");
     rowSociais.className = "row g-3";
@@ -138,7 +116,6 @@ function mostrarFicha(ficha) {
 
     container.appendChild(rowSociais);
 
-    // --- Atributos ---
     container.appendChild(criarTitulo("Atributos"));
     const rowAtributos = document.createElement("div");
     rowAtributos.className = "row g-3";
@@ -155,15 +132,12 @@ function mostrarFicha(ficha) {
     container.appendChild(rowAtributos);
 }
 
-/**
- * Função principal para carregar e exibir a ficha.
- */
 async function init() {
     const fichaId = getFichaIdFromURL();
 
     if (!fichaId) {
         alert("ID da ficha não fornecido na URL!");
-        window.location.href = "index.html"; // Redireciona se não houver ID
+        window.location.href = "index.html";
         return;
     }
 
@@ -172,19 +146,17 @@ async function init() {
         const fichaSnap = await getDoc(fichaRef);
 
         if (fichaSnap.exists()) {
-            // Cria uma instância da classe Ficha com os dados do Firestore e o ID do documento
             const ficha = new Ficha({ id: fichaSnap.id, ...fichaSnap.data() });
             mostrarFicha(ficha);
         } else {
             alert("Ficha não encontrada no banco de dados!");
-            window.location.href = "index.html"; // Redireciona se a ficha não existir
+            window.location.href = "index.html";
         }
     } catch (error) {
         console.error("Erro ao carregar ficha do Firestore:", error);
         alert("Erro ao carregar a ficha. Verifique sua conexão e as regras do Firebase.");
-        window.location.href = "index.html"; // Redireciona em caso de erro
+        window.location.href = "index.html";
     }
 }
 
-// Inicia o processo quando o DOM estiver completamente carregado
 document.addEventListener("DOMContentLoaded", init);

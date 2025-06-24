@@ -1,7 +1,7 @@
 export class Ficha {
     constructor(data) {
         data = data || {};
-        this.id = data.id || ""; // The Firestore document ID is set when fetching, or remains empty for new local drafts
+        this.id = data.id || "";
         this.origem = data.origem || "";
         this.classe = data.classe || "";
         this.caminho = data.caminho || "";
@@ -44,7 +44,6 @@ export class Ficha {
     }
 
     setClasse(classe, bonusPorClasse) {
-        // If there was a class before, remove its bonuses
         if (this.classe && bonusPorClasse[this.classe]) {
             for (const [attr, val] of Object.entries(bonusPorClasse[this.classe])) {
                 if (this.atributos.hasOwnProperty(attr)) {
@@ -53,7 +52,6 @@ export class Ficha {
             }
         }
         this.classe = classe;
-        // Apply the bonuses of the new class
         if (bonusPorClasse[classe]) {
             for (const [attr, val] of Object.entries(bonusPorClasse[classe])) {
                 this.aumentarAtributo(attr, val);
@@ -62,7 +60,6 @@ export class Ficha {
     }
 
     setCaminho(caminho, bonusPorCaminho) {
-        // If there was a path before, remove its bonuses
         if (this.caminho && bonusPorCaminho[this.caminho]) {
             for (const [attr, val] of Object.entries(bonusPorCaminho[this.caminho])) {
                 if (this.atributos.hasOwnProperty(attr)) {
@@ -71,7 +68,6 @@ export class Ficha {
             }
         }
         this.caminho = caminho;
-        // Apply the bonuses of the new path
         if (bonusPorCaminho[caminho]) {
             for (const [attr, val] of Object.entries(bonusPorCaminho[caminho])) {
                 this.aumentarAtributo(attr, val);
@@ -87,13 +83,9 @@ export class Ficha {
         this.detalhesCombate = detalhes;
     }
 
-    // --- CRUCIAL CHANGE HERE ---
-    // The toJSON() method should only return the data that will be stored *inside* the Firestore document.
-    // The document ID itself (this.id) is part of the document's path in Firestore, not a field within it.
     toJSON() {
         const atributosCopiados = Object.assign({}, this.atributos);
         return {
-            // REMOVE 'id: this.id,' from here.
             origem: this.origem,
             classe: this.classe,
             caminho: this.caminho,
