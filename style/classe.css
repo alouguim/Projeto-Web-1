@@ -109,6 +109,7 @@ input[type="radio"] {
 #tank:checked~.info_classes .img_tank,
 #assassino:checked~.info_classes .img_assassino,
 #mago:checked~.info_classes .img_mago,
+#lutador:checked~.info_classes .img_lutador,
 #atirador:checked~.info_classes .img_atirador,
 #curandeiro:checked~.info_classes .img_curandeiro,
 #suporte:checked~.info_classes .img_suporte {
@@ -119,6 +120,7 @@ input[type="radio"] {
 #tank:checked~.classes label[for="tank"],
 #assassino:checked~.classes label[for="assassino"],
 #mago:checked~.classes label[for="mago"],
+#lutador:checked~.classes label[for="lutador"],
 #atirador:checked~.classes label[for="atirador"],
 #curandeiro:checked~.classes label[for="curandeiro"],
 #suporte:checked~.classes label[for="suporte"] {

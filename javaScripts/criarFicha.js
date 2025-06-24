@@ -18,23 +18,28 @@ document.addEventListener("DOMContentLoaded", () => {
         carisma: 1,
         coragem: 1,
         empatia: 1,
-        vontade: 1,
-        bonusIniciativa: 0
+        vontade: 1
       }, data.atributos || {});
+
       Object.defineProperty(this.atributos, 'iniciativa', {
-        get: () => this.atributos.destreza + this.atributos.bonusIniciativa,
+        get: () => this.atributos.destreza,
         enumerable: true
       });
       this.detalhesSociais = data.detalhesSociais || {};
       this.detalhesCombate = data.detalhesCombate || {};
       this.imagem = data.imagem || null;
+      this.atributoCombateEscolhido = data.atributoCombateEscolhido || null;
+      this.atributosSociaisEscolhidos = data.atributosSociaisEscolhidos || [];
     }
 
     aumentarAtributo(attr, val = 1) {
       if (this.atributos.hasOwnProperty(attr)) {
+        console.log(`Antes de aumentar ${attr}:`, this.atributos[attr]);
         this.atributos[attr] += val;
+        console.log(`Depois de aumentar ${attr}:`, this.atributos[attr]);
       } else {
         this.atributos[attr] = val;
+        console.log(`Inicializando ${attr} com:`, val);
       }
     }
 
@@ -57,7 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     setClasse(classe, bonusPorClasse) {
+      // Se já tinha uma classe antes, remova seus bônus
+      if (this.classe && bonusPorClasse[this.classe]) {
+        for (const [attr, val] of Object.entries(bonusPorClasse[this.classe])) {
+          this.atributos[attr] -= val;
+        }
+      }
+
       this.classe = classe;
+
+      // Aplique os bônus da nova classe
       if (bonusPorClasse[classe]) {
         for (const [attr, val] of Object.entries(bonusPorClasse[classe])) {
           this.aumentarAtributo(attr, val);
@@ -66,7 +80,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     setCaminho(caminho, bonusPorCaminho) {
+      // Se já tinha um caminho antes, remova seus bônus
+      if (this.caminho && bonusPorCaminho[this.caminho]) {
+        for (const [attr, val] of Object.entries(bonusPorCaminho[this.caminho])) {
+          this.atributos[attr] -= val;
+        }
+      }
+
       this.caminho = caminho;
+
+      // Aplique os bônus do novo caminho
       if (bonusPorCaminho[caminho]) {
         for (const [attr, val] of Object.entries(bonusPorCaminho[caminho])) {
           this.aumentarAtributo(attr, val);
@@ -94,6 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
         atributos: atributosCopiados,
         detalhesSociais: this.detalhesSociais,
         detalhesCombate: this.detalhesCombate,
+        atributoCombateEscolhido: this.atributoCombateEscolhido,
+        atributosSociaisEscolhidos: this.atributosSociaisEscolhidos,
         imagem: this.imagem
       };
     }
@@ -142,17 +167,31 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData(form);
       const ficha = carregarFichaAtual();
 
+      // Remover bônus antigos se existirem
+      if (ficha.atributoCombateEscolhido) {
+        ficha.atributos[ficha.atributoCombateEscolhido] -= 1;
+      }
+      if (Array.isArray(ficha.atributosSociaisEscolhidos)) {
+        ficha.atributosSociaisEscolhidos.forEach(attr => {
+          ficha.atributos[attr] -= 1;
+        });
+      }
+
+      // Atributo de combate
       const atributoCombate = formData.get("atributoCombate");
       if (atributoCombate) {
         ficha.aumentarAtributo(atributoCombate, 1);
+        ficha.atributoCombateEscolhido = atributoCombate; // salvar para controlar depois
       }
 
+      // Atributos sociais
       const sociaisSelecionados = formData.getAll("atributoSocial");
       if (sociaisSelecionados.length !== 2) {
         return;
       }
 
       sociaisSelecionados.forEach(attr => ficha.aumentarAtributo(attr, 1));
+      ficha.atributosSociaisEscolhidos = sociaisSelecionados; // salvar para controle
 
       salvarFichaAtual(ficha);
       window.location.href = form.action;
@@ -162,17 +201,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
 
     const bonusPorCaminho = {
-      abundancia: { bonusCura: 1, recarga: 1 },
-      caca: { destreza: 1, proficiencia: 1 },
-      destruicao: { forca: 1, resistencia: 1 },
-      harmonia: { proficiencia: 1, recarga: 1 },
-      inexistencia: { recarga: 1, coragem: 1 },
-      permanencia: { resistencia: 1, destreza: 1 },
-      preservacao: { resistencia: 1, recarga: 1 },
-      propagacao: { vontade: 1, carisma: 1 },
-      conhecimento: { maestriaHonkai: 1, inteligencia: 1 },
-      controle: { carisma: 1, inteligencia: 1 },
-      equilibrio: { inteligencia: 1, vontade: 1 }
+      Abundância: { bonusCura: 1, recarga: 1 },
+      Caça: { destreza: 1, proficiencia: 1 },
+      Destruição: { forca: 1, resistencia: 1 },
+      Harmonia: { proficiencia: 1, recarga: 1 },
+      Inexistência: { recarga: 1, coragem: 1 },
+      Permanência: { resistencia: 1, destreza: 1 },
+      Preservação: { resistencia: 1, recarga: 1 },
+      Propagação: { vontade: 1, carisma: 1 },
+      Conhecimento: { maestriaHonkai: 1, inteligencia: 1 },
+      Controle: { carisma: 1, inteligencia: 1 },
+      Equilíbrio: { inteligencia: 1, vontade: 1 }
     };
 
     form.addEventListener("submit", (e) => {
@@ -185,9 +224,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!origemSelecionada || !caminhoSelecionado) return;
 
       const ficha = carregarFichaAtual();
+
+      // Coloque estes logs de debug aqui:
+      console.log("Ficha carregada do localStorage:", ficha);
+      console.log("Força antes de aplicar o bônus do caminho:", ficha.atributos.forca);
+
       ficha.setId();
       ficha.setOrigem(origemSelecionada);
+      console.log("Chamando setCaminho com caminho:", caminhoSelecionado);
       ficha.setCaminho(caminhoSelecionado, bonusPorCaminho);
+
+
+      console.log("Força após aplicar o bônus do caminho:", ficha.atributos.forca);
 
       salvarFichaAtual(ficha);
       window.location.href = form.action;
@@ -197,11 +245,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
 
     const bonusPorClasse = {
-      guerreiro: { forca: 1, resistencia: 1 },
-      tank: { resistencia: 2 },
-      assassino: { destreza: 1, proficiencia: 1 },
-      mago: { maestriaHonkai: 1, recarga: 1 },
-      lutador: { destreza: 1, resistencia: 1 },
+      Guerreiro: { forca: 1, destreza: 1 },
+      Tank: { resistencia: 2 },
+      Assassino: { destreza: 1, proficiencia: 1 },
+      Mago: { maestriaHonkai: 1, recarga: 1 },
+      Lutador: { destreza: 1, resistencia: 1 },
       atirador: { proficiencia: 1, recarga: 1 },
       curandeiro: { bonusCura: 2 },
       suporte: { recarga: 1, resistencia: 1 }
