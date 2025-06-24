@@ -50,7 +50,7 @@
                 <label for="cor_perfil">Cor de fundo</label>
                 <input type="color" id="cor_perfil">
                 <br><br>
-                <input type="submit" value="Salvar Configurações">
+                <input type="submit" value="Salvar e Voltar ao Menu">
         </form>
         <button onclick="logout()">Sair</button>
     </div>
@@ -58,6 +58,7 @@
         document.getElementById("dados_login").addEventListener("submit", function (event) {
             event.preventDefault();
             atualizar_dados();
+            window.location.href ="/html/index.html";
         });
     </script>
     <script>

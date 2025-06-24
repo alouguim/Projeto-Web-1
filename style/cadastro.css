@@ -1,0 +1,79 @@
+ html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-image: url('/Imagens/Wallpaper_star_rail.webp');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
+
+    .form-container {
+      background-image: url('/Imagens/starry-night-cadastro.jpg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid white;
+      color: white;
+    }
+
+    .form-control::placeholder {
+      color: #ccc;
+    }
+
+    .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      box-shadow: none;
+    }
+
+    .form-check-input {
+      background-color: #fff;
+    }
+
+    .radio-label {
+      margin: 0 5px;
+    }
+
+    .icone-preview {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+      margin: 10px auto;
+      display: block;
+    }
+
+    h1.titulo {
+      text-shadow: 2px 2px 4px black;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+
+    .btn-voltar {
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+      font-size: 14px;
+    }
+
+    .btn-voltar:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
