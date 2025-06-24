@@ -16,13 +16,31 @@
 <body>
   <script src="../javaScripts/cabecalho.js" defer></script>
 
-  <div class="guia">
+  <button id="menu-btn" class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#menuLateral" aria-controls="menuLateral">
+    <span style="font-size: 2rem;">☰</span>
+  </button>
+
+  <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral"
+    aria-labelledby="menuLateralLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="menuLateralLabel">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Início</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="atributos.html">Criar Ficha</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="fichas.html">Visualizar Fichas</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="login.html">login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="guia container-fluid py-3">
     <div class="item"><a href="atributos.html">Atributos</a></div>
-    <div class="item">━━━</div>
     <div class="item"><a href="origem.html">Origem</a></div>
-    <div class="item">━━━</div>
     <div class="item"><a href="classe.html">Classe</a></div>
-    <div class="item">━━━</div>
     <div class="item" id="selecionado"><a href="detalhes.html">Detalhes</a></div>
   </div>
 

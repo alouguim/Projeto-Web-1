@@ -12,6 +12,7 @@
     margin-left: var(--tamanho-da-side-bar);
     height: 100px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -20,15 +21,31 @@
     font-family: 'Anton', sans-serif;
 }
 
+.guia .item {
+    padding: 0.3rem 0.6rem;
+    position: relative;
+}
+
 .guia .item a {
     color: white;
     font-size: xx-large;
     text-decoration: none;
+    white-space: nowrap;
+}
+
+.guia .item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    border-right: 2px solid purple;
 }
 
 .guia .item#selecionado a {
     color: purple;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .conteudo {
@@ -41,17 +58,17 @@
     gap: 20px;
 }
 
-.conteudo h2{
+.conteudo h2 {
     font-family: 'Anton', sans-serif;
     color: purple;
     font-style: italic;
 }
 
-.conteudo p{
+.conteudo p {
     font-family: 'Open Sans', sans-serif;
 }
 
-.conteudo label{
+.conteudo label {
     font-family: 'Anton', sans-serif;
 }
 
@@ -88,21 +105,18 @@ input[type="radio"] {
     text-align: center;
     padding: 20px;
     gap: 1.5rem;
+    display: none;
 }
 
 .img_classes img {
-    width: 50%;                
-    height: auto;             
-    aspect-ratio: 16 / 9;     
-    object-fit: cover;        
-    border: 5px solid purple;  
+    width: 50%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 5px solid purple;
     border-radius: 10px;
     display: block;
-    margin: 0 auto;        
-}
-
-.img_classes {
-    display: none;
+    margin: 0 auto;
 }
 
 #guerreiro:checked~.info_classes .img_guerreiro,
@@ -139,9 +153,34 @@ input[type="radio"] {
     transition: all 0.3s ease;
     text-transform: uppercase;
 }
+
 .botao-escolher:hover {
     background-color: white;
     color: purple;
     border: 2px solid purple;
     transform: scale(1.05);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 767px) {
+    .guia {
+        height: auto;
+        margin-left: 0;
+        padding: 10px 5px;
+        gap: 8px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    .img_classes img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .container {
+        padding: 5%;
+        padding-top: 3%;
+    }
 }

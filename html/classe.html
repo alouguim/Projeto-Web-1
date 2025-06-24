@@ -17,15 +17,31 @@
 
 <body>
   <script src="../javaScripts/cabecalho.js" defer></script>
+  <button id="menu-btn" class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#menuLateral" aria-controls="menuLateral">
+    <span style="font-size: 2rem;">☰</span>
+  </button>
 
+  <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral"
+    aria-labelledby="menuLateralLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="menuLateralLabel">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Início</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="atributos.html">Criar Ficha</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="fichas.html">Visualizar Fichas</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="login.html">login</a></li>
+      </ul>
+    </div>
+  </div>
 
-  <div class="guia">
+  <div class="guia container-fluid py-3">
     <div class="item"><a href="atributos.html">Atributos</a></div>
-    <div class="item">━━━</div>
     <div class="item"><a href="origem.html">Origem</a></div>
-    <div class="item">━━━</div>
     <div class="item" id="selecionado"><a href="classe.html">Classe</a></div>
-    <div class="item">━━━</div>
     <div class="item"><a href="detalhes.html">Detalhes</a></div>
   </div>
   <form action="detalhes.html" method="GET">
@@ -53,8 +69,10 @@
       <div class="info_classes">
         <div class="img_classes img_guerreiro">
           <img src="../Imagens/Imagem-Guerreiro.png" alt="Guerreiro">
-          <p>O guerreiro é alguém que atua na linha de frente, tendo a sua disposição uma ampla variedade de armas e estilos de luta e possuindo um arquétipo de líder 
-            inspirador. Em geral, o Guerreiro busca manter o equilíbrio entre seus atributos, não sendo excepcional em nenhum deles mas não pecando em nenhum também.</p>
+          <p>O guerreiro é alguém que atua na linha de frente, tendo a sua disposição uma ampla variedade de armas e
+            estilos de luta e possuindo um arquétipo de líder
+            inspirador. Em geral, o Guerreiro busca manter o equilíbrio entre seus atributos, não sendo excepcional em
+            nenhum deles mas não pecando em nenhum também.</p>
           <p><strong>Concede +1 em Força e Destreza.</strong></p>
           <button type="submit" class="botao-escolher">Escolher</button>
         </div>
@@ -65,7 +83,7 @@
             eles geralmente se tornam uma muralha de músculos e sejam imóveis como uma montanha. Causar dano não é a
             prioridade do Tank, mas eles são fortes o bastante para não deixar isso ser um problema, em compensação,
             eles não são nem um pouco rápidos.</p>
-            <p><strong>Concede +2 em Resistência.</strong></p>
+          <p><strong>Concede +2 em Resistência.</strong></p>
           <button type="submit" class="botao-escolher">Escolher</button>
         </div>
         <div class="img_classes img_assassino">
@@ -131,4 +149,6 @@
     </div>
   </form>
   <script src="../javaScripts/criarFicha.js" type="module" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>

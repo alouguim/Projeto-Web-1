@@ -58,9 +58,34 @@ body {
 }
 
 .imagem img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  object-position: top;
+}
+
+/* Em telas pequenas (mobile) */
+@media (max-width: 961px) {
+  .imagem {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    max-height: 600px; /* limite a altura da div */
+    overflow: hidden;  /* esconde o que passar do limite */
+  }
+
+  .imagem img {
+    width: 100%;    
+    height: 100%;       /* ocupa toda a altura da div */
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 962px) {
+  .imagem {
+    width: 30vw;
     max-width: 30vw;
-    height: auto;
-    border-radius: 5px;
+    margin-left: 0;
+  }
 }
   
 .texto {
@@ -88,3 +113,9 @@ body {
     color: purple;
 }
 
+#menu-btn {
+  position: fixed;
+  top: 10px;
+  left: 15px;
+  z-index: 1050; /* Garante que o botão fique acima de tudo */
+}
