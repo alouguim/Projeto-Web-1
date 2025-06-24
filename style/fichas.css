@@ -2,6 +2,9 @@ body {
     background-image: url(../Imagens/backFicha.jpeg);
     background-size: cover;
     background-color: rgb(19,18,17);
+    background-position: center center;
+    background-repeat: no-repeat;
+
 }
 
 .fichario {
@@ -130,11 +133,12 @@ body {
 }
 
 #mensagem-vazia {
-    color:white; 
-    font-size: xx-large; 
-    font-family: Arial, Helvetica, sans-serif; 
-    margin-top: 20px; 
-    margin-left: 820px;
+    color: white;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
 }
 
 #fichas-row {
@@ -146,19 +150,20 @@ body {
 }
 
 #painel-edicao {
-    position: fixed;
-    top: 9vh;
-    right: 0;
-    width: 600px;
-    height: 100vh;
-    background-color: #222;
-    color: white;
-    padding: 15px;
-    border-radius: 8px 0 0 8px;
-    overflow-y: auto;
-    box-shadow: -3px 0 10px rgba(0,0,0,0.8);
-    z-index: 1000;
-    display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 600px;
+  height: 100vh;
+  background-color: #222;
+  color: white;
+  padding: 15px;
+  border-radius: 8px 0 0 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.8);
+  z-index: 1000;
+  display: none;
 }
 
 #painel-edicao h2 {
@@ -211,4 +216,55 @@ fieldset:nth-of-type(2) {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .ficha {
+    width: 95%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .main-ficha {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .art {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .buttons {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .buta, .butb {
+    min-height: 60px;
+    min-width: 50%;
+    font-size: 0.9rem;
+  }
+
+  .listainfo {
+    font-size: medium;
+    margin: 10px;
+    column-gap: 20px;
+  }
+
+  #fichas-row {
+    margin-right: 0;
+    justify-content: center;
+  }
+
+  #painel-edicao {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  #menu-btn {
+    margin: 10px;
+  }
 }
