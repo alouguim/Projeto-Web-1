@@ -45,7 +45,7 @@ export function logar() {
             const user = userCredential.user;
             alert("Logado com sucesso!");
             localStorage.setItem("logado", "true");
-            window.location.href = "/html/index.html";
+            window.location.href = "../html/index.html";
         })
         .catch((error) => {
             console.error("Erro ao logar:", error);

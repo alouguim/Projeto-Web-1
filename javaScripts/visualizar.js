@@ -1,6 +1,11 @@
 import { doc, getDoc, collection } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+
+// Importa a classe Ficha, assumindo que ela está em './ficha.js' no mesmo nível
 import { Ficha } from './ficha.js';
-import { db } from './firebase.js'
+
+// Importa a instância 'db' do seu arquivo centralizado firebase.js
+import { db } from './firebase.js';
+
 
 const FICHAS_COLLECTION_NAME = 'fichas';
 const fichasCol = collection(db, FICHAS_COLLECTION_NAME);

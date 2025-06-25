@@ -1,9 +1,16 @@
 import { Ficha } from './ficha.js';
-import { db } from './firebase.js'
-import { collection, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+import { db, auth } from './firebase.js';
+import { collection, getDocs, doc, updateDoc, deleteDoc, query, where, getDoc } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
+
+const ADMIN_UID = 'u8KVCrrHp3M5XuZwZ986PdRNRZ53';
 
 const FICHAS_COLLECTION_NAME = 'fichas';
 const fichasCol = collection(db, FICHAS_COLLECTION_NAME);
+
+// --- NOVO: Nome da coleção de usuários (consistente com auth.js/regras) ---
+const USERS_COLLECTION_NAME = 'usuarios'; // Você usa 'usuarios' nas regras e no cabecalho.js
+const usersCol = collection(db, USERS_COLLECTION_NAME);
 
 const lista = document.getElementById('lista-fichas');
 const fichasRow = document.getElementById('fichas-row');
@@ -14,6 +21,24 @@ const formEdicao = document.getElementById('form-edicao');
 const btnCancelar = document.getElementById('btn-cancelar');
 
 let fichaAtual = null;
+let currentUser = null;
+let userNamesMap = new Map(); // NOVO: Mapa para armazenar UID -> Nome do Usuário
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        currentUser = user;
+        console.log("Usuário logado em loadFichas.js:", currentUser.email, currentUser.uid);
+        loadFichas();
+    } else {
+        currentUser = null;
+        console.log("Nenhum usuário logado em loadFichas.js.");
+        fichasRow.innerHTML = '';
+        mensagemVazia.textContent = "Faça login para ver suas fichas.";
+        mensagemVazia.style.display = 'block';
+        document.body.style.cssText = "background-blend-mode: luminosity;";
+        fecharPainelEdicao();
+    }
+});
 
 function carregarEstilosCSS(...caminhos) {
     caminhos.forEach(caminho => {
@@ -37,6 +62,9 @@ function showFicha(ficha) {
     const container = document.createElement("div");
     container.className = "ficha";
 
+    // --- MUDANÇA AQUI: Usar userNamesMap para obter o nome do criador ---
+    const criadorNome = userNamesMap.get(ficha.usuario) || 'Desconhecido';
+
     container.innerHTML = `
         <div class="main-ficha">
             <a href="visualizar.html?id=${ficha.id}" class="artbut">
@@ -44,6 +72,7 @@ function showFicha(ficha) {
                 <ul class="listainfo">
                     <li style="font-weight: bold;">${ficha.detalhesSociais.nomePersonagem}</li>
                     <li style="opacity: 75%; font-style: italic;">${ficha.classe || "Classe Desconhecida"}</li>
+                    <li style="font-size: 0.8em; color: gray;">${criadorNome}</li>
                 </ul>
             </a>
             <div class="buttons">
@@ -76,15 +105,71 @@ function showFicha(ficha) {
 
 async function loadFichas() {
     fichasRow.innerHTML = '';
+    userNamesMap.clear(); // Limpa o mapa a cada carregamento
+
+    if (!currentUser) {
+        console.log("loadFichas: Nenhum usuário logado. Não carregando fichas.");
+        mensagemVazia.textContent = "Faça login para ver suas fichas.";
+        mensagemVazia.style.display = 'block';
+        document.body.style.cssText = "background-blend-mode: luminosity;";
+        fecharPainelEdicao();
+        return;
+    }
 
     try {
         const fichasCarregadas = [];
-        const querySnapshot = await getDocs(fichasCol);
+        let q;
+        let uidsParaBuscarNomes = new Set(); // NOVO: Conjunto para coletar UIDs únicos
+
+        if (currentUser.uid === ADMIN_UID) {
+            console.log("Admin logado. Carregando TODAS as fichas.");
+            q = fichasCol;
+        } else {
+            console.log("Usuário normal logado. Carregando fichas do próprio usuário.");
+            q = query(fichasCol, where("usuario", "==", currentUser.uid));
+        }
+
+        const querySnapshot = await getDocs(q);
+
         querySnapshot.forEach((docSnap) => {
-            fichasCarregadas.push(new Ficha({ id: docSnap.id, ...docSnap.data() }));
+            const fichaData = docSnap.data();
+            fichasCarregadas.push(new Ficha({ id: docSnap.id, ...fichaData }));
+            if (fichaData.usuario) {
+                uidsParaBuscarNomes.add(fichaData.usuario); // Adiciona UID ao conjunto
+            }
         });
 
+        // --- NOVO: Buscar nomes dos usuários a partir dos UIDs coletados ---
+        if (uidsParaBuscarNomes.size > 0) {
+            // Firestore permite 'where(field, 'in', array)' para até 10 elementos.
+            // Para mais, precisaria de múltiplas queries. Aqui, um loop simples é mais genérico.
+            const uidsArray = Array.from(uidsParaBuscarNomes);
+            
+            // Loop para buscar cada nome de usuário (pode ser otimizado com query 'in' se for <= 10)
+            for (const uid of uidsArray) {
+                try {
+                    const userDocRef = doc(db, USERS_COLLECTION_NAME, uid);
+                    const userDocSnap = await getDoc(userDocRef);
+                    if (userDocSnap.exists()) {
+                        userNamesMap.set(uid, userDocSnap.data().nome || uid); // Armazena o nome (ou UID como fallback)
+                    } else {
+                        userNamesMap.set(uid, 'Usuário Removido (' + uid.substring(0, 5) + '...)'); // Para UIDs sem perfil
+                    }
+                } catch (userFetchError) {
+                    console.error("Erro ao buscar nome para UID:", uid, userFetchError);
+                    userNamesMap.set(uid, 'Erro ao carregar (' + uid.substring(0, 5) + '...)');
+                }
+            }
+        }
+        // --- Fim da busca de nomes ---
+
+
         if (fichasCarregadas.length === 0) {
+            if (currentUser.uid === ADMIN_UID) {
+                 mensagemVazia.textContent = "Não há fichas cadastradas no total.";
+            } else {
+                 mensagemVazia.textContent = "Você ainda não tem fichas cadastradas.";
+            }
             mensagemVazia.style.display = 'block';
             document.body.style.cssText = "background-blend-mode: luminosity;";
             fecharPainelEdicao();
@@ -98,7 +183,8 @@ async function loadFichas() {
         }
     } catch (error) {
         console.error("Erro ao carregar fichas do Firestore:", error);
-        alert("Não foi possível carregar as fichas. Verifique sua conexão e as regras do Firebase.");
+        alert("Não foi possível carregar as fichas. Verifique sua conexão ou as regras do Firebase.");
+        mensagemVazia.textContent = "Erro ao carregar fichas. Tente novamente.";
         mensagemVazia.style.display = 'block';
         document.body.style.cssText = "background-blend-mode: luminosity;";
     }
@@ -205,5 +291,3 @@ function fecharPainelEdicao() {
     painelEdicao.style.display = 'none';
     fichaAtual = null;
 }
-
-loadFichas();
