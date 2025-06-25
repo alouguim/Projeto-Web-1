@@ -19,11 +19,10 @@ window.addEventListener("DOMContentLoaded", async () => {
             const linkUsuario = document.getElementById("usuario-logado-menu");
             if (linkUsuario) {
                 linkUsuario.innerText = nome;
-                linkUsuario.href = "../html/perfil.html"; // ou qualquer página de perfil
+                linkUsuario.href = "../html/perfil.html";
             }
         }
 
-        // Espera o HTML ser totalmente injetado antes de pegar os elementos
         const menuBtn = document.getElementById("menu-btn");
         const offcanvasElement = document.getElementById("menuLateral");
 

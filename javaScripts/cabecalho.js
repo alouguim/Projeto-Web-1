@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
 
-// Firebase inicializado previamente em firebase.js
+
 import { auth, db } from "../javaScripts/firebase.js";
 
 window.addEventListener("DOMContentLoaded", async () => {
@@ -17,10 +17,9 @@ window.addEventListener("DOMContentLoaded", async () => {
             header.classList.add("d-none", "d-lg-block");
         }
 
-        // Verifica com Firebase se há usuário logado
         onAuthStateChanged(auth, async (user) => {
             if (user) {
-                let nomeExibido = user.email; // fallback
+                let nomeExibido = user.email;
 
                 try {
                     const docRef = doc(db, "usuarios", user.uid);

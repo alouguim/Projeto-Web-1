@@ -22,15 +22,14 @@ const firebaseConfig = {
 let app;
 if (!getApps().length) {
     app = initializeApp(firebaseConfig);
-    // Opcional: Se quiser usar Analytics, inicialize aqui, caso contrário remova.
-    // getAnalytics(app); 
+
 } else {
-    app = getApp(); // Se já existe, pega a instância existente
+    app = getApp();
 }
 
 
-// Exporta as instâncias dos serviços do Firebase
+
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 export const auth = getAuth(app);
-export const firebaseApp = app; // Se precisar da instância do app em si
+export const firebaseApp = app;

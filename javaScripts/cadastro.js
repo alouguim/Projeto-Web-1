@@ -35,11 +35,10 @@ export function logar() {
     const dados = document.getElementById("dados_login");
     const dados_login = new FormData(dados);
 
-    const email_ou_nome = dados_login.get("nome"); // aqui espera o email (ou você pode ajustar)
+    const email_ou_nome = dados_login.get("nome");
     const senha = dados_login.get("senha");
 
-    // Firebase Auth não suporta login por nome, apenas email/senha.
-    // Então certifique-se que "nome" do form seja um email.
+
     signInWithEmailAndPassword(auth, email_ou_nome, senha)
         .then((userCredential) => {
             const user = userCredential.user;

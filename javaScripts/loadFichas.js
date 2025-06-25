@@ -8,8 +8,8 @@ const ADMIN_UID = 'u8KVCrrHp3M5XuZwZ986PdRNRZ53';
 const FICHAS_COLLECTION_NAME = 'fichas';
 const fichasCol = collection(db, FICHAS_COLLECTION_NAME);
 
-// --- NOVO: Nome da coleção de usuários (consistente com auth.js/regras) ---
-const USERS_COLLECTION_NAME = 'usuarios'; // Você usa 'usuarios' nas regras e no cabecalho.js
+
+const USERS_COLLECTION_NAME = 'usuarios';
 const usersCol = collection(db, USERS_COLLECTION_NAME);
 
 const lista = document.getElementById('lista-fichas');
@@ -22,7 +22,7 @@ const btnCancelar = document.getElementById('btn-cancelar');
 
 let fichaAtual = null;
 let currentUser = null;
-let userNamesMap = new Map(); // NOVO: Mapa para armazenar UID -> Nome do Usuário
+let userNamesMap = new Map();
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -62,7 +62,6 @@ function showFicha(ficha) {
     const container = document.createElement("div");
     container.className = "ficha";
 
-    // --- MUDANÇA AQUI: Usar userNamesMap para obter o nome do criador ---
     const criadorNome = userNamesMap.get(ficha.usuario) || 'Desconhecido';
 
     container.innerHTML = `
@@ -105,7 +104,7 @@ function showFicha(ficha) {
 
 async function loadFichas() {
     fichasRow.innerHTML = '';
-    userNamesMap.clear(); // Limpa o mapa a cada carregamento
+    userNamesMap.clear();
 
     if (!currentUser) {
         console.log("loadFichas: Nenhum usuário logado. Não carregando fichas.");
@@ -119,7 +118,7 @@ async function loadFichas() {
     try {
         const fichasCarregadas = [];
         let q;
-        let uidsParaBuscarNomes = new Set(); // NOVO: Conjunto para coletar UIDs únicos
+        let uidsParaBuscarNomes = new Set();
 
         if (currentUser.uid === ADMIN_UID) {
             console.log("Admin logado. Carregando TODAS as fichas.");
@@ -135,25 +134,23 @@ async function loadFichas() {
             const fichaData = docSnap.data();
             fichasCarregadas.push(new Ficha({ id: docSnap.id, ...fichaData }));
             if (fichaData.usuario) {
-                uidsParaBuscarNomes.add(fichaData.usuario); // Adiciona UID ao conjunto
+                uidsParaBuscarNomes.add(fichaData.usuario);
             }
         });
 
-        // --- NOVO: Buscar nomes dos usuários a partir dos UIDs coletados ---
         if (uidsParaBuscarNomes.size > 0) {
-            // Firestore permite 'where(field, 'in', array)' para até 10 elementos.
-            // Para mais, precisaria de múltiplas queries. Aqui, um loop simples é mais genérico.
+
             const uidsArray = Array.from(uidsParaBuscarNomes);
             
-            // Loop para buscar cada nome de usuário (pode ser otimizado com query 'in' se for <= 10)
+
             for (const uid of uidsArray) {
                 try {
                     const userDocRef = doc(db, USERS_COLLECTION_NAME, uid);
                     const userDocSnap = await getDoc(userDocRef);
                     if (userDocSnap.exists()) {
-                        userNamesMap.set(uid, userDocSnap.data().nome || uid); // Armazena o nome (ou UID como fallback)
+                        userNamesMap.set(uid, userDocSnap.data().nome || uid);
                     } else {
-                        userNamesMap.set(uid, 'Usuário Removido (' + uid.substring(0, 5) + '...)'); // Para UIDs sem perfil
+                        userNamesMap.set(uid, 'Usuário Removido (' + uid.substring(0, 5) + '...)');
                     }
                 } catch (userFetchError) {
                     console.error("Erro ao buscar nome para UID:", uid, userFetchError);
@@ -161,8 +158,6 @@ async function loadFichas() {
                 }
             }
         }
-        // --- Fim da busca de nomes ---
-
 
         if (fichasCarregadas.length === 0) {
             if (currentUser.uid === ADMIN_UID) {

@@ -1,11 +1,6 @@
 import { Ficha } from './ficha.js';
-import { db, auth } from './firebase.js'; // Ajuste o caminho conforme necessário
+import { db, auth } from './firebase.js';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
-// REMOVIDO: import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-storage.js";
-
-
-// REMOVIDO: Inicialização do Storage aqui (se estivesse)
-// const storage = getStorage(app);
 
 
 let modoEdicao = null;
@@ -15,7 +10,7 @@ const fichasCol = collection(db, FICHAS_COLLECTION_NAME);
 
 document.addEventListener("DOMContentLoaded", () => {
     // REMOVIDO: Função uploadImage
-    // async function uploadImage(file, filePath) { /* ... */ }
+
 
     async function carregarTodasFichas() {
         try {
@@ -212,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else if (page === "detalhes.html") {
         const form = document.querySelector("form");
-        const inputImagem = document.getElementById("imagem-personagem"); // Este input ainda precisa existir no HTML, mas não será usado
+        const inputImagem = document.getElementById("imagem-personagem");
 
         const ficha = carregarFichaAtual();
         if (ficha.detalhesSociais) {
@@ -267,16 +262,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            ficha.imagem = null; // Sempre define imagem como null
+            ficha.imagem = null;
 
-            // --- ADICIONE ESTES CONSOLE.LOGS BEM AQUI ---
             console.log("--- DEBUG DE CRIAÇÃO DE FICHA ---");
             console.log("currentUser:", currentUser);
             console.log("currentUser.uid:", currentUser ? currentUser.uid : "N/A");
             console.log("ficha.usuario ANTES de adicionarFicha:", ficha.usuario);
             console.log("ficha.toJSON() ANTES de adicionarFicha:", ficha.toJSON());
             console.log("----------------------------------");
-            // --- FIM DOS CONSOLE.LOGS ---
 
             try {
                 const newId = await adicionarFicha(ficha);
