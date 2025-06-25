@@ -182,9 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
             Assassino: { destreza: 1, proficiencia: 1 },
             Mago: { maestriaHonkai: 1, recarga: 1 },
             Lutador: { destreza: 1, resistencia: 1 },
-            atirador: { proficiencia: 1, recarga: 1 },
-            curandeiro: { bonusCura: 2 },
-            suporte: { recarga: 1, resistencia: 1 }
+            Atirador: { proficiencia: 1, recarga: 1 },
+            Curandeiro: { bonusCura: 2 },
+            Suporte: { recarga: 1, resistencia: 1 }
         };
 
         const ficha = carregarFichaAtual();

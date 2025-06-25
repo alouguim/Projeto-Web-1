@@ -1,7 +1,8 @@
 // perfil.js
 import { auth, db } from "./firebase.js";
 import {
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut
 } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
 
 import {
@@ -62,9 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
     mudar_icon(classe);
   });
 
-  document.getElementById("logout_btn").addEventListener("click", () => {
-    localStorage.removeItem("logado");
-    window.location.href = "/html/login.html";
+  document.getElementById("logout_btn").addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("logado");
+      window.location.href = "/html/login.html";
+    } catch (error) {
+      console.error("Erro ao deslogar: ", error)
+      alert("Erro ao sair.")
+    }
   });
 });
 
