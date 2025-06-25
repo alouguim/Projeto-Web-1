@@ -2,115 +2,56 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    <link rel="stylesheet" href="../style/root.css">
-    <link rel="stylesheet" href="../style/perfil.css">
-    <link rel="icon" type="image/png" href="../Imagens/Clara_Sticker_01.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+  <link rel="stylesheet" href="../style/root.css">
+  <link rel="stylesheet" href="../style/perfil.css">
+  <link rel="icon" href="../Imagens/Clara_Sticker_01.png" type="image/png">
 </head>
 
 <body>
-    <br><br><br>
+  <br><br><br>
 
-    <div class="container" id="perfil_usuario">
-        <div class="nomes">
-            <h1 id="titulo">PERFIL</h1>
-        </div>
-        <form action="perfil.html" target="_self" id='dados_login'>
-            <div class="form-group">
-
-                <img src="/Imagens/token-mascote.png" alt="mascote" name="foto_perfil" id="icon" height="25%"
-                    width="25%">
-                <br>
-                <label for="nome"> Nome do Usuário: </label><br>
-                <input type="text" id="nome" placeholder="Usuario" style="text-align: center;"><br />
-                <label for="email"> Email: </label><br>
-                <input type="text" id="email" placeholder="Email" style="text-align: center;"><br />
-
-                <div id="dados">
-                    <label for="guerreiro">Ícone de Usuário</label><br>
-                    <input type="radio" id="guerreiro" name="classe" value="guerreiro">
-                    <label for="guerreiro">Guerreiro</label>
-                    <input type="radio" id="tank" name="classe" value="tank">
-                    <label for="tank">Tank</label>
-                    <input type="radio" id="assassino" name="classe" value="assassino">
-                    <label for="assassino">Assassino</label>
-                    <input type="radio" id="mago" name="classe" value="mago">
-                    <label for="mago">Mago</label>
-                    <input type="radio" id="atirador" name="classe" value="atirador">
-                    <label for="atirador">Atirador</label>
-                    <input type="radio" id="curandeiro" name="classe" value="curandeiro">
-                    <label for="curandeiro">Curandeiro</label>
-                    <input type="radio" id="suporte" name="classe" value="suporte">
-                    <label for="suporte">Suporte</label>
-                </div>
-
-                <br><br>
-                <label for="cor_perfil">Cor de fundo</label>
-                <input type="color" id="cor_perfil">
-                <br><br>
-                <input type="submit" value="Salvar e Voltar ao Menu">
-        </form>
-        <button onclick="logout()">Sair</button>
+  <div class="container" id="perfil_usuario">
+    <div class="nomes">
+      <h1 id="titulo">PERFIL</h1>
     </div>
-    <script>
-        document.getElementById("dados_login").addEventListener("submit", function (event) {
-            event.preventDefault();
-            atualizar_dados();
-            window.location.href ="/html/index.html";
-        });
-    </script>
-    <script>
-        document.getElementById("cor_perfil").addEventListener("input", function () {
-            const cor = this.value
-            document.getElementById("perfil_usuario").style.backgroundColor = cor
-        }); 
-    </script>
-    <script>
-        document.getElementById("dados").addEventListener("change", function () {
-            const id_check = document.querySelector('input[name="classe"]:checked').value
-            if (id_check == "guerreiro") {
-                document.getElementById("icon").src = "/Imagens/Token-guerreiro.png"
-                document.getElementById("icon").alt = "Guerreiro"
-            }
 
-            if (id_check == "tank") {
-                document.getElementById("icon").src = "/Imagens/Token-tank.png"
-                document.getElementById("icon").alt = "Tank"
-            }
-            if (id_check == "assassino") {
-                document.getElementById("icon").src = "/Imagens/token-assassino.png"
-                document.getElementById("icon").alt = "Assassino"
-            }
-            if (id_check == "mago") {
-                document.getElementById("icon").src = "/Imagens/token-mago.png"
-                document.getElementById("icon").alt = "Mago"
-            }
-            if (id_check == "atirador") {
-                document.getElementById("icon").src = "/Imagens/token-atirador.png"
-                document.getElementById("icon").alt = "Atirador"
-            }
-            if (id_check == "curandeiro") {
-                document.getElementById("icon").src = "/Imagens/Token-curandeiro.png"
-                document.getElementById("icon").alt = "Guerreiro"
-            }
-            if (id_check == "suporte") {
-                document.getElementById("icon").src = "/Imagens/token-suporte.png"
-                document.getElementById("icon").alt = "Suporte"
-            }
-        }); 
-    </script>
-    <script>
-        function logout() {
-            localStorage.clear()
-            window.location.href = "/html/login.html"
-        }
-    </script>
-    </script>
-    <script src="/javaScripts/perfil.js"></script>
-    <script>preencher_perfil()</script>
+    <form id="dados_login">
+      <div class="form-group">
+        <img src="/Imagens/token-mascote.png" alt="mascote" id="icon" height="25%" width="25%">
+        <br>
+        <label for="nome"> Nome do Usuário: </label><br>
+        <input type="text" id="nome" placeholder="Usuário" style="text-align: center;"><br />
 
+        <label for="email"> Email: </label><br>
+        <input type="text" id="email" placeholder="Email" style="text-align: center;"><br />
+
+        <div id="dados">
+          <label>Ícone de Usuário:</label><br>
+          <div class="radios">
+            <label><input type="radio" name="classe" value="guerreiro"> Guerreiro</label>
+            <label><input type="radio" name="classe" value="tank"> Tank</label>
+            <label><input type="radio" name="classe" value="assassino"> Assassino</label>
+            <label><input type="radio" name="classe" value="mago"> Mago</label>
+            <label><input type="radio" name="classe" value="atirador"> Atirador</label>
+            <label><input type="radio" name="classe" value="curandeiro"> Curandeiro</label>
+            <label><input type="radio" name="classe" value="suporte"> Suporte</label>
+          </div>
+        </div>
+
+        <br><br>
+        <label for="cor_perfil">Cor de fundo</label>
+        <input type="color" id="cor_perfil">
+        <br><br>
+        <input type="submit" value="Salvar e Voltar ao Menu">
+      </div>
+    </form>
+    <button id="logout_btn">Sair</button>
+  </div>
+
+  <script type="module" src="/javaScripts/perfil.js"></script>
 </body>
 
 </html>

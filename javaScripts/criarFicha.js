@@ -1,23 +1,12 @@
 import { Ficha } from './ficha.js';
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
-import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-storage.js";
+import { db, auth } from './firebase.js'; // Ajuste o caminho conforme necessário
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+// REMOVIDO: import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-storage.js";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCTRckw_dyNjk1IN6wIn9KJy77UqphVnCI",
-    authDomain: "genesisrpg-dd66f.firebaseapp.com",
-    projectId: "genesisrpg-dd66f",
-    storageBucket: "genesisrpg-dd66f.firebasestorage.app",
-    messagingSenderId: "462567056660",
-    appId: "1:462567056660:web:d987330cc5753659ee4e01",
-    measurementId: "G-Y25HNE4R8L"
-};
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
+// REMOVIDO: Inicialização do Storage aqui (se estivesse)
+// const storage = getStorage(app);
+
 
 let modoEdicao = null;
 
@@ -25,12 +14,8 @@ const FICHAS_COLLECTION_NAME = 'fichas';
 const fichasCol = collection(db, FICHAS_COLLECTION_NAME);
 
 document.addEventListener("DOMContentLoaded", () => {
-    async function uploadImage(file, filePath) {
-        const storageRef = ref(storage, filePath);
-        const snapshot = await uploadBytes(storageRef, file);
-        const downloadURL = await getDownloadURL(snapshot.ref);
-        return downloadURL;
-    }
+    // REMOVIDO: Função uploadImage
+    // async function uploadImage(file, filePath) { /* ... */ }
 
     async function carregarTodasFichas() {
         try {
@@ -227,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else if (page === "detalhes.html") {
         const form = document.querySelector("form");
-        const inputImagem = document.getElementById("imagem-personagem");
+        const inputImagem = document.getElementById("imagem-personagem"); // Este input ainda precisa existir no HTML, mas não será usado
 
         const ficha = carregarFichaAtual();
         if (ficha.detalhesSociais) {
@@ -269,44 +254,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 manifestacao: formData.get("manifestacao")
             };
 
-            ficha.setDetalhesSociais(detalhesSociais);
+             ficha.setDetalhesSociais(detalhesSociais);
             ficha.setDetalhesCombate(detalhesCombate);
 
-            const file = inputImagem.files[0];
+            const currentUser = auth.currentUser;
 
-            if (file) {
-                try {
-                    const fileName = `${Date.now()}_${file.name}`;
-                    const filePath = `imagens_fichas/${fileName}`;
-
-                    ficha.imagem = await uploadImage(file, filePath);
-
-                    const newId = await adicionarFicha(ficha);
-                    ficha.id = newId;
-                    localStorage.removeItem("fichaAtual");
-
-                    alert("Ficha criada com sucesso!");
-                    window.location.href = form.action;
-                } catch (error) {
-                    console.error("Erro ao finalizar ficha com imagem:", error);
-                    alert("Não foi possível criar a ficha com imagem. Verifique o console para mais detalhes.");
-                }
+            if (currentUser) {
+                ficha.usuario = currentUser.uid;
             } else {
-                ficha.imagem = null;
+                alert("Você precisa estar logado para criar uma ficha!");
+                window.location.href = "../html/login.html";
+                return;
+            }
 
-                try {
-                    const newId = await adicionarFicha(ficha);
-                    ficha.id = newId;
-                    localStorage.removeItem("fichaAtual");
+            ficha.imagem = null; // Sempre define imagem como null
 
-                    alert("Ficha criada com sucesso!");
-                    window.location.href = form.action;
-                } catch (error) {
-                    console.error("Erro ao finalizar ficha sem imagem:", error);
-                    alert("Não foi possível criar a ficha sem imagem. Verifique o console para mais detalhes.");
-                }
+            // --- ADICIONE ESTES CONSOLE.LOGS BEM AQUI ---
+            console.log("--- DEBUG DE CRIAÇÃO DE FICHA ---");
+            console.log("currentUser:", currentUser);
+            console.log("currentUser.uid:", currentUser ? currentUser.uid : "N/A");
+            console.log("ficha.usuario ANTES de adicionarFicha:", ficha.usuario);
+            console.log("ficha.toJSON() ANTES de adicionarFicha:", ficha.toJSON());
+            console.log("----------------------------------");
+            // --- FIM DOS CONSOLE.LOGS ---
+
+            try {
+                const newId = await adicionarFicha(ficha);
+                ficha.id = newId;
+                localStorage.removeItem("fichaAtual");
+
+                alert("Ficha criada com sucesso!");
+                window.location.href = form.action;
+            } catch (error) {
+                console.error("Erro ao finalizar ficha:", error);
+                alert("Não foi possível criar a ficha. Verifique o console para mais detalhes.");
             }
         });
+
     } else {
         const fichasContainer = document.getElementById('lista-de-fichas');
         if (fichasContainer) {

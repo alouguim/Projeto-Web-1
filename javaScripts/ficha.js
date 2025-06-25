@@ -5,6 +5,7 @@ export class Ficha {
         this.origem = data.origem || "";
         this.classe = data.classe || "";
         this.caminho = data.caminho || "";
+        this.usuario = data.usuario || "";
         this.atributos = Object.assign({
             forca: 1,
             resistencia: 1,
@@ -94,7 +95,8 @@ export class Ficha {
             detalhesCombate: this.detalhesCombate,
             atributoCombateEscolhido: this.atributoCombateEscolhido,
             atributosSociaisEscolhidos: this.atributosSociaisEscolhidos,
-            imagem: this.imagem
+            imagem: this.imagem,
+            usuario: this.usuario
         };
     }
 }
