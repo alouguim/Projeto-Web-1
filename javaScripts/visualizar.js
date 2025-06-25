@@ -1,19 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
-import { getFirestore, doc, getDoc, collection } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+import { doc, getDoc, collection } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
 import { Ficha } from './ficha.js';
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCTRckw_dyNjk1IN6wIn9KJy77UqphVnCI",
-    authDomain: "genesisrpg-dd66f.firebaseapp.com",
-    projectId: "genesisrpg-dd66f",
-    storageBucket: "genesisrpg-dd66f.firebasestorage.app",
-    messagingSenderId: "462567056660",
-    appId: "1:462567056660:web:d987330cc5753659ee4e01",
-    measurementId: "G-Y25HNE4R8L"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { db } from './firebase.js'
 
 const FICHAS_COLLECTION_NAME = 'fichas';
 const fichasCol = collection(db, FICHAS_COLLECTION_NAME);

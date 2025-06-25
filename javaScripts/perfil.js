@@ -1,69 +1,126 @@
-function preencher_perfil() {
-    const dados_cadastro = window.localStorage.getItem("dados_usuario")
-    const dados_cadastro_atual = JSON.parse(dados_cadastro)
+// perfil.js
+import { auth, db } from "./firebase.js";
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
 
-    document.getElementById("nome").value = dados_cadastro_atual['nome']
-    document.getElementById("email").value =dados_cadastro_atual['email']
-    mudar_background(dados_cadastro_atual['fundo'])
-    mudar_icon(dados_cadastro_atual['icon'])
+import {
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+
+let usuarioRef = null;
+let usuarioExiste = false;
+
+document.addEventListener("DOMContentLoaded", () => {
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      alert("Usuário não logado.");
+      window.location.href = "/html/login.html";
+      return;
+    }
+
+    const uid = user.uid;
+    const email = user.email;
+    usuarioRef = doc(db, "usuarios", uid);
+
+    document.getElementById("email").value = email;
+    document.getElementById("email").disabled = true;
+
+    try {
+      const docSnap = await getDoc(usuarioRef);
+      if (docSnap.exists()) {
+        usuarioExiste = true;
+        const dados = docSnap.data();
+
+        document.getElementById("nome").value = dados.nome || "";
+        mudar_background(dados.fundo || "#ffffff");
+        mudar_icon(dados.icon || "guerreiro");
+
+        const radio = document.querySelector(`input[name="classe"][value="${dados.icon}"]`);
+        if (radio) radio.checked = true;
+      }
+    } catch (erro) {
+      console.error("Erro ao carregar perfil:", erro);
+    }
+  });
+
+  document.getElementById("dados_login").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    await salvarDados();
+    window.location.href = "/html/index.html";
+  });
+
+  document.getElementById("cor_perfil").addEventListener("input", (e) => {
+    mudar_background(e.target.value);
+  });
+
+  document.getElementById("dados").addEventListener("change", () => {
+    const classe = document.querySelector('input[name="classe"]:checked')?.value;
+    mudar_icon(classe);
+  });
+
+  document.getElementById("logout_btn").addEventListener("click", () => {
+    localStorage.removeItem("logado");
+    window.location.href = "/html/login.html";
+  });
+});
+
+async function salvarDados() {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  const nome = document.getElementById("nome").value;
+  const cor = document.getElementById("cor_perfil").value;
+  const classe = document.querySelector('input[name="classe"]:checked')?.value || "guerreiro";
+
+  const dadosParaSalvar = {
+    nome,
+    email: user.email,
+    fundo: cor,
+    icon: classe,
+  };
+
+  const usuarioRef = doc(db, "usuarios", user.uid);
+
+  try {
+    const docSnap = await getDoc(usuarioRef);
+
+    if (docSnap.exists()) {
+      await updateDoc(usuarioRef, dadosParaSalvar);
+    } else {
+      await setDoc(usuarioRef, dadosParaSalvar);
+    }
+
+    alert("Dados salvos com sucesso!");
+  } catch (error) {
+    console.error("Erro ao salvar dados:", error);
+    alert("Erro ao salvar dados: " + error.message);
+  }
 }
 
-function mudar_background(cor_desejada) {
-    document.getElementById("perfil_usuario").style.backgroundColor = cor_desejada
-    document.getElementById("cor_perfil").value = cor_desejada
-    return
+function mudar_background(cor) {
+  document.getElementById("perfil_usuario").style.backgroundColor = cor;
+  document.getElementById("cor_perfil").value = cor;
 }
 
-function mudar_icon(icon_desejado) {
+function mudar_icon(icon) {
+  const map = {
+    guerreiro: ["Token-guerreiro.png", "Guerreiro"],
+    tank: ["Token-tank.png", "Tank"],
+    assassino: ["token-assassino.png", "Assassino"],
+    mago: ["token-mago.png", "Mago"],
+    atirador: ["token-atirador.png", "Atirador"],
+    curandeiro: ["Token-curandeiro.png", "Curandeiro"],
+    suporte: ["token-suporte.png", "Suporte"],
+  };
 
-
-    if (icon_desejado == "guerreiro") {
-        document.getElementById("icon").src = "/Imagens/Token-guerreiro.png"
-        document.getElementById("icon").alt = "Guerreiro"
-    }
-
-    if (icon_desejado == "tank") {
-        document.getElementById("icon").src = "/Imagens/Token-tank.png"
-        document.getElementById("icon").alt = "Tank"
-    }
-    if (icon_desejado == "assassino") {
-        document.getElementById("icon").src = "/Imagens/token-assassino.png"
-        document.getElementById("icon").alt = "Assassino"
-    }
-    if (icon_desejado == "mago") {
-        document.getElementById("icon").src = "/Imagens/token-mago.png"
-        document.getElementById("icon").alt = "Mago"
-    }
-    if (icon_desejado == "atirador") {
-        document.getElementById("icon").src = "/Imagens/token-atirador.png"
-        document.getElementById("icon").alt = "Atirador"
-    }
-    if (icon_desejado == "curandeiro") {
-        document.getElementById("icon").src = "/Imagens/Token-curandeiro.png"
-        document.getElementById("icon").alt = "Guerreiro"
-    }
-    if (icon_desejado == "suporte") {
-        document.getElementById("icon").src = "/Imagens/token-suporte.png"
-        document.getElementById("icon").alt = "Suporte"
-    }
-}
-
-function atualizar_dados() {
-
-    const dados_cadastro = JSON.parse(localStorage.getItem("dados_usuario") || "{}");
-    
-
-    let nome = document.getElementById("nome").value
-    let email = document.getElementById("email").value
-    let cor = document.getElementById("cor_perfil").value
-    let classe = document.querySelector('input[name="classe"]:checked').value
-
-    dados_cadastro["nome"] = nome
-    dados_cadastro["email"] = email
-    dados_cadastro["icon"] = classe
-    dados_cadastro["fundo"] = cor
-
-    window.localStorage.setItem("dados_usuario", JSON.stringify(dados_cadastro))
-
-    alert("Perfil Atualizado!")
+  if (map[icon]) {
+    const [src, alt] = map[icon];
+    const img = document.getElementById("icon");
+    img.src = `/Imagens/${src}`;
+    img.alt = alt;
+  }
 }

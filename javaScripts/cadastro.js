@@ -1,42 +1,54 @@
-function pegar_dados() {
-    let nome = document.getElementById("nome").value
-    let email = document.getElementById("email").value
-    let senha = document.getElementById("senha").value
-    let classe = document.querySelector('input[name="classe"]:checked').value
+import { db, auth } from "./firebase.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
 
-    dados = {
-        "nome": nome,
-        "email": email,
-        "senha": senha,
-        "icon": classe,
-        "fundo" : null
-    }
+// CADASTRO
+export function cadastrar_usuario() {
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+    const classe = document.querySelector('input[name="classe"]:checked').value;
 
-    window.localStorage.setItem("dados_usuario", JSON.stringify(dados))
+    createUserWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+            const user = userCredential.user;
+
+            return setDoc(doc(db, "usuarios", user.uid), {
+                nome: nome,
+                email: email,
+                icon: classe,
+                fundo: null
+            });
+        })
+        .then(() => {
+            alert("Usuário cadastrado com sucesso!");
+            window.location.href = "/html/index.html";
+        })
+        .catch((error) => {
+            console.error("Erro:", error);
+            alert("Erro: " + error.message);
+        });
 }
 
-function logar() {
-    const dados_cadastro = window.localStorage.getItem("dados_usuario")
-    const dados_cadastro_atual = JSON.parse(dados_cadastro)
+// LOGIN
+export function logar() {
+    const dados = document.getElementById("dados_login");
+    const dados_login = new FormData(dados);
 
-    const dados = document.getElementById("dados_login")
-    const dados_login = new FormData(dados)
+    const email_ou_nome = dados_login.get("nome"); // aqui espera o email (ou você pode ajustar)
+    const senha = dados_login.get("senha");
 
-    const user = dados_login.get("nome")
-    const senha = dados_login.get("senha")
-
-    if (!dados_cadastro) {
-        alert("Nenhum usuário cadastrado!")
-        location.reload()
-        return;
-    }
-
-    if ((user == dados_cadastro_atual['nome'] || user == dados_cadastro_atual['email']) && (senha == dados_cadastro_atual['senha']) ) {
-        alert("Logado com Sucesso!")
-        localStorage.setItem("logado", "true") 
-        window.location.href= "/html/index.html"
-    } else {
-        alert("Usuário ou senha incorretos.")
-        location.reload()
-    }
+    // Firebase Auth não suporta login por nome, apenas email/senha.
+    // Então certifique-se que "nome" do form seja um email.
+    signInWithEmailAndPassword(auth, email_ou_nome, senha)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            alert("Logado com sucesso!");
+            localStorage.setItem("logado", "true");
+            window.location.href = "/html/index.html";
+        })
+        .catch((error) => {
+            console.error("Erro ao logar:", error);
+            alert("Erro ao logar: " + error.message);
+        });
 }

@@ -1,3 +1,9 @@
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+
+// Firebase inicializado previamente em firebase.js
+import { auth, db } from "../javaScripts/firebase.js";
+
 window.addEventListener("DOMContentLoaded", async () => {
     try {
         const response = await fetch("../arquivosParaFetch/cabecalho.html");
@@ -6,25 +12,36 @@ window.addEventListener("DOMContentLoaded", async () => {
         wrapper.innerHTML = html;
         document.body.insertBefore(wrapper.firstElementChild, document.body.firstChild);
 
-        // Aqui pegamos o <header> recém-inserido
         const header = document.querySelector("header");
         if (header) {
             header.classList.add("d-none", "d-lg-block");
         }
 
-        // Verifica se está logado
-        const logado = localStorage.getItem("logado");
-        const dadosUsuario = localStorage.getItem("dados_usuario");
+        // Verifica com Firebase se há usuário logado
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                let nomeExibido = user.email; // fallback
 
-        if (logado === "true" && dadosUsuario) {
-            const usuario = JSON.parse(dadosUsuario);
-            const nome = usuario.nome || "Usuário";
-            const loginSpan = document.getElementById("usuario-logado");
+                try {
+                    const docRef = doc(db, "usuarios", user.uid);
+                    const docSnap = await getDoc(docRef);
 
-            if (loginSpan) {
-                loginSpan.innerHTML = `<a href="../html/perfil.html">${nome}</a>`;
+                    if (docSnap.exists()) {
+                        const dados = docSnap.data();
+                        if (dados.nome && dados.nome.trim() !== "") {
+                            nomeExibido = dados.nome;
+                        }
+                    }
+                } catch (erro) {
+                    console.error("Erro ao buscar dados do usuário:", erro);
+                }
+
+                const loginSpan = document.getElementById("usuario-logado");
+                if (loginSpan) {
+                    loginSpan.innerHTML = `<a href="../html/perfil.html">${nomeExibido}</a>`;
+                }
             }
-        }
+        });
 
     } catch (erro) {
         console.error("Erro ao carregar o cabeçalho:", erro);
