@@ -111,10 +111,12 @@ function mostrarFicha(ficha) {
     container.appendChild(criarTitulo("Atributos"));
     const rowAtributos = document.createElement("div");
     rowAtributos.className = "row g-3";
+    rowAtributos.id = "atributos"
 
     Object.entries(atributos).forEach(([chave, valor]) => {
         const col = document.createElement("div");
         col.className = "col-md-4";
+        col.id = `${chave}`
         col.appendChild(
             criarCampo(chave.charAt(0).toUpperCase() + chave.slice(1), valor)
         );
@@ -122,6 +124,41 @@ function mostrarFicha(ficha) {
     });
 
     container.appendChild(rowAtributos);
+
+    document.getElementById('atributos').addEventListener('click', async function(event) {
+  const atributoClicado = event.target.closest('.col-md-4');
+  if (atributoClicado) {
+    const dado_rolado = await rolar_dado(atributoClicado.id,ficha);
+    alert(`Rolagem de ${dado_rolado['atributo']}\nValor do dado: ${dado_rolado['dado_total']}\nDetalhes de rolamento: ${dado_rolado['dado_result']} + ${dado_rolado['modificador']}` );
+  }
+});
+}
+
+async function rolar_dado(id_atributo, ficha) {
+
+    const modificador = ficha.atributos[id_atributo];
+
+    try {
+    const response = await fetch('https://rolz.org/api/?1d20.json');
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+
+    const dados = await response.json();
+    const dado_rolado = (dados.result + modificador)
+    const detalhes = {
+        "atributo" : id_atributo,
+        "dado_total" : dado_rolado,
+        "dado_result" : dados.result,
+        "modificador" : modificador
+    }
+
+    return detalhes
+
+} catch (erro) {
+    console.error('Erro na chamada da API:', erro);
+  }
 }
 
 async function init() {
